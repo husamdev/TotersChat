@@ -3,15 +3,18 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		0D711B6624E30663009AFB01 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D711B6524E30663009AFB01 /* AppDelegate.swift */; };
 		0D711B6F24E30666009AFB01 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0D711B6E24E30666009AFB01 /* Assets.xcassets */; };
 		0D711B7224E30666009AFB01 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D711B7024E30666009AFB01 /* LaunchScreen.storyboard */; };
+		0D7C96A024E3ED7E00165291 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D7C969F24E3ED7E00165291 /* String+Extensions.swift */; };
+		0D7C96A324E3EDE600165291 /* NamesCreatorService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D7C96A224E3EDE600165291 /* NamesCreatorService.swift */; };
+		0D7C96A524E3F1E000165291 /* ContactsCreatorService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D7C96A424E3F1E000165291 /* ContactsCreatorService.swift */; };
+		0D7C96A824E3F2BC00165291 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D7C96A724E3F2BC00165291 /* Contact.swift */; };
 		0D93C1DE24E3095900AC44F3 /* ContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D93C1DD24E3095900AC44F3 /* ContactsViewController.swift */; };
-		0D93C1E124E30D4300AC44F3 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D93C1E024E30D4300AC44F3 /* UIView+Extensions.swift */; };
 		0D93C1E324E3145F00AC44F3 /* ContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D93C1E224E3145F00AC44F3 /* ContactTableViewCell.swift */; };
 		5FCC4C57237917CF5541EBA3 /* Pods_TotersChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41BC3582ECB1D245F209B49D /* Pods_TotersChat.framework */; };
 /* End PBXBuildFile section */
@@ -22,8 +25,11 @@
 		0D711B6E24E30666009AFB01 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0D711B7124E30666009AFB01 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0D711B7324E30666009AFB01 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0D7C969F24E3ED7E00165291 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		0D7C96A224E3EDE600165291 /* NamesCreatorService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NamesCreatorService.swift; sourceTree = "<group>"; };
+		0D7C96A424E3F1E000165291 /* ContactsCreatorService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsCreatorService.swift; sourceTree = "<group>"; };
+		0D7C96A724E3F2BC00165291 /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
 		0D93C1DD24E3095900AC44F3 /* ContactsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsViewController.swift; sourceTree = "<group>"; };
-		0D93C1E024E30D4300AC44F3 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		0D93C1E224E3145F00AC44F3 /* ContactTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactTableViewCell.swift; sourceTree = "<group>"; };
 		41BC3582ECB1D245F209B49D /* Pods_TotersChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TotersChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5911C6A5A8124C5FE3ECB1CC /* Pods-TotersChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TotersChat.release.xcconfig"; path = "Target Support Files/Pods-TotersChat/Pods-TotersChat.release.xcconfig"; sourceTree = "<group>"; };
@@ -42,6 +48,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0D4D4DD924E430DB0038A82C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0D7C96A724E3F2BC00165291 /* Contact.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		0D711B5924E30662009AFB01 = {
 			isa = PBXGroup;
 			children = (
@@ -63,6 +77,8 @@
 		0D711B6424E30662009AFB01 /* TotersChat */ = {
 			isa = PBXGroup;
 			children = (
+				0D4D4DD924E430DB0038A82C /* Models */,
+				0D7C96A124E3EDC700165291 /* Services */,
 				0D93C1DF24E30D0700AC44F3 /* Extensions */,
 				0D93C1DA24E308FF00AC44F3 /* Screens */,
 				0D711B6524E30663009AFB01 /* AppDelegate.swift */,
@@ -71,6 +87,15 @@
 				0D711B7324E30666009AFB01 /* Info.plist */,
 			);
 			path = TotersChat;
+			sourceTree = "<group>";
+		};
+		0D7C96A124E3EDC700165291 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				0D7C96A224E3EDE600165291 /* NamesCreatorService.swift */,
+				0D7C96A424E3F1E000165291 /* ContactsCreatorService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		0D93C1DA24E308FF00AC44F3 /* Screens */ = {
@@ -101,7 +126,7 @@
 		0D93C1DF24E30D0700AC44F3 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				0D93C1E024E30D4300AC44F3 /* UIView+Extensions.swift */,
+				0D7C969F24E3ED7E00165291 /* String+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -134,6 +159,7 @@
 				0D711B5E24E30662009AFB01 /* Sources */,
 				0D711B5F24E30662009AFB01 /* Frameworks */,
 				0D711B6024E30662009AFB01 /* Resources */,
+				C14579860E9831B4A62D4160 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -212,6 +238,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		C14579860E9831B4A62D4160 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TotersChat/Pods-TotersChat-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TotersChat/Pods-TotersChat-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TotersChat/Pods-TotersChat-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -219,9 +262,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D7C96A024E3ED7E00165291 /* String+Extensions.swift in Sources */,
+				0D7C96A524E3F1E000165291 /* ContactsCreatorService.swift in Sources */,
+				0D7C96A324E3EDE600165291 /* NamesCreatorService.swift in Sources */,
 				0D93C1E324E3145F00AC44F3 /* ContactTableViewCell.swift in Sources */,
+				0D7C96A824E3F2BC00165291 /* Contact.swift in Sources */,
 				0D711B6624E30663009AFB01 /* AppDelegate.swift in Sources */,
-				0D93C1E124E30D4300AC44F3 /* UIView+Extensions.swift in Sources */,
 				0D93C1DE24E3095900AC44F3 /* ContactsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
