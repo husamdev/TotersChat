@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Nuke
 
 class ContactTableViewCell: UITableViewCell {
     
@@ -14,6 +15,8 @@ class ContactTableViewCell: UITableViewCell {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.layer.cornerRadius = 25
         imageView.backgroundColor = .white
+        imageView.clipsToBounds = true
+        imageView.contentMode = .scaleAspectFit
         return imageView
     }()
     
@@ -21,7 +24,6 @@ class ContactTableViewCell: UITableViewCell {
         let label = UILabel()
         label.textColor = .white
         label.font = .boldSystemFont(ofSize: 18)
-        label.text = "Husam"
         return label
     }()
     
@@ -29,7 +31,6 @@ class ContactTableViewCell: UITableViewCell {
         let label = UILabel()
         label.textColor = .white
         label.font = .systemFont(ofSize: 14)
-        label.text = "Hello! How are you doing?"
         return label
     }()
     
@@ -76,8 +77,9 @@ class ContactTableViewCell: UITableViewCell {
         contentView.layoutIfNeeded()
     }
     
-    func updateCell() {
-        
+    func updateCell(name: String, imageName: String) {
+        nameLabel.text = name
+        contactImageView.image = UIImage(named: imageName)
     }
     
     required init?(coder aDecoder: NSCoder) {
