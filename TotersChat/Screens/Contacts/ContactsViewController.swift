@@ -11,7 +11,7 @@ class ContactsViewController: UIViewController {
     
     lazy var tableView: UITableView = {
         let tableView = UITableView()
-        tableView.separatorStyle = .none
+        tableView.separatorStyle = .singleLine
         tableView.frame = self.view.frame
         tableView.backgroundColor = .clear
         tableView.rowHeight = 75
@@ -29,6 +29,10 @@ class ContactsViewController: UIViewController {
     }
     
     func setupUI() {
+        title = "Messages"
+        navigationController?.navigationBar.prefersLargeTitles = true
+        
+        view.backgroundColor = .myBlackColor
         view.addSubview(tableView)
         
         tableView.dataSource = self
@@ -52,7 +56,7 @@ extension ContactsViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ContactTableViewCell.self)) as? ContactTableViewCell else { return UITableViewCell() }
-            
+        
         cell.updateCell(name: contacts[indexPath.row].name, imageName: contacts[indexPath.row].image)
         return cell
     }
