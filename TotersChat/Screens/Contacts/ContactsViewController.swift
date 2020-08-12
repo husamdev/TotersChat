@@ -20,30 +20,40 @@ class ContactsViewController: UIViewController {
         return tableView
     }()
     
+    var contacts: [Contact] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupUI()
+        getContacts()
     }
     
     func setupUI() {
-        view.applyMyGreenGradient()
         view.addSubview(tableView)
         
         tableView.dataSource = self
         tableView.delegate = self
+    }
+    
+    func getContacts() {
+        let contactsService = ContactsCreatorService()
+        contactsService.createContacts(count: 200).done(on: .main) { [weak self] contacts in
+            self?.contacts = contacts
+            self?.tableView.reloadData()
+        }
     }
 }
 
 // MARK: - UITableViewDataSource
 extension ContactsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 200
+        return contacts.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ContactTableViewCell.self)) as? ContactTableViewCell else { return UITableViewCell() }
             
+        cell.updateCell(name: contacts[indexPath.row].name, imageName: contacts[indexPath.row].image)
         return cell
     }
     
