@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D4D4E0D24E43FCC0038A82C /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4D4E0C24E43FCC0038A82C /* UIColor+Extensions.swift */; };
 		0D711B6624E30663009AFB01 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D711B6524E30663009AFB01 /* AppDelegate.swift */; };
 		0D711B6F24E30666009AFB01 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0D711B6E24E30666009AFB01 /* Assets.xcassets */; };
 		0D711B7224E30666009AFB01 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D711B7024E30666009AFB01 /* LaunchScreen.storyboard */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0D4D4E0C24E43FCC0038A82C /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		0D711B6224E30662009AFB01 /* TotersChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TotersChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D711B6524E30663009AFB01 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0D711B6E24E30666009AFB01 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 			isa = PBXGroup;
 			children = (
 				0D7C969F24E3ED7E00165291 /* String+Extensions.swift */,
+				0D4D4E0C24E43FCC0038A82C /* UIColor+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -265,6 +268,7 @@
 				0D7C96A024E3ED7E00165291 /* String+Extensions.swift in Sources */,
 				0D7C96A524E3F1E000165291 /* ContactsCreatorService.swift in Sources */,
 				0D7C96A324E3EDE600165291 /* NamesCreatorService.swift in Sources */,
+				0D4D4E0D24E43FCC0038A82C /* UIColor+Extensions.swift in Sources */,
 				0D93C1E324E3145F00AC44F3 /* ContactTableViewCell.swift in Sources */,
 				0D7C96A824E3F2BC00165291 /* Contact.swift in Sources */,
 				0D711B6624E30663009AFB01 /* AppDelegate.swift in Sources */,
