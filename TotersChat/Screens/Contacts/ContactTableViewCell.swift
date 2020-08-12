@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import Nuke
 
 class ContactTableViewCell: UITableViewCell {
     
@@ -23,7 +22,7 @@ class ContactTableViewCell: UITableViewCell {
     var nameLabel: UILabel = {
         let label = UILabel()
         label.textColor = .white
-        label.font = .boldSystemFont(ofSize: 18)
+        label.font = .systemFont(ofSize: 16)
         return label
     }()
     
