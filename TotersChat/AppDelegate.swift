@@ -16,10 +16,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         let window = UIWindow(frame: UIScreen.main.bounds)
-        let contactsViewController = ContactsViewController()
+        let contactsViewController = ChatViewController()
         let navigationController = UINavigationController(rootViewController: contactsViewController)
         
-        navigationController.navigationBar.barTintColor = .myBlackColor
+        navigationController.navigationBar.barTintColor = .myBlack
         navigationController.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
         navigationController.navigationBar.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
         

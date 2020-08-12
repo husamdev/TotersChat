@@ -32,7 +32,7 @@ class ContactsViewController: UIViewController {
         title = "Messages"
         navigationController?.navigationBar.prefersLargeTitles = true
         
-        view.backgroundColor = .myBlackColor
+        view.backgroundColor = .myBlack
         view.addSubview(tableView)
         
         tableView.dataSource = self
