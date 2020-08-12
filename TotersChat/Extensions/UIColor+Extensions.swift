@@ -9,5 +9,7 @@ import Foundation
 import UIKit
 
 extension UIColor {
-    static let myBlackColor = UIColor(red: 5/255, green: 13/255, blue: 19/255, alpha: 1)
+    static let myBlack = UIColor(red: 5/255, green: 13/255, blue: 19/255, alpha: 1)
+    static let myGreen = UIColor(red: 90/255, green: 197/255, blue: 58/255, alpha: 1)
+    static let mylightBlack = UIColor(red: 30/255, green: 32/255, blue: 35/255, alpha: 1)
 }
