@@ -5,6 +5,6 @@ target 'TotersChat' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
 
-  # Pods for TotersChat
-  
+  # Pods for TotersChat  
+  pod "PromiseKit", "~> 6.8"
 end
