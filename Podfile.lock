@@ -1,4 +1,5 @@
 PODS:
+  - MessageViewController (0.2.1)
   - PromiseKit (6.13.1):
     - PromiseKit/CorePromise (= 6.13.1)
     - PromiseKit/Foundation (= 6.13.1)
@@ -10,15 +11,18 @@ PODS:
     - PromiseKit/CorePromise
 
 DEPENDENCIES:
+  - MessageViewController
   - PromiseKit (~> 6.8)
 
 SPEC REPOS:
   trunk:
+    - MessageViewController
     - PromiseKit
 
 SPEC CHECKSUMS:
+  MessageViewController: 63ef2719d82c91d949ad52e101f049028a5a0611
   PromiseKit: 28fda91c973cc377875d8c0ea4f973013c05b6db
 
-PODFILE CHECKSUM: e5b44e6c5ca5b2336b5ebbcf3eaf3286feeec0d6
+PODFILE CHECKSUM: 2b60996642e011ebb3528404ea4fe3932ce6920a
 
 COCOAPODS: 1.9.1
