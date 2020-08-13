@@ -7,6 +7,7 @@
 
 import Foundation
 import PromiseKit
+import Unrealm
 
 class ContactsCreatorService {
     
@@ -17,20 +18,38 @@ class ContactsCreatorService {
     }
     
     private func createContact(name: String) -> Contact {
-        let id = UUID().uuidString
         let imageString = "person_" + String(Int.random(in: 1..<25))
         
-        let contact = Contact(id: id, name: name, image: imageString)
+        var contact = Contact()
+        contact.name = name
+        contact.image = imageString
         return contact
     }
     
-    func createContacts(count: Int) -> Promise<[Contact]> {
+    private func saveContacts(_ contacts: [Contact]) {
+        let realm = try! Realm()
+        try! realm.write {
+            realm.add(contacts)
+        }
+    }
+    
+    func getContacts(count: Int) -> Promise<[Contact]> {
         return Promise<[Contact]> { seal in
+            
+            let realm = try! Realm()
+            let savedContacts = Array(realm.objects(Contact.self))
+            if savedContacts.count > 0 {
+                seal.fulfill(savedContacts)
+                return
+            }
+            
             var contacts: [Contact] = []
             let names = nameCreatorService.createRandomNames(count: count)
             for name in names {
                 contacts.append(createContact(name: name))
             }
+            
+            saveContacts(contacts)
             
             seal.fulfill(contacts)
         }

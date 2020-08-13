@@ -6,9 +6,10 @@
 //
 
 import Foundation
+import Unrealm
 
-struct Contact {
-    let id: String
-    let name: String
-    let image: String
+struct Contact: Realmable {
+    var id: String = UUID().uuidString
+    var name: String = ""
+    var image: String = ""
 }

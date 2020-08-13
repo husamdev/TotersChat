@@ -8,4 +8,5 @@ target 'TotersChat' do
   # Pods for TotersChat  
   pod "PromiseKit", "~> 6.8"
   pod 'MessageViewController'
+  pod 'Unrealm'
 end

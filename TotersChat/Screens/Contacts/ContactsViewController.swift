@@ -41,7 +41,7 @@ class ContactsViewController: UIViewController {
     
     func getContacts() {
         let contactsService = ContactsCreatorService()
-        contactsService.createContacts(count: 200).done(on: .main) { [weak self] contacts in
+        contactsService.getContacts(count: 200).done(on: .main) { [weak self] contacts in
             self?.contacts = contacts
             self?.tableView.reloadData()
         }
