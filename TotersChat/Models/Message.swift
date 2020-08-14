@@ -6,10 +6,13 @@
 //
 
 import Foundation
+import RealmSwift
 
-struct Message {
-    let text: String
-    let senderId: String
-    let receiverId: String
-    let date: Date
+class Message: Object {
+    @objc dynamic var id: String = UUID().uuidString
+    @objc dynamic var text: String = ""
+    @objc dynamic var date: Date = Date()
+    
+    @objc dynamic var sender: Contact?
+    @objc dynamic var receiver: Contact?
 }

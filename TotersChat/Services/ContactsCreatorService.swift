@@ -7,7 +7,7 @@
 
 import Foundation
 import PromiseKit
-import Unrealm
+import RealmSwift
 
 class ContactsCreatorService {
     

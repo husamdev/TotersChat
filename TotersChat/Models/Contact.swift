@@ -6,10 +6,10 @@
 //
 
 import Foundation
-import Unrealm
+import RealmSwift
 
-struct Contact: Realmable {
-    var id: String = UUID().uuidString
-    var name: String = ""
-    var image: String = ""
+class Contact: Object {
+    @objc dynamic var id: String = UUID().uuidString
+    @objc dynamic var name: String = ""
+    @objc dynamic var image: String = ""
 }

@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import Unrealm
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,10 +15,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        Realm.registerRealmables(Contact.self)
-        
         let window = UIWindow(frame: UIScreen.main.bounds)
-        let contactsViewController = ContactsViewController()
+        let contactsViewController = ChatViewController()
         let navigationController = UINavigationController(rootViewController: contactsViewController)
         
         navigationController.navigationBar.barTintColor = .myBlack

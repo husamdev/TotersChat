@@ -7,6 +7,7 @@
 
 import UIKit
 import MessageViewController
+import RealmSwift
 
 class ChatViewController: MessageViewController {
     
@@ -14,7 +15,6 @@ class ChatViewController: MessageViewController {
     
     var tableView: UITableView = {
         let t = UITableView()
-//        t.translatesAutoresizingMaskIntoConstraints = false
         t.rowHeight = UITableView.automaticDimension
         t.estimatedRowHeight = UITableView.automaticDimension
         t.allowsSelection = false
@@ -55,14 +55,31 @@ class ChatViewController: MessageViewController {
         messageView.font = .systemFont(ofSize: 15)
         messageView.backgroundColor = .darkGray
         messageView.setButton(title: "Send", for: .normal, position: .right)
+        messageView.addButton(target: self, action: #selector(sendMessage), position: .right)
         messageView.rightButtonTint = .myGreen
         messageView.tintColor = .myBlack
+    }
+    
+    @objc func sendMessage() {
+        let text = messageView.text
+        
+        let realm = try! Realm()
+        let contact = realm.object(ofType: Contact.self, forPrimaryKey: "0E27EC24-17E1-43BF-B65A-9EABD9F9A448")
+        
+        
+        var message = Message()
+        message.text = text
+        message.receopeniver = contact
+        
+        try! realm.write {
+            realm.add(message, update: true)
+        }
     }
 }
 
 extension ChatViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 50//messages.count
+        return messages.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

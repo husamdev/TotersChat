@@ -14,15 +14,11 @@ PODS:
   - Realm/Headers (5.0.3)
   - RealmSwift (5.0.3):
     - Realm (= 5.0.3)
-  - RuntimeNew (2.1.5)
-  - Unrealm (1.3.5):
-    - RealmSwift (= 5.0.3)
-    - RuntimeNew (= 2.1.5)
 
 DEPENDENCIES:
   - MessageViewController
   - PromiseKit (~> 6.8)
-  - Unrealm
+  - RealmSwift
 
 SPEC REPOS:
   trunk:
@@ -30,17 +26,13 @@ SPEC REPOS:
     - PromiseKit
     - Realm
     - RealmSwift
-    - RuntimeNew
-    - Unrealm
 
 SPEC CHECKSUMS:
   MessageViewController: 63ef2719d82c91d949ad52e101f049028a5a0611
   PromiseKit: 28fda91c973cc377875d8c0ea4f973013c05b6db
   Realm: bfca1699b61b0b17c3a69ae0e648314eae91fbdb
   RealmSwift: 493c9f089cd3893b3959007973c0e4f640906ba0
-  RuntimeNew: ef34cf1783be4c1cbe798970bc590924dab5df87
-  Unrealm: ba1c168935344084ba28dd6bff5ded86f4837d7f
 
-PODFILE CHECKSUM: 642287d78e06475f390a1ab44eca28ff3fa48a1d
+PODFILE CHECKSUM: 80d64ea1e6ba7868cc26d80ed66250d9c38d4f33
 
 COCOAPODS: 1.9.1
