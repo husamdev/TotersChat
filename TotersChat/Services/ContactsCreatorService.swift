@@ -20,7 +20,7 @@ class ContactsCreatorService {
     private func createContact(name: String) -> Contact {
         let imageString = "person_" + String(Int.random(in: 1..<25))
         
-        var contact = Contact()
+        let contact = Contact()
         contact.name = name
         contact.image = imageString
         return contact
