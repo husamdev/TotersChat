@@ -13,6 +13,10 @@ class Message: Object {
     @objc dynamic var text: String = ""
     @objc dynamic var date: Date = Date()
     
-    @objc dynamic var sender: Contact?
-    @objc dynamic var receiver: Contact?
+    @objc dynamic var senderId: String?
+    @objc dynamic var receiverId: String?
+    
+    override static func primaryKey() -> String? {
+        return "id"
+    }
 }

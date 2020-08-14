@@ -11,6 +11,7 @@ import RealmSwift
 
 class ChatViewController: MessageViewController {
     
+    var conversation: Conversation!
     var messages: [Message] = []
     
     var tableView: UITableView = {
@@ -32,7 +33,7 @@ class ChatViewController: MessageViewController {
     }
     
     func setupUI() {
-        title = "Husam"
+        title = conversation.contact.name
         navigationController?.navigationBar.prefersLargeTitles = false
         view.backgroundColor = .myBlack
         
@@ -64,15 +65,13 @@ class ChatViewController: MessageViewController {
         let text = messageView.text
         
         let realm = try! Realm()
-        let contact = realm.object(ofType: Contact.self, forPrimaryKey: "0E27EC24-17E1-43BF-B65A-9EABD9F9A448")
         
-        
-        var message = Message()
+        let message = Message()
         message.text = text
-        message.receopeniver = contact
+        message.receiverId = conversation.contact.id
         
         try! realm.write {
-            realm.add(message, update: true)
+            realm.add(message, update: .all)
         }
     }
 }

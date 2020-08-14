@@ -19,6 +19,8 @@
 		0D93C1DE24E3095900AC44F3 /* ContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D93C1DD24E3095900AC44F3 /* ContactsViewController.swift */; };
 		0D93C1E324E3145F00AC44F3 /* ContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D93C1E224E3145F00AC44F3 /* ContactTableViewCell.swift */; };
 		0D96CDF924E6AE8E008BF9C7 /* Conversation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D96CDF824E6AE8E008BF9C7 /* Conversation.swift */; };
+		0D96CDFB24E6C29F008BF9C7 /* ConversationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D96CDFA24E6C29F008BF9C7 /* ConversationService.swift */; };
+		0D96CDFD24E6DCC6008BF9C7 /* ContactsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D96CDFC24E6DCC6008BF9C7 /* ContactsViewModel.swift */; };
 		0DF70F4924E45F06003A0963 /* MessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF70F4824E45F06003A0963 /* MessageTableViewCell.swift */; };
 		0DF70F4B24E46BA5003A0963 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF70F4A24E46BA5003A0963 /* Message.swift */; };
 		5FCC4C57237917CF5541EBA3 /* Pods_TotersChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41BC3582ECB1D245F209B49D /* Pods_TotersChat.framework */; };
@@ -39,6 +41,8 @@
 		0D93C1DD24E3095900AC44F3 /* ContactsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsViewController.swift; sourceTree = "<group>"; };
 		0D93C1E224E3145F00AC44F3 /* ContactTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactTableViewCell.swift; sourceTree = "<group>"; };
 		0D96CDF824E6AE8E008BF9C7 /* Conversation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversation.swift; sourceTree = "<group>"; };
+		0D96CDFA24E6C29F008BF9C7 /* ConversationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationService.swift; sourceTree = "<group>"; };
+		0D96CDFC24E6DCC6008BF9C7 /* ContactsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsViewModel.swift; sourceTree = "<group>"; };
 		0DF70F4824E45F06003A0963 /* MessageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageTableViewCell.swift; sourceTree = "<group>"; };
 		0DF70F4A24E46BA5003A0963 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		41BC3582ECB1D245F209B49D /* Pods_TotersChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TotersChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -106,6 +110,7 @@
 			children = (
 				0D7C96A224E3EDE600165291 /* NamesCreatorService.swift */,
 				0D7C96A424E3F1E000165291 /* ContactsCreatorService.swift */,
+				0D96CDFA24E6C29F008BF9C7 /* ConversationService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -133,6 +138,7 @@
 			children = (
 				0D93C1DD24E3095900AC44F3 /* ContactsViewController.swift */,
 				0D93C1E224E3145F00AC44F3 /* ContactTableViewCell.swift */,
+				0D96CDFC24E6DCC6008BF9C7 /* ContactsViewModel.swift */,
 			);
 			path = Contacts;
 			sourceTree = "<group>";
@@ -278,7 +284,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				0D96CDF924E6AE8E008BF9C7 /* Conversation.swift in Sources */,
+				0D96CDFB24E6C29F008BF9C7 /* ConversationService.swift in Sources */,
 				0D7C96A024E3ED7E00165291 /* String+Extensions.swift in Sources */,
+				0D96CDFD24E6DCC6008BF9C7 /* ContactsViewModel.swift in Sources */,
 				0D7C96A524E3F1E000165291 /* ContactsCreatorService.swift in Sources */,
 				0D7C96A324E3EDE600165291 /* NamesCreatorService.swift in Sources */,
 				0DF70F4924E45F06003A0963 /* MessageTableViewCell.swift in Sources */,

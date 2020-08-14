@@ -76,9 +76,10 @@ class ContactTableViewCell: UITableViewCell {
         contentView.layoutIfNeeded()
     }
     
-    func updateCell(name: String, imageName: String) {
-        nameLabel.text = name
-        contactImageView.image = UIImage(named: imageName)
+    func updateCell(conversation: Conversation) {
+        nameLabel.text = conversation.contact.name
+        contactImageView.image = UIImage(named: conversation.contact.image)
+        messageLabel.text = conversation.lastMessage?.text ?? ""
     }
     
     required init?(coder aDecoder: NSCoder) {

@@ -7,3 +7,12 @@
 
 import Foundation
 
+class Conversation {
+    let lastMessage: Message?
+    let contact: Contact
+    
+    init(contact: Contact, lastMessage: Message?) {
+        self.contact = contact
+        self.lastMessage = lastMessage
+    }
+}

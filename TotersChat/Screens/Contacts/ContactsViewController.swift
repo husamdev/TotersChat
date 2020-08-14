@@ -9,6 +9,8 @@ import UIKit
 
 class ContactsViewController: UIViewController {
     
+    let conversationService = ConversationService()
+    
     lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.separatorStyle = .singleLine
@@ -20,12 +22,16 @@ class ContactsViewController: UIViewController {
         return tableView
     }()
     
-    var contacts: [Contact] = []
+    var conversations: [Conversation] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        getContacts()
+        
+        _ = conversationService.getConversations().done(on: .main, { [weak self] conversations in
+            self?.conversations = conversations
+            self?.tableView.reloadData()
+        })
     }
     
     func setupUI() {
@@ -39,25 +45,18 @@ class ContactsViewController: UIViewController {
         tableView.delegate = self
     }
     
-    func getContacts() {
-        let contactsService = ContactsCreatorService()
-        contactsService.getContacts(count: 200).done(on: .main) { [weak self] contacts in
-            self?.contacts = contacts
-            self?.tableView.reloadData()
-        }
-    }
 }
 
 // MARK: - UITableViewDataSource
 extension ContactsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return contacts.count
+        return conversations.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ContactTableViewCell.self)) as? ContactTableViewCell else { return UITableViewCell() }
         
-        cell.updateCell(name: contacts[indexPath.row].name, imageName: contacts[indexPath.row].image)
+        cell.updateCell(conversation: conversations[indexPath.row])
         return cell
     }
     
@@ -66,7 +65,11 @@ extension ContactsViewController: UITableViewDataSource {
 
 // MARK: - UITableViewDelegate
 extension ContactsViewController: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let chatViewController = ChatViewController()
+        chatViewController.conversation = conversations[indexPath.row]
+        navigationController?.pushViewController(chatViewController, animated: true)
+    }
 }
 
 

@@ -12,4 +12,8 @@ class Contact: Object {
     @objc dynamic var id: String = UUID().uuidString
     @objc dynamic var name: String = ""
     @objc dynamic var image: String = ""
+    
+    override static func primaryKey() -> String? {
+        return "id"
+    }
 }
