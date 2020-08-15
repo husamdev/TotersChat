@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         let window = UIWindow(frame: UIScreen.main.bounds)
-        let contactsViewController = ContactsViewController()
+        let contactsViewController = LoadingViewController()
         let navigationController = UINavigationController(rootViewController: contactsViewController)
         
         navigationController.navigationBar.tintColor = .white
