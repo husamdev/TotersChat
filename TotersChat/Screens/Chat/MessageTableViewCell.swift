@@ -13,7 +13,7 @@ class MessageTableViewCell: UITableViewCell {
         let v = UIView()
         v.translatesAutoresizingMaskIntoConstraints = false
         v.clipsToBounds = true
-        v.layer.cornerRadius = 20
+        v.layer.cornerRadius = 10
         v.backgroundColor = .mylightBlack
         return v
     }()
@@ -66,10 +66,12 @@ class MessageTableViewCell: UITableViewCell {
         contentView.layoutIfNeeded()
     }
     
-    func updateCell(isSend: Bool) {
+    func updateCell(message: ChatMessage) {
         setupUI()
         
-        if isSend {
+        textView.text = message.text
+        
+        if message.isSend {
             bubble.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10).isActive = true
             bubble.backgroundColor = .myGreen
         } else {
@@ -79,6 +81,11 @@ class MessageTableViewCell: UITableViewCell {
         }
         
         contentView.layoutIfNeeded()
+    }
+    
+    func setImage(_ imageName: String) {
+        let image = UIImage(named: imageName)
+        profileImageView.image = image
     }
     
     func addConstraints() {
