@@ -32,15 +32,15 @@ class ContactsCreatorService {
         }
     }
     
-    func getContacts(count: Int) -> [Contact] {
+    func getContacts() -> [Contact] {
         let realm = try! Realm()
         let savedContacts = Array(realm.objects(Contact.self))
-        if savedContacts.count > 0 {
+        if !savedContacts.isEmpty {
             return savedContacts
         }
         
         var contacts: [Contact] = []
-        let names = nameCreatorService.createRandomNames(count: count)
+        let names = nameCreatorService.createRandomNames(count: 200)
         for name in names {
             contacts.append(createContact(name: name))
         }
@@ -48,5 +48,6 @@ class ContactsCreatorService {
         saveContacts(contacts)
         return contacts
     }
+    
     
 }
