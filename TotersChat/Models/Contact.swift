@@ -16,4 +16,12 @@ class Contact: Object {
     override static func primaryKey() -> String? {
         return "id"
     }
+    
+    static var me: Contact  = {
+        let me = Contact()
+        me.id = "0"
+        me.name = "husam"
+        me.image = "person_1"
+        return me
+    }()
 }
