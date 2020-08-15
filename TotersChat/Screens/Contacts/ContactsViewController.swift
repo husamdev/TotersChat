@@ -32,7 +32,7 @@ class ContactsViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         navigationController?.navigationBar.prefersLargeTitles = true
         
-        _ = conversationService.getConversations().done(on: .main, { [weak self] conversations in
+        _ = conversationService.getConversations(page: 0).done(on: .main, { [weak self] conversations in
             self?.conversations = conversations
             self?.tableView.reloadData()
         })

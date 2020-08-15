@@ -12,14 +12,19 @@ import PromiseKit
 class ConversationService {
     
     let contactsService = ContactsCreatorService()
+    let count = 20
     
-    func getConversations() -> Promise<[Conversation]> {
+    func getConversations(page: Int) -> Promise<[Conversation]> {
         return Promise<[Conversation]> { seal in
             var conversations: [Conversation] = []
             let contacts = contactsService.getContacts()
             let realm = try! Realm()
             
-            for contact in contacts {
+            let start = page * 20
+            let end = start + count - 1
+            
+            for index in start...end {
+                let contact = contacts[index]
                 let lastMessage = realm.objects(ChatMessage.self)
                     .filter("senderId == %@ OR receiverId == %@", contact.id, contact.id)
                     .sorted(byKeyPath: "date").last
