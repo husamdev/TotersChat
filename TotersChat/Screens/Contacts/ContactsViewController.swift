@@ -12,7 +12,6 @@ import Lottie
 class ContactsViewController: UIViewController {
     
     let conversationService = ConversationService()
-    var page = 0
     
     lazy var tableView: UITableView = {
         let tableView = UITableView()
@@ -30,15 +29,17 @@ class ContactsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        setupInfinityScroll()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        navigationItem.setHidesBackButton(true, animated: false)
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        page = 0
         navigationController?.navigationBar.prefersLargeTitles = true
         
-        conversations = []
-        _ = conversationService.getConversations(page: page).done(on: .main, { [weak self] conversations in
+        _ = conversationService.getConversations().done(on: .main, { [weak self] conversations in
+            self?.conversations = []
             self?.conversations = conversations
             self?.tableView.reloadData()
             self?.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
@@ -53,25 +54,6 @@ class ContactsViewController: UIViewController {
         
         tableView.dataSource = self
         tableView.delegate = self
-    }
-    
-    func setupInfinityScroll() {
-        let animation = Animation.named("loading2")
-        let animationView = AnimationView(animation: animation)
-        animationView.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
-        animationView.loopMode = .loop
-        animationView.play()
-        
-        tableView.infiniteScrollIndicatorView = animationView
-        tableView.addInfiniteScroll { [weak self] tableView in
-            self?.page += 1
-            _ = self?.conversationService.getConversations(page: self?.page ?? 0).done(on: .main, { [weak self] conversations in
-                self?.conversations.append(contentsOf: conversations)
-                self?.tableView.reloadData()
-            })
-            
-            tableView.finishInfiniteScroll()
-        }
     }
     
 }

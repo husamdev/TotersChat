@@ -14,17 +14,13 @@ class ConversationService {
     let contactsService = ContactsCreatorService()
     let count = 20
     
-    func getConversations(page: Int) -> Promise<[Conversation]> {
+    func getConversations() -> Promise<[Conversation]> {
         return Promise<[Conversation]> { seal in
             var conversations: [Conversation] = []
             let contacts = contactsService.getContacts()
             let realm = try! Realm()
             
-            let start = page * 20
-            let end = start + count - 1
-            
-            for index in start...end {
-                let contact = contacts[index]
+            for contact in contacts {
                 let lastMessage = realm.objects(ChatMessage.self)
                     .filter("senderId == %@ OR receiverId == %@", contact.id, contact.id)
                     .sorted(byKeyPath: "date").last
@@ -38,7 +34,7 @@ class ConversationService {
                 let t2 = two.lastMessage?.date ?? Date.distantPast
                 return t1 > t2
             }
-            
+                        
             seal.fulfill(conversations)
         }
     }

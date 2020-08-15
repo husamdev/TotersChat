@@ -28,7 +28,7 @@ class ContactTableViewCell: UITableViewCell {
     
     var messageLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .white
+        label.textColor = .lightGray
         label.font = .systemFont(ofSize: 14)
         return label
     }()
