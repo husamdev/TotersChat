@@ -26,6 +26,7 @@
 		0DDBA39824E7E64E00DFD415 /* MessagingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DDBA39724E7E64E00DFD415 /* MessagingService.swift */; };
 		0DDBA39D24E7F56C00DFD415 /* Subject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DDBA39C24E7F56C00DFD415 /* Subject.swift */; };
 		0DDBA3A124E7FB6F00DFD415 /* Observer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DDBA3A024E7FB6F00DFD415 /* Observer.swift */; };
+		0DDBA3A424E8296D00DFD415 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DDBA3A324E8296D00DFD415 /* LoadingViewController.swift */; };
 		0DF70F4924E45F06003A0963 /* MessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF70F4824E45F06003A0963 /* MessageTableViewCell.swift */; };
 		0DF70F4B24E46BA5003A0963 /* ChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF70F4A24E46BA5003A0963 /* ChatMessage.swift */; };
 		5FCC4C57237917CF5541EBA3 /* Pods_TotersChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41BC3582ECB1D245F209B49D /* Pods_TotersChat.framework */; };
@@ -53,6 +54,7 @@
 		0DDBA39724E7E64E00DFD415 /* MessagingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagingService.swift; sourceTree = "<group>"; };
 		0DDBA39C24E7F56C00DFD415 /* Subject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Subject.swift; sourceTree = "<group>"; };
 		0DDBA3A024E7FB6F00DFD415 /* Observer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observer.swift; sourceTree = "<group>"; };
+		0DDBA3A324E8296D00DFD415 /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		0DF70F4824E45F06003A0963 /* MessageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageTableViewCell.swift; sourceTree = "<group>"; };
 		0DF70F4A24E46BA5003A0963 /* ChatMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessage.swift; sourceTree = "<group>"; };
 		41BC3582ECB1D245F209B49D /* Pods_TotersChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TotersChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -131,6 +133,7 @@
 		0D93C1DA24E308FF00AC44F3 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				0DDBA3A224E8294E00DFD415 /* Loading */,
 				0D93C1DC24E3090C00AC44F3 /* Contacts */,
 				0D93C1DB24E3090500AC44F3 /* Chat */,
 			);
@@ -173,6 +176,14 @@
 				0DDBA3A024E7FB6F00DFD415 /* Observer.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		0DDBA3A224E8294E00DFD415 /* Loading */ = {
+			isa = PBXGroup;
+			children = (
+				0DDBA3A324E8296D00DFD415 /* LoadingViewController.swift */,
+			);
+			path = Loading;
 			sourceTree = "<group>";
 		};
 		37D65186CA1EA61CD92A88B9 /* Frameworks */ = {
@@ -318,6 +329,7 @@
 				0DF70F4924E45F06003A0963 /* MessageTableViewCell.swift in Sources */,
 				0DDBA39624E7D9B700DFD415 /* UIViewController+Extensions.swift in Sources */,
 				0D4D4E0D24E43FCC0038A82C /* UIColor+Extensions.swift in Sources */,
+				0DDBA3A424E8296D00DFD415 /* LoadingViewController.swift in Sources */,
 				0D93C1E324E3145F00AC44F3 /* ContactTableViewCell.swift in Sources */,
 				0DF70F4B24E46BA5003A0963 /* ChatMessage.swift in Sources */,
 				0D7C96A824E3F2BC00165291 /* Contact.swift in Sources */,
