@@ -12,7 +12,7 @@ import RealmSwift
 class ChatViewController: MessageViewController {
     
     var conversation: Conversation!
-    var messages: [Message] = []
+    var messages: [ChatMessage] = []
     
     var tableView: UITableView = {
         let t = UITableView()
@@ -30,6 +30,7 @@ class ChatViewController: MessageViewController {
         super.viewDidLoad()
         
         setupUI()
+        MessagingService.shared.resendMessageSubject.addObserver(observer: self)
     }
     
     func setupUI() {
@@ -43,6 +44,8 @@ class ChatViewController: MessageViewController {
     }
     
     func setupTableView() {
+        tableView.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi));
+        
         view.addSubview(tableView)
         tableView.dataSource = self
         tableView.reloadData()
@@ -64,15 +67,19 @@ class ChatViewController: MessageViewController {
     @objc func sendMessage() {
         let text = messageView.text
         
-        let realm = try! Realm()
-        
-        let message = Message()
+        let message = ChatMessage()
         message.text = text
         message.receiverId = conversation.contact.id
+        message.senderId = Contact.me.id
+        message.isSend = true
         
-        try! realm.write {
-            realm.add(message, update: .all)
-        }
+        messages.insert(message, at: 0)
+        tableView.beginUpdates()
+        tableView.insertRows(at: [IndexPath(row: 0, section: 0)], with: .top)
+        tableView.endUpdates()
+        
+        MessagingService.shared.sendMessage(message)
+        messageView.text = ""
     }
 }
 
@@ -84,8 +91,25 @@ extension ChatViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing:
             MessageTableViewCell.self)) as? MessageTableViewCell else { return UITableViewCell() }
-        cell.updateCell(isSend: indexPath.row % 2 == 0)
-        cell.textView.text = "hello how are you?"
+        cell.transform = tableView.transform
+        cell.updateCell(message: messages[indexPath.row])
+        cell.setImage(conversation.contact.image)
         return cell
+    }
+}
+
+extension ChatViewController: Observer {
+    var id: Int {
+        return 1
+    }
+    
+    func update<T>(with newValue: T) {
+        DispatchQueue.main.async { [weak self] in
+            self?.messages.insert(newValue as! ChatMessage, at: 0)
+
+            self?.tableView.beginUpdates()
+            self?.tableView.insertRows(at: [IndexPath(row: 0, section: 0)], with: .top)
+            self?.tableView.endUpdates()
+        }
     }
 }
