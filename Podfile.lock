@@ -1,4 +1,5 @@
 PODS:
+  - lottie-ios (3.1.8)
   - MessageViewController (0.2.1)
   - PromiseKit (6.13.1):
     - PromiseKit/CorePromise (= 6.13.1)
@@ -16,23 +17,26 @@ PODS:
     - Realm (= 5.0.3)
 
 DEPENDENCIES:
+  - lottie-ios
   - MessageViewController
   - PromiseKit (~> 6.8)
   - RealmSwift
 
 SPEC REPOS:
   trunk:
+    - lottie-ios
     - MessageViewController
     - PromiseKit
     - Realm
     - RealmSwift
 
 SPEC CHECKSUMS:
+  lottie-ios: 48fac6be217c76937e36e340e2d09cf7b10b7f5f
   MessageViewController: 63ef2719d82c91d949ad52e101f049028a5a0611
   PromiseKit: 28fda91c973cc377875d8c0ea4f973013c05b6db
   Realm: bfca1699b61b0b17c3a69ae0e648314eae91fbdb
   RealmSwift: 493c9f089cd3893b3959007973c0e4f640906ba0
 
-PODFILE CHECKSUM: 80d64ea1e6ba7868cc26d80ed66250d9c38d4f33
+PODFILE CHECKSUM: a2d47ed705f8298ed607b0995dfb2f0e62470221
 
 COCOAPODS: 1.9.1

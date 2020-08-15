@@ -21,8 +21,13 @@
 		0D96CDF924E6AE8E008BF9C7 /* Conversation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D96CDF824E6AE8E008BF9C7 /* Conversation.swift */; };
 		0D96CDFB24E6C29F008BF9C7 /* ConversationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D96CDFA24E6C29F008BF9C7 /* ConversationService.swift */; };
 		0D96CDFD24E6DCC6008BF9C7 /* ContactsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D96CDFC24E6DCC6008BF9C7 /* ContactsViewModel.swift */; };
+		0DDBA39424E7D76F00DFD415 /* loading.json in Resources */ = {isa = PBXBuildFile; fileRef = 0DDBA39324E7D76F00DFD415 /* loading.json */; };
+		0DDBA39624E7D9B700DFD415 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DDBA39524E7D9B700DFD415 /* UIViewController+Extensions.swift */; };
+		0DDBA39824E7E64E00DFD415 /* MessagingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DDBA39724E7E64E00DFD415 /* MessagingService.swift */; };
+		0DDBA39D24E7F56C00DFD415 /* Subject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DDBA39C24E7F56C00DFD415 /* Subject.swift */; };
+		0DDBA3A124E7FB6F00DFD415 /* Observer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DDBA3A024E7FB6F00DFD415 /* Observer.swift */; };
 		0DF70F4924E45F06003A0963 /* MessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF70F4824E45F06003A0963 /* MessageTableViewCell.swift */; };
-		0DF70F4B24E46BA5003A0963 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF70F4A24E46BA5003A0963 /* Message.swift */; };
+		0DF70F4B24E46BA5003A0963 /* ChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF70F4A24E46BA5003A0963 /* ChatMessage.swift */; };
 		5FCC4C57237917CF5541EBA3 /* Pods_TotersChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41BC3582ECB1D245F209B49D /* Pods_TotersChat.framework */; };
 /* End PBXBuildFile section */
 
@@ -43,8 +48,13 @@
 		0D96CDF824E6AE8E008BF9C7 /* Conversation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversation.swift; sourceTree = "<group>"; };
 		0D96CDFA24E6C29F008BF9C7 /* ConversationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationService.swift; sourceTree = "<group>"; };
 		0D96CDFC24E6DCC6008BF9C7 /* ContactsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsViewModel.swift; sourceTree = "<group>"; };
+		0DDBA39324E7D76F00DFD415 /* loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading.json; sourceTree = "<group>"; };
+		0DDBA39524E7D9B700DFD415 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
+		0DDBA39724E7E64E00DFD415 /* MessagingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagingService.swift; sourceTree = "<group>"; };
+		0DDBA39C24E7F56C00DFD415 /* Subject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Subject.swift; sourceTree = "<group>"; };
+		0DDBA3A024E7FB6F00DFD415 /* Observer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observer.swift; sourceTree = "<group>"; };
 		0DF70F4824E45F06003A0963 /* MessageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageTableViewCell.swift; sourceTree = "<group>"; };
-		0DF70F4A24E46BA5003A0963 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		0DF70F4A24E46BA5003A0963 /* ChatMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessage.swift; sourceTree = "<group>"; };
 		41BC3582ECB1D245F209B49D /* Pods_TotersChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TotersChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5911C6A5A8124C5FE3ECB1CC /* Pods-TotersChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TotersChat.release.xcconfig"; path = "Target Support Files/Pods-TotersChat/Pods-TotersChat.release.xcconfig"; sourceTree = "<group>"; };
 		BB9CF9D58D960AA69BFA0D7D /* Pods-TotersChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TotersChat.debug.xcconfig"; path = "Target Support Files/Pods-TotersChat/Pods-TotersChat.debug.xcconfig"; sourceTree = "<group>"; };
@@ -66,7 +76,7 @@
 			isa = PBXGroup;
 			children = (
 				0D7C96A724E3F2BC00165291 /* Contact.swift */,
-				0DF70F4A24E46BA5003A0963 /* Message.swift */,
+				0DF70F4A24E46BA5003A0963 /* ChatMessage.swift */,
 				0D96CDF824E6AE8E008BF9C7 /* Conversation.swift */,
 			);
 			path = Models;
@@ -93,12 +103,14 @@
 		0D711B6424E30662009AFB01 /* TotersChat */ = {
 			isa = PBXGroup;
 			children = (
+				0DDBA39924E7F28A00DFD415 /* Helpers */,
 				0D4D4DD924E430DB0038A82C /* Models */,
 				0D7C96A124E3EDC700165291 /* Services */,
 				0D93C1DF24E30D0700AC44F3 /* Extensions */,
 				0D93C1DA24E308FF00AC44F3 /* Screens */,
 				0D711B6524E30663009AFB01 /* AppDelegate.swift */,
 				0D711B6E24E30666009AFB01 /* Assets.xcassets */,
+				0DDBA39324E7D76F00DFD415 /* loading.json */,
 				0D711B7024E30666009AFB01 /* LaunchScreen.storyboard */,
 				0D711B7324E30666009AFB01 /* Info.plist */,
 			);
@@ -111,6 +123,7 @@
 				0D7C96A224E3EDE600165291 /* NamesCreatorService.swift */,
 				0D7C96A424E3F1E000165291 /* ContactsCreatorService.swift */,
 				0D96CDFA24E6C29F008BF9C7 /* ConversationService.swift */,
+				0DDBA39724E7E64E00DFD415 /* MessagingService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -148,8 +161,18 @@
 			children = (
 				0D7C969F24E3ED7E00165291 /* String+Extensions.swift */,
 				0D4D4E0C24E43FCC0038A82C /* UIColor+Extensions.swift */,
+				0DDBA39524E7D9B700DFD415 /* UIViewController+Extensions.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		0DDBA39924E7F28A00DFD415 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				0DDBA39C24E7F56C00DFD415 /* Subject.swift */,
+				0DDBA3A024E7FB6F00DFD415 /* Observer.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		37D65186CA1EA61CD92A88B9 /* Frameworks */ = {
@@ -231,6 +254,7 @@
 			files = (
 				0D711B7224E30666009AFB01 /* LaunchScreen.storyboard in Resources */,
 				0D711B6F24E30666009AFB01 /* Assets.xcassets in Resources */,
+				0DDBA39424E7D76F00DFD415 /* loading.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -283,6 +307,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0DDBA39824E7E64E00DFD415 /* MessagingService.swift in Sources */,
+				0DDBA3A124E7FB6F00DFD415 /* Observer.swift in Sources */,
 				0D96CDF924E6AE8E008BF9C7 /* Conversation.swift in Sources */,
 				0D96CDFB24E6C29F008BF9C7 /* ConversationService.swift in Sources */,
 				0D7C96A024E3ED7E00165291 /* String+Extensions.swift in Sources */,
@@ -290,12 +316,14 @@
 				0D7C96A524E3F1E000165291 /* ContactsCreatorService.swift in Sources */,
 				0D7C96A324E3EDE600165291 /* NamesCreatorService.swift in Sources */,
 				0DF70F4924E45F06003A0963 /* MessageTableViewCell.swift in Sources */,
+				0DDBA39624E7D9B700DFD415 /* UIViewController+Extensions.swift in Sources */,
 				0D4D4E0D24E43FCC0038A82C /* UIColor+Extensions.swift in Sources */,
 				0D93C1E324E3145F00AC44F3 /* ContactTableViewCell.swift in Sources */,
-				0DF70F4B24E46BA5003A0963 /* Message.swift in Sources */,
+				0DF70F4B24E46BA5003A0963 /* ChatMessage.swift in Sources */,
 				0D7C96A824E3F2BC00165291 /* Contact.swift in Sources */,
 				0D711B6624E30663009AFB01 /* AppDelegate.swift in Sources */,
 				0D4D4E0F24E45D930038A82C /* ChatViewController.swift in Sources */,
+				0DDBA39D24E7F56C00DFD415 /* Subject.swift in Sources */,
 				0D93C1DE24E3095900AC44F3 /* ContactsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

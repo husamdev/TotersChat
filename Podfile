@@ -9,4 +9,5 @@ target 'TotersChat' do
   pod "PromiseKit", "~> 6.8"
   pod 'MessageViewController'
   pod 'RealmSwift'
+  pod 'lottie-ios'
 end
