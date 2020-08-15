@@ -16,11 +16,11 @@ class ConversationService {
     func getConversations() -> Promise<[Conversation]> {
         return Promise<[Conversation]> { seal in
             var conversations: [Conversation] = []
-            let contacts = contactsService.getContacts(count: 200)
+            let contacts = contactsService.getContacts()
             let realm = try! Realm()
             
             for contact in contacts {
-                let lastMessage = realm.objects(Message.self)
+                let lastMessage = realm.objects(ChatMessage.self)
                     .filter("senderId == %@ OR receiverId == %@", contact.id, contact.id)
                     .sorted(byKeyPath: "date").last
                 
