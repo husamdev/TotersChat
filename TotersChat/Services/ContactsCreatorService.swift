@@ -7,6 +7,7 @@
 
 import Foundation
 import RealmSwift
+import PromiseKit
 
 class ContactsCreatorService {
     
@@ -32,22 +33,23 @@ class ContactsCreatorService {
         }
     }
     
-    func getContacts() -> [Contact] {
+    func getContacts() -> Results<Contact> {
         let realm = try! Realm()
-        let savedContacts = Array(realm.objects(Contact.self))
-        if !savedContacts.isEmpty {
-            return savedContacts
-        }
-        
-        var contacts: [Contact] = []
-        let names = nameCreatorService.createRandomNames(count: 200)
-        for name in names {
-            contacts.append(createContact(name: name))
-        }
-        
-        saveContacts(contacts)
-        return contacts
+        let savedContacts = realm.objects(Contact.self)
+        return savedContacts
     }
     
+    func createContacts(count: Int = 200) -> Promise<[Contact]> {
+        return Promise { seal in
+            var contacts: [Contact] = []
+            let names = nameCreatorService.createRandomNames(count: 200)
+            for name in names {
+                contacts.append(createContact(name: name))
+            }
+            
+            saveContacts(contacts)
+            seal.fulfill(contacts)
+        }
+    }
     
 }
