@@ -27,6 +27,10 @@ class ContactsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        navigationController?.navigationBar.prefersLargeTitles = true
         
         _ = conversationService.getConversations().done(on: .main, { [weak self] conversations in
             self?.conversations = conversations
@@ -36,7 +40,6 @@ class ContactsViewController: UIViewController {
     
     func setupUI() {
         title = "Messages"
-        navigationController?.navigationBar.prefersLargeTitles = true
         
         view.backgroundColor = .myBlack
         view.addSubview(tableView)
