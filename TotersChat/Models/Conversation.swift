@@ -8,10 +8,10 @@
 import Foundation
 
 class Conversation {
-    let lastMessage: Message?
+    let lastMessage: ChatMessage?
     let contact: Contact
     
-    init(contact: Contact, lastMessage: Message?) {
+    init(contact: Contact, lastMessage: ChatMessage?) {
         self.contact = contact
         self.lastMessage = lastMessage
     }
