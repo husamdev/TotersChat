@@ -10,4 +10,5 @@ target 'TotersChat' do
   pod 'MessageViewController'
   pod 'RealmSwift'
   pod 'lottie-ios'
+  pod 'UIScrollView-InfiniteScroll', '~> 1.1.0'
 end
