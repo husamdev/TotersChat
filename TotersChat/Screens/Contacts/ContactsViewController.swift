@@ -6,12 +6,11 @@
 //
 
 import UIKit
-import UIScrollView_InfiniteScroll
 import Lottie
 
 class ContactsViewController: UIViewController {
     
-    let conversationService = ConversationService()
+    let viewModel = ContactsViewModel()
     
     lazy var tableView: UITableView = {
         let tableView = UITableView()
@@ -24,8 +23,6 @@ class ContactsViewController: UIViewController {
         return tableView
     }()
     
-    var conversations: [Conversation] = []
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -35,12 +32,7 @@ class ContactsViewController: UIViewController {
         navigationItem.setHidesBackButton(true, animated: false)
         navigationController?.navigationBar.prefersLargeTitles = true
         
-        _ = conversationService.getConversations().done(on: .main, { [weak self] conversations in
-            self?.conversations = []
-            self?.conversations = conversations
-            self?.tableView.reloadData()
-            self?.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
-        })
+        getConversations()
     }
     
     func setupUI() {
@@ -53,18 +45,25 @@ class ContactsViewController: UIViewController {
         tableView.delegate = self
     }
     
+    func getConversations() {
+        _ = viewModel.getConversations().done(on: .main) { [weak self] _ in
+            self?.tableView.reloadData()
+            self?.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
+        }
+    }
+    
 }
 
 // MARK: - UITableViewDataSource
 extension ContactsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return conversations.count
+        return viewModel.conversations.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ContactTableViewCell.self)) as? ContactTableViewCell else { return UITableViewCell() }
         
-        cell.updateCell(conversation: conversations[indexPath.row])
+        cell.updateCell(conversation: viewModel.conversations[indexPath.row])
         return cell
     }
     
@@ -75,7 +74,7 @@ extension ContactsViewController: UITableViewDataSource {
 extension ContactsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let chatViewController = ChatViewController()
-        chatViewController.conversation = conversations[indexPath.row]
+        chatViewController.conversation = viewModel.conversations[indexPath.row]
         navigationController?.pushViewController(chatViewController, animated: true)
     }
 }
