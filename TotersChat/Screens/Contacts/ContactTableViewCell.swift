@@ -10,35 +10,50 @@ import UIKit
 class ContactTableViewCell: UITableViewCell {
     
     var contactImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.layer.cornerRadius = 25
-        imageView.backgroundColor = .white
-        imageView.clipsToBounds = true
-        imageView.contentMode = .scaleAspectFit
-        return imageView
+        let iv = UIImageView()
+        iv.translatesAutoresizingMaskIntoConstraints = false
+        iv.layer.cornerRadius = 25
+        iv.backgroundColor = .white
+        iv.clipsToBounds = true
+        iv.contentMode = .scaleAspectFit
+        return iv
     }()
     
     var nameLabel: UILabel = {
-        let label = UILabel()
-        label.textColor = .white
-        label.font = .systemFont(ofSize: 16)
-        return label
+        let l = UILabel()
+        l.textColor = .white
+        l.font = .systemFont(ofSize: 16)
+        return l
     }()
     
     var messageLabel: UILabel = {
-        let label = UILabel()
-        label.textColor = .lightGray
-        label.font = .systemFont(ofSize: 14)
-        return label
+        let l = UILabel()
+        l.textColor = .lightGray
+        l.font = .systemFont(ofSize: 12)
+        return l
+    }()
+    
+    var dateLabel: UILabel = {
+        let l = UILabel()
+        l.textColor = .gray
+        l.font = .systemFont(ofSize: 12)
+        l.textAlignment = .right
+        return l
+    }()
+    
+    var horizontalStackView: UIStackView = {
+       let s = UIStackView()
+        s.axis = .horizontal
+        s.spacing = 5
+        return s
     }()
     
     var verticalStackView: UIStackView = {
-        let stack = UIStackView()
-        stack.axis = .vertical
-        stack.translatesAutoresizingMaskIntoConstraints = false
-        stack.distribution = .fillEqually
-        return stack
+        let s = UIStackView()
+        s.axis = .vertical
+        s.translatesAutoresizingMaskIntoConstraints = false
+        s.distribution = .fillEqually
+        return s
     }()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -56,7 +71,10 @@ class ContactTableViewCell: UITableViewCell {
         contentView.addSubview(verticalStackView)
         
         verticalStackView.addArrangedSubview(nameLabel)
-        verticalStackView.addArrangedSubview(messageLabel)
+        verticalStackView.addArrangedSubview(horizontalStackView)
+        
+        horizontalStackView.addArrangedSubview(messageLabel)
+        horizontalStackView.addArrangedSubview(dateLabel)
         
         constraintViews()
     }
@@ -80,6 +98,7 @@ class ContactTableViewCell: UITableViewCell {
         nameLabel.text = conversation.contact.name
         contactImageView.image = UIImage(named: conversation.contact.image)
         messageLabel.text = conversation.lastMessage?.text ?? ""
+        dateLabel.text = conversation.lastMessage?.date.getNiceDateFormat() ?? ""
     }
     
     required init?(coder aDecoder: NSCoder) {

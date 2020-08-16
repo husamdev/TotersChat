@@ -21,6 +21,9 @@
 		0D96CDF924E6AE8E008BF9C7 /* Conversation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D96CDF824E6AE8E008BF9C7 /* Conversation.swift */; };
 		0D96CDFB24E6C29F008BF9C7 /* ConversationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D96CDFA24E6C29F008BF9C7 /* ConversationService.swift */; };
 		0D96CDFD24E6DCC6008BF9C7 /* ContactsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D96CDFC24E6DCC6008BF9C7 /* ContactsViewModel.swift */; };
+		0D9E97DD24E91EF000606788 /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D9E97DC24E91EF000606788 /* ChatViewModel.swift */; };
+		0D9E97DF24E91F5000606788 /* ChatService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D9E97DE24E91F5000606788 /* ChatService.swift */; };
+		0D9E97E124E929C400606788 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D9E97E024E929C400606788 /* Date+Extensions.swift */; };
 		0DDBA39424E7D76F00DFD415 /* loading.json in Resources */ = {isa = PBXBuildFile; fileRef = 0DDBA39324E7D76F00DFD415 /* loading.json */; };
 		0DDBA39624E7D9B700DFD415 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DDBA39524E7D9B700DFD415 /* UIViewController+Extensions.swift */; };
 		0DDBA39824E7E64E00DFD415 /* MessagingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DDBA39724E7E64E00DFD415 /* MessagingService.swift */; };
@@ -50,6 +53,9 @@
 		0D96CDF824E6AE8E008BF9C7 /* Conversation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversation.swift; sourceTree = "<group>"; };
 		0D96CDFA24E6C29F008BF9C7 /* ConversationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationService.swift; sourceTree = "<group>"; };
 		0D96CDFC24E6DCC6008BF9C7 /* ContactsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsViewModel.swift; sourceTree = "<group>"; };
+		0D9E97DC24E91EF000606788 /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
+		0D9E97DE24E91F5000606788 /* ChatService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatService.swift; sourceTree = "<group>"; };
+		0D9E97E024E929C400606788 /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 		0DDBA39324E7D76F00DFD415 /* loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading.json; sourceTree = "<group>"; };
 		0DDBA39524E7D9B700DFD415 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		0DDBA39724E7E64E00DFD415 /* MessagingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagingService.swift; sourceTree = "<group>"; };
@@ -129,6 +135,7 @@
 				0D7C96A424E3F1E000165291 /* ContactsCreatorService.swift */,
 				0D96CDFA24E6C29F008BF9C7 /* ConversationService.swift */,
 				0DDBA39724E7E64E00DFD415 /* MessagingService.swift */,
+				0D9E97DE24E91F5000606788 /* ChatService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -148,6 +155,7 @@
 			children = (
 				0D4D4E0E24E45D930038A82C /* ChatViewController.swift */,
 				0DF70F4824E45F06003A0963 /* MessageTableViewCell.swift */,
+				0D9E97DC24E91EF000606788 /* ChatViewModel.swift */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -168,6 +176,7 @@
 				0D7C969F24E3ED7E00165291 /* String+Extensions.swift */,
 				0D4D4E0C24E43FCC0038A82C /* UIColor+Extensions.swift */,
 				0DDBA39524E7D9B700DFD415 /* UIViewController+Extensions.swift */,
+				0D9E97E024E929C400606788 /* Date+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -333,7 +342,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				0DDBA39824E7E64E00DFD415 /* MessagingService.swift in Sources */,
+				0D9E97E124E929C400606788 /* Date+Extensions.swift in Sources */,
 				0DDBA3A124E7FB6F00DFD415 /* Observer.swift in Sources */,
+				0D9E97DF24E91F5000606788 /* ChatService.swift in Sources */,
 				0D96CDF924E6AE8E008BF9C7 /* Conversation.swift in Sources */,
 				0D96CDFB24E6C29F008BF9C7 /* ConversationService.swift in Sources */,
 				0D7C96A024E3ED7E00165291 /* String+Extensions.swift in Sources */,
@@ -350,6 +361,7 @@
 				0D711B6624E30663009AFB01 /* AppDelegate.swift in Sources */,
 				0D4D4E0F24E45D930038A82C /* ChatViewController.swift in Sources */,
 				0DDBA39D24E7F56C00DFD415 /* Subject.swift in Sources */,
+				0D9E97DD24E91EF000606788 /* ChatViewModel.swift in Sources */,
 				0D93C1DE24E3095900AC44F3 /* ContactsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
