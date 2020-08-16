@@ -64,6 +64,7 @@ class ContactTableViewCell: UITableViewCell {
     }
     
     func setupUI() {
+        accessoryType = .disclosureIndicator
         selectionStyle = .none
         
         backgroundColor = .clear
@@ -99,13 +100,23 @@ class ContactTableViewCell: UITableViewCell {
     func updateCell(conversation: Conversation) {
         nameLabel.text = conversation.contact.name
         contactImageView.image = UIImage(named: conversation.contact.image)
-        messageLabel.text = conversation.lastMessage?.text ?? ""
-        dateLabel.text = conversation.lastMessage?.date.getNiceDateFormat() ?? ""
+        
+        if let lastMessage = conversation.lastMessage {
+            horizontalStackView.isHidden = false
+            
+            messageLabel.text = lastMessage.text
+            dateLabel.text = lastMessage.date.getNiceDateFormat()
+        } else {
+            horizontalStackView.isHidden = true
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func prepareForReuse() {
+        contactImageView.image = nil
+    }
     
 }
