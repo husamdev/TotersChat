@@ -8,11 +8,12 @@
 import UIKit
 import MessageViewController
 import RealmSwift
+import PromiseKit
 
 class ChatViewController: MessageViewController {
     
+    let viewModel = ChatViewModel()
     var conversation: Conversation!
-    var messages: [ChatMessage] = []
     
     var tableView: UITableView = {
         let t = UITableView()
@@ -31,6 +32,10 @@ class ChatViewController: MessageViewController {
         
         setupUI()
         MessagingService.shared.resendMessageSubject.addObserver(observer: self)
+        
+        viewModel.getChatMessages(contact: conversation.contact).done(on: .main) { [weak self] _ in
+            self?.tableView.reloadData()
+        }
     }
     
     func setupUI() {
@@ -73,7 +78,7 @@ class ChatViewController: MessageViewController {
         message.senderId = Contact.me.id
         message.isSend = true
         
-        messages.insert(message, at: 0)
+        viewModel.messages.insert(message, at: 0)
         tableView.beginUpdates()
         tableView.insertRows(at: [IndexPath(row: 0, section: 0)], with: .top)
         tableView.endUpdates()
@@ -85,14 +90,14 @@ class ChatViewController: MessageViewController {
 
 extension ChatViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return messages.count
+        return viewModel.messages.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing:
             MessageTableViewCell.self)) as? MessageTableViewCell else { return UITableViewCell() }
         cell.transform = tableView.transform
-        cell.updateCell(message: messages[indexPath.row])
+        cell.updateCell(message: viewModel.messages[indexPath.row])
         cell.setImage(conversation.contact.image)
         return cell
     }
@@ -105,8 +110,8 @@ extension ChatViewController: Observer {
     
     func update<T>(with newValue: T) {
         DispatchQueue.main.async { [weak self] in
-            self?.messages.insert(newValue as! ChatMessage, at: 0)
-
+            self?.viewModel.messages.insert(newValue as! ChatMessage, at: 0)
+            
             self?.tableView.beginUpdates()
             self?.tableView.insertRows(at: [IndexPath(row: 0, section: 0)], with: .top)
             self?.tableView.endUpdates()
