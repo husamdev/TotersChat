@@ -9,8 +9,10 @@ import Foundation
 import PromiseKit
 import RealmSwift
 
+/// Service responsible for retreiving ordered chat message for each contact
 class ChatService {
     
+    /// Returns recieved and sent chat messages done with a contact ordered by date
     func getChat(with contact: Contact) -> Promise<Results<ChatMessage>> {
         return Promise { seal in
             let realm = try! Realm()

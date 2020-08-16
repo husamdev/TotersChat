@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// Service responsible for creating random names
 class NamesCreatorService {
     
     let firstNameSyllables = ["mon", "fay", "shi", "zay", "blarg", "rash", "izen", "taw", "jay", "leo", "gus"]
@@ -15,8 +16,8 @@ class NamesCreatorService {
     
     let nameSuffixes = ["son", "li", "ssen", "kor", "III", "OBE", "and", "so", "on"]
     
+    /// Creates first name from 2 or 3 syllables
     private func createFirstName() -> String {
-        // creates a first name with 2-3 syllables
         var firstName: String = "";
         let numberOfSyllablesInFirstName = Int.random(in: 2 ..< 4)
         
@@ -29,8 +30,8 @@ class NamesCreatorService {
         return firstName
     }
     
+    /// Creates last name from 1 or 2 syllables
     private func createLastName() -> String {
-        // creates a last name with 1-2 syllables
         var lastName: String = "";
         let numberOfSyllablesInLastName = Int.random(in: 1 ..< 3)
         for _ in 0..<numberOfSyllablesInLastName {
@@ -42,6 +43,7 @@ class NamesCreatorService {
         return lastName
     }
     
+    /// Creates a full name
     private func createNewName() -> String {
         var fullName = createFirstName() + " " + createLastName()
         
@@ -54,6 +56,7 @@ class NamesCreatorService {
         return fullName
     }
     
+    /// Creates a list of random names without duplicates
     public func createRandomNames(count: Int) -> [String] {
         var names: [String] = []
         

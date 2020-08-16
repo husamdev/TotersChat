@@ -9,14 +9,12 @@ import Foundation
 import RealmSwift
 import PromiseKit
 
+/// Service responsible for creating, retreiving, and saving contacts
 class ContactsCreatorService {
     
-    let nameCreatorService: NamesCreatorService
+    let nameCreatorService = NamesCreatorService()
     
-    init() {
-        nameCreatorService = NamesCreatorService()
-    }
-    
+    /// Creates a contact object from name and random image name that is saved in the assets folder
     private func createContact(name: String) -> Contact {
         let imageString = "person_" + String(Int.random(in: 1..<25))
         
@@ -26,6 +24,7 @@ class ContactsCreatorService {
         return contact
     }
     
+    /// Saves a list of contacts into realm database
     private func saveContacts(_ contacts: [Contact]) {
         let realm = try! Realm()
         try! realm.write {
@@ -33,12 +32,14 @@ class ContactsCreatorService {
         }
     }
     
+    /// Fetches contacts from realm database
     func getContacts() -> Results<Contact> {
         let realm = try! Realm()
         let savedContacts = realm.objects(Contact.self)
         return savedContacts
     }
     
+    /// Creates new contacts after getting random names, then saves them into realm database, if there is no saved contacts
     func createContacts(count: Int = 200) -> Promise<[Contact]> {
         return Promise { seal in
             

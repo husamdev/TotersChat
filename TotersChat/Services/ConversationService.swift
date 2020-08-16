@@ -9,10 +9,12 @@ import Foundation
 import RealmSwift
 import PromiseKit
 
+/// Service responsible for retreiving list of sorted conversations by date
 class ConversationService {
     
     let contactsService = ContactsCreatorService()
     
+    /// Returns a list of conversations sorted by the date
     func getConversations() -> Promise<[Conversation]> {
         return Promise<[Conversation]> { seal in
             var conversations: [Conversation] = []
