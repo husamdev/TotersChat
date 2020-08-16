@@ -22,6 +22,7 @@ class ChatViewController: MessageViewController {
         t.allowsSelection = false
         t.separatorStyle = .none
         t.backgroundColor = .clear
+        t.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 70, right: 0)
         t.register(MessageTableViewCell.self, forCellReuseIdentifier: String(describing: MessageTableViewCell.self))
         return t
     }()
@@ -33,7 +34,7 @@ class ChatViewController: MessageViewController {
         setupUI()
         MessagingService.shared.resendMessageSubject.addObserver(observer: self)
         
-        viewModel.getChatMessages(contact: conversation.contact).done(on: .main) { [weak self] _ in
+        _ = viewModel.getChatMessages(contact: conversation.contact).done(on: .main) { [weak self] _ in
             self?.tableView.reloadData()
         }
     }
