@@ -33,9 +33,6 @@ class ContactsViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         navigationItem.setHidesBackButton(true, animated: false)
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
         navigationController?.navigationBar.prefersLargeTitles = true
         
         _ = conversationService.getConversations().done(on: .main, { [weak self] conversations in
