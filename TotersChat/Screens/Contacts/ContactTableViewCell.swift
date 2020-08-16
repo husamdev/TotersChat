@@ -30,6 +30,7 @@ class ContactTableViewCell: UITableViewCell {
         let l = UILabel()
         l.textColor = .lightGray
         l.font = .systemFont(ofSize: 12)
+        l.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
         return l
     }()
     
@@ -38,6 +39,7 @@ class ContactTableViewCell: UITableViewCell {
         l.textColor = .gray
         l.font = .systemFont(ofSize: 12)
         l.textAlignment = .right
+        l.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
         return l
     }()
     
