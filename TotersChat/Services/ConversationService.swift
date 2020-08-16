@@ -12,7 +12,6 @@ import PromiseKit
 class ConversationService {
     
     let contactsService = ContactsCreatorService()
-    let count = 20
     
     func getConversations() -> Promise<[Conversation]> {
         return Promise<[Conversation]> { seal in
@@ -34,7 +33,7 @@ class ConversationService {
                 let t2 = two.lastMessage?.date ?? Date.distantPast
                 return t1 > t2
             }
-                        
+            
             seal.fulfill(conversations)
         }
     }
