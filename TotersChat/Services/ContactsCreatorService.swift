@@ -41,6 +41,13 @@ class ContactsCreatorService {
     
     func createContacts(count: Int = 200) -> Promise<[Contact]> {
         return Promise { seal in
+            
+            let savedContacts = getContacts()
+            if !savedContacts.isEmpty {
+                seal.resolve(Array(savedContacts), nil)
+                return
+            }
+            
             var contacts: [Contact] = []
             let names = nameCreatorService.createRandomNames(count: 200)
             for name in names {
