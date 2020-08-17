@@ -6,7 +6,5 @@ pod install
 ```
 Then open 'TotersChat.xcworkspace' and run
 
-![alt text](https://github.com/husamdev/TotersChat/blob/master/Screenshots/Contacts.png | width=100)
-
-![alt text](https://github.com/husamdev/TotersChat/blob/master/Screenshots/Chat.png | width=100)
-
+<img src="https://github.com/husamdev/TotersChat/blob/master/Screenshots/Contacts.png" width="200 />
+<img src="https://github.com/husamdev/TotersChat/blob/master/Screenshots/Chatng" width="200 />
