@@ -15,7 +15,7 @@ extension Date {
         }
         
         if isInToday {
-            return getFormattedDate(format: "hh:mm a")
+            return toShortDateString()
         }
         
         if isInThisWeek {
@@ -23,6 +23,10 @@ extension Date {
         }
         
         return getFormattedDate(format: "dd/MM/yy")
+    }
+    
+    func toShortDateString() -> String {
+        return getFormattedDate(format: "hh:mm a")
     }
     
     func getFormattedDate(format: String) -> String {
