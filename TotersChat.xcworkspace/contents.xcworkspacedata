@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:TotersMessaging/TotersMessaging.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:TotersChat.xcodeproj">
    </FileRef>
    <FileRef
