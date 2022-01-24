@@ -7,6 +7,16 @@
 
 import XCTest
 
+class MessagingService {
+    
+    init(client: MessagingClientSpy) {}
+    
+}
+
+class MessagingClientSpy {
+    var sendMessageCallCount = 0
+}
+
 class MessagingTestCase: XCTestCase {
 
     func test_init_doesNotSendMessagesOnInit() {
@@ -16,19 +26,10 @@ class MessagingTestCase: XCTestCase {
     }
     
     // MARK: - Helpers
-    private func makeSUT() -> (client: MessagingClientSpy, service: MessagingService) {
+    private func makeSUT() -> (client: MessagingClientSpy, sut: MessagingService) {
         let client = MessagingClientSpy()
-        let service = MessagingService(client: client)
+        let sut = MessagingService(client: client)
         
-        return (client, service)
-    }
-    
-    private class MessagingClientSpy {
-        var sendMessageCallCount = 0
-    }
-    
-    private class MessagingService {
-        
-        init(client: MessagingClientSpy) { }
+        return (client, sut)
     }
 }
