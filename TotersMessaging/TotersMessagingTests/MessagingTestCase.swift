@@ -15,8 +15,8 @@ class MessagingService {
         self.client = client
     }
     
-    func send(_ message: String, from: Contact, to: Contact) {
-        client.send(Message(id: UUID(), message: message, date: Date(), sender: from, receiver: to))
+    func send(_ message: String, to: Contact) {
+        client.send(Message(id: UUID(), message: message, date: Date(), sender: myself, receiver: to))
     }
 }
 
@@ -33,6 +33,10 @@ struct Contact {
     let firstName: String
     let lastName: String
 }
+
+let myself = Contact(id: UUID(),
+                     firstName: "Husam",
+                     lastName: "Dayya")
 
 struct Message {
     let id: UUID
@@ -52,12 +56,9 @@ class MessagingTestCase: XCTestCase {
     
     func test_sendTwice_sendsMessageTwice() {
         let (client, sut) = makeSUT()
-        
-        let sender = anyContact()
-        let receiver = anyContact()
-        
-        sut.send("any message", from: sender, to: receiver)
-        sut.send("any message 2", from: sender, to: receiver)
+                
+        sut.send("any message", to: anyContact())
+        sut.send("any message 2", to: anyContact())
         
         XCTAssertEqual(client.sendMessageCallCount, 2)
     }
