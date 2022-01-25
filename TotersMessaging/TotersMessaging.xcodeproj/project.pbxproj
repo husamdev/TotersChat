@@ -11,6 +11,7 @@
 		0D06E818279F394100E551A1 /* MessagingTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D06E817279F394100E551A1 /* MessagingTestCase.swift */; };
 		0DD07C5E27A0B221006D9A2A /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD07C5D27A0B221006D9A2A /* Message.swift */; };
 		0DD07C6027A0B244006D9A2A /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD07C5F27A0B244006D9A2A /* Contact.swift */; };
+		0DD07C6527A0B35E006D9A2A /* CacheMessageUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD07C6427A0B35E006D9A2A /* CacheMessageUseCaseTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +30,7 @@
 		0D06E817279F394100E551A1 /* MessagingTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagingTestCase.swift; sourceTree = "<group>"; };
 		0DD07C5D27A0B221006D9A2A /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		0DD07C5F27A0B244006D9A2A /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
+		0DD07C6427A0B35E006D9A2A /* CacheMessageUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheMessageUseCaseTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +81,7 @@
 		0D06E809279F38D200E551A1 /* TotersMessagingTests */ = {
 			isa = PBXGroup;
 			children = (
+				0DD07C6327A0B32D006D9A2A /* Persistence */,
 				0D06E817279F394100E551A1 /* MessagingTestCase.swift */,
 			);
 			path = TotersMessagingTests;
@@ -91,6 +94,14 @@
 				0DD07C5F27A0B244006D9A2A /* Contact.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		0DD07C6327A0B32D006D9A2A /* Persistence */ = {
+			isa = PBXGroup;
+			children = (
+				0DD07C6427A0B35E006D9A2A /* CacheMessageUseCaseTests.swift */,
+			);
+			path = Persistence;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -212,6 +223,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0DD07C6527A0B35E006D9A2A /* CacheMessageUseCaseTests.swift in Sources */,
 				0D06E818279F394100E551A1 /* MessagingTestCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
