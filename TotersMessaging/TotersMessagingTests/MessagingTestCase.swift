@@ -48,18 +48,15 @@ struct Message {
 
 class MessagingTestCase: XCTestCase {
 
-    func test_init_doesNotSendMessagesOnInit() {
-        let (client, _) = makeSUT()
+    func test_send_sendsMessageToClient() {
+        let (client, sut) = makeSUT()
         
         XCTAssertEqual(client.sendMessageCallCount, 0)
-    }
-    
-    func test_sendTwice_sendsMessageTwice() {
-        let (client, sut) = makeSUT()
-                
-        sut.send("any message", to: anyContact())
-        sut.send("any message 2", to: anyContact())
         
+        sut.send("any message", to: anyContact())
+        XCTAssertEqual(client.sendMessageCallCount, 1)
+        
+        sut.send("any message", to: anyContact())
         XCTAssertEqual(client.sendMessageCallCount, 2)
     }
     
