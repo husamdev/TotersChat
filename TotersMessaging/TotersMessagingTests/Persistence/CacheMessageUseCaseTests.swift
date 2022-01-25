@@ -54,9 +54,12 @@ class CacheMessageUseCaseTests: XCTestCase {
     }
     
     // MARK: - Helpers
-    private func makeSUT() -> (store: MessageStoreSpy, sut: LocalMessagesLoader) {
+    private func makeSUT(file: StaticString = #file, line: UInt = #line) -> (store: MessageStoreSpy, sut: LocalMessagesLoader) {
         let store = MessageStoreSpy()
         let loader = LocalMessagesLoader(store: store)
+        
+        trackForMemoryLeaks(store, file: file, line: line)
+        trackForMemoryLeaks(loader, file: file, line: line)
         
         return (store, loader)
     }

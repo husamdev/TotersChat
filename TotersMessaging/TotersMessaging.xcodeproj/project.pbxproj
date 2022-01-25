@@ -16,6 +16,7 @@
 		0DD07C6A27A0BD0E006D9A2A /* MessageStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD07C6927A0BD0E006D9A2A /* MessageStore.swift */; };
 		0DD07C6D27A0BDD3006D9A2A /* XCTestCase+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD07C6C27A0BDD3006D9A2A /* XCTestCase+Helpers.swift */; };
 		0DD07C6F27A0BE29006D9A2A /* XCTestCase+Messaging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD07C6E27A0BE29006D9A2A /* XCTestCase+Messaging.swift */; };
+		0DD07C7127A0BEBA006D9A2A /* XCTestCase+MemoryTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD07C7027A0BEBA006D9A2A /* XCTestCase+MemoryTracking.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,6 +40,7 @@
 		0DD07C6927A0BD0E006D9A2A /* MessageStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageStore.swift; sourceTree = "<group>"; };
 		0DD07C6C27A0BDD3006D9A2A /* XCTestCase+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+Helpers.swift"; sourceTree = "<group>"; };
 		0DD07C6E27A0BE29006D9A2A /* XCTestCase+Messaging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+Messaging.swift"; sourceTree = "<group>"; };
+		0DD07C7027A0BEBA006D9A2A /* XCTestCase+MemoryTracking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+MemoryTracking.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +130,7 @@
 			children = (
 				0DD07C6C27A0BDD3006D9A2A /* XCTestCase+Helpers.swift */,
 				0DD07C6E27A0BE29006D9A2A /* XCTestCase+Messaging.swift */,
+				0DD07C7027A0BEBA006D9A2A /* XCTestCase+MemoryTracking.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -256,6 +259,7 @@
 				0DD07C6D27A0BDD3006D9A2A /* XCTestCase+Helpers.swift in Sources */,
 				0DD07C6F27A0BE29006D9A2A /* XCTestCase+Messaging.swift in Sources */,
 				0DD07C6527A0B35E006D9A2A /* CacheMessageUseCaseTests.swift in Sources */,
+				0DD07C7127A0BEBA006D9A2A /* XCTestCase+MemoryTracking.swift in Sources */,
 				0D06E818279F394100E551A1 /* MessagingTestCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
