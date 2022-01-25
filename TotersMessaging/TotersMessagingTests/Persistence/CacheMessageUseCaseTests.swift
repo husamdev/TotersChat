@@ -9,45 +9,6 @@ import XCTest
 import TotersMessaging
 import Foundation
 
-class LocalMessagesLoader {
-    
-    private let store: MessageStore
-    
-    typealias SaveResult = Error?
-    
-    init(store: MessageStore) {
-        self.store = store
-    }
-    
-    func save(_ message: Message, completion: @escaping (SaveResult) -> Void) {
-        store.insert(message) { [weak self] insertionError in
-            guard self != nil else { return }
-            
-            completion(insertionError)
-        }
-    }
-}
-
-class MessageStore {
-    typealias InsertionCompletion = (Error?) -> Void
-    
-    var insertMessageCallCount = 0
-    var insertionCompletions = [InsertionCompletion]()
-    
-    func insert(_ message: Message, completion: @escaping InsertionCompletion) {
-        insertMessageCallCount += 1
-        insertionCompletions.append(completion)
-    }
-    
-    func completeInsertion(with error: Error, at index: Int = 0) {
-        insertionCompletions[index](error)
-    }
-    
-    func completeInsertionSuccessfully(at index: Int = 0) {
-        insertionCompletions[index](nil)
-    }
-}
-
 class CacheMessageUseCaseTests: XCTestCase {
 
     func test_save_requestsCacheInsertion() {
@@ -80,7 +41,7 @@ class CacheMessageUseCaseTests: XCTestCase {
     }
     
     func test_save_doesNotDeliverInsertionErrorAfterSUTHasBeenDeallocated() {
-        let store = MessageStore()
+        let store = MessageStoreSpy()
         var sut: LocalMessagesLoader? = LocalMessagesLoader(store: store)
         
         var receivedMessages = [LocalMessagesLoader.SaveResult]()
@@ -93,8 +54,8 @@ class CacheMessageUseCaseTests: XCTestCase {
     }
     
     // MARK: - Helpers
-    private func makeSUT() -> (store: MessageStore, sut: LocalMessagesLoader) {
-        let store = MessageStore()
+    private func makeSUT() -> (store: MessageStoreSpy, sut: LocalMessagesLoader) {
+        let store = MessageStoreSpy()
         let loader = LocalMessagesLoader(store: store)
         
         return (store, loader)
@@ -126,5 +87,23 @@ class CacheMessageUseCaseTests: XCTestCase {
     
     private func anyNSError() -> NSError {
         NSError(domain: "any", code: 0)
+    }
+    
+    class MessageStoreSpy: MessageStore {
+        var insertMessageCallCount = 0
+        var insertionCompletions = [MessageStore.InsertionCompletion]()
+        
+        func insert(_ message: Message, completion: @escaping MessageStore.InsertionCompletion) {
+            insertMessageCallCount += 1
+            insertionCompletions.append(completion)
+        }
+        
+        func completeInsertion(with error: Error, at index: Int = 0) {
+            insertionCompletions[index](error)
+        }
+        
+        func completeInsertionSuccessfully(at index: Int = 0) {
+            insertionCompletions[index](nil)
+        }
     }
 }
