@@ -7,6 +7,7 @@
 
 import XCTest
 import TotersMessaging
+import Foundation
 
 class LocalMessagesLoader {
     
@@ -54,6 +55,25 @@ class CacheMessageUseCaseTests: XCTestCase {
         XCTAssertEqual(store.insertMessageCallCount, 2)
     }
     
+    func test_save_failsOnInsertionError() {
+        let (store, sut) = makeSUT()
+        let insertionError = anyNSError()
+        
+        let exp = expectation(description: "Wait for completion")
+        
+        var capturedResult: LocalMessagesLoader.SaveResult?
+        sut.save(anyMessage()) {
+            capturedResult = $0
+            exp.fulfill()
+        }
+        
+        store.completeInsertion(with: insertionError)
+        
+        wait(for: [exp], timeout: 1.0)
+        
+        XCTAssertEqual(capturedResult as? NSError, insertionError)
+    }
+    
     // MARK: - Helpers
     private func makeSUT() -> (store: MessageStore, sut: LocalMessagesLoader) {
         let store = MessageStore()
@@ -68,5 +88,9 @@ class CacheMessageUseCaseTests: XCTestCase {
     
     private func anyMessage() -> Message {
         Message(id: UUID(), message: "any message", date: Date(), sender: anyContact(), receiver: anyContact())
+    }
+    
+    private func anyNSError() -> NSError {
+        NSError(domain: "any", code: 0)
     }
 }
