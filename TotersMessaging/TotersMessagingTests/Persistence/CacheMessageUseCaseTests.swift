@@ -59,19 +59,9 @@ class CacheMessageUseCaseTests: XCTestCase {
         let (store, sut) = makeSUT()
         let insertionError = anyNSError()
         
-        let exp = expectation(description: "Wait for completion")
-        
-        var capturedResult: LocalMessagesLoader.SaveResult?
-        sut.save(anyMessage()) {
-            capturedResult = $0
-            exp.fulfill()
-        }
-        
-        store.completeInsertion(with: insertionError)
-        
-        wait(for: [exp], timeout: 1.0)
-        
-        XCTAssertEqual(capturedResult as? NSError, insertionError)
+        expect(sut, toCompleteWith: insertionError, when: {
+            store.completeInsertion(with: insertionError)
+        })
     }
     
     // MARK: - Helpers
@@ -80,6 +70,22 @@ class CacheMessageUseCaseTests: XCTestCase {
         let loader = LocalMessagesLoader(store: store)
         
         return (store, loader)
+    }
+    
+    private func expect(_ sut: LocalMessagesLoader, toCompleteWith expectedError: NSError?, when action: () -> Void, file: StaticString = #file, line: UInt = #line) {
+        let exp = expectation(description: "Wait for completion")
+        
+        var recievedError: Error?
+        sut.save(anyMessage()) {
+            recievedError = $0
+            exp.fulfill()
+        }
+        
+        action()
+        
+        wait(for: [exp], timeout: 1.0)
+        
+        XCTAssertEqual(expectedError, recievedError as NSError?, file: file, line: line)
     }
         
     private func anyContact() -> Contact {
