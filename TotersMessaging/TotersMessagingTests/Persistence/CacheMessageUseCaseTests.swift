@@ -39,6 +39,10 @@ class MessageStore {
     func completeInsertion(with error: Error, at index: Int = 0) {
         insertionCompletions[index](error)
     }
+    
+    func completeInsertionSuccessfully(at index: Int = 0) {
+        insertionCompletions[index](nil)
+    }
 }
 
 class CacheMessageUseCaseTests: XCTestCase {
@@ -61,6 +65,14 @@ class CacheMessageUseCaseTests: XCTestCase {
         
         expect(sut, toCompleteWith: insertionError, when: {
             store.completeInsertion(with: insertionError)
+        })
+    }
+    
+    func test_save_succeedsOnSuccessfulCacheInsertion() {
+        let (store, sut) = makeSUT()
+        
+        expect(sut, toCompleteWith: nil, when: {
+            store.completeInsertionSuccessfully()
         })
     }
     
