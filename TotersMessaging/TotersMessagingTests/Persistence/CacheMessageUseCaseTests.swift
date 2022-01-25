@@ -12,41 +12,45 @@ class LocalMessagesLoader {
     
     private let store: MessageStore
     
+    typealias SaveResult = Error?
+    
     init(store: MessageStore) {
         self.store = store
     }
     
-    func save(_ message: Message) {
-        store.insert(message)
+    func save(_ message: Message, completion: @escaping (SaveResult) -> Void) {
+        store.insert(message, completion: completion)
     }
-        
+    
 }
 
 class MessageStore {
+    typealias InsertionCompletion = (Error?) -> Void
     
     var insertMessageCallCount = 0
+    var insertionCompletions = [InsertionCompletion]()
     
-    func insert(_ message: Message) {
+    func insert(_ message: Message, completion: @escaping InsertionCompletion) {
         insertMessageCallCount += 1
+        insertionCompletions.append(completion)
     }
     
+    func completeInsertion(with error: Error, at index: Int = 0) {
+        insertionCompletions[index](error)
+    }
 }
 
 class CacheMessageUseCaseTests: XCTestCase {
 
-    func test_init_doesNotInsertToStoreUponCreation() {
-        let (store, _) = makeSUT()
-        
-        XCTAssertEqual(store.insertMessageCallCount, 0)
-    }
-    
-    func test_save_saveTwiceRequestsInsertionTwice() {
+    func test_save_requestsCacheInsertion() {
         let (store, sut) = makeSUT()
         
-        sut.save(anyMessage())
+        XCTAssertEqual(store.insertMessageCallCount, 0)
+        
+        sut.save(anyMessage()) { _ in }
         XCTAssertEqual(store.insertMessageCallCount, 1)
         
-        sut.save(anyMessage())
+        sut.save(anyMessage()) { _ in }
         XCTAssertEqual(store.insertMessageCallCount, 2)
     }
     
