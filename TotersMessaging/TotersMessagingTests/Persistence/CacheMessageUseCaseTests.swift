@@ -20,9 +20,12 @@ class LocalMessagesLoader {
     }
     
     func save(_ message: Message, completion: @escaping (SaveResult) -> Void) {
-        store.insert(message, completion: completion)
+        store.insert(message) { [weak self] insertionError in
+            guard self != nil else { return }
+            
+            completion(insertionError)
+        }
     }
-    
 }
 
 class MessageStore {
@@ -74,6 +77,19 @@ class CacheMessageUseCaseTests: XCTestCase {
         expect(sut, toCompleteWith: nil, when: {
             store.completeInsertionSuccessfully()
         })
+    }
+    
+    func test_save_doesNotDeliverInsertionErrorAfterSUTHasBeenDeallocated() {
+        let store = MessageStore()
+        var sut: LocalMessagesLoader? = LocalMessagesLoader(store: store)
+        
+        var receivedMessages = [LocalMessagesLoader.SaveResult]()
+        sut?.save(anyMessage()) { receivedMessages.append($0) }
+        
+        sut = nil
+        store.completeInsertion(with: anyNSError())
+        
+        XCTAssertTrue(receivedMessages.isEmpty)
     }
     
     // MARK: - Helpers
