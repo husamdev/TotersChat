@@ -76,18 +76,6 @@ class CacheMessageUseCaseTests: XCTestCase {
         
         XCTAssertEqual(expectedError, recievedError as NSError?, file: file, line: line)
     }
-        
-    private func anyContact() -> Contact {
-        Contact(id: UUID(), firstName: "any firstname", lastName: "any lastname")
-    }
-    
-    private func anyMessage() -> Message {
-        Message(id: UUID(), message: "any message", date: Date(), sender: anyContact(), receiver: anyContact())
-    }
-    
-    private func anyNSError() -> NSError {
-        NSError(domain: "any", code: 0)
-    }
     
     class MessageStoreSpy: MessageStore {
         var insertMessageCallCount = 0
