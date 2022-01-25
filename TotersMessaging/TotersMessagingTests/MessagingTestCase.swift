@@ -6,6 +6,7 @@
 //
 
 import XCTest
+import TotersMessaging
 
 class MessagingService {
     
@@ -23,28 +24,16 @@ class MessagingService {
 class MessagingClientSpy {
     var sendMessageCallCount = 0
     
+    var onMessageRecieved: ((Message) -> Void)?
+    
     func send(_ message: Message) {
         sendMessageCallCount += 1
     }
 }
 
-struct Contact {
-    let id: UUID
-    let firstName: String
-    let lastName: String
-}
-
 let myself = Contact(id: UUID(),
                      firstName: "Husam",
                      lastName: "Dayya")
-
-struct Message {
-    let id: UUID
-    let message: String
-    let date: Date
-    let sender: Contact
-    let receiver: Contact
-}
 
 class MessagingTestCase: XCTestCase {
 

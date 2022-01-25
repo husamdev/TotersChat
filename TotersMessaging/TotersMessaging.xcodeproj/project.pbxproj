@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		0D06E806279F38D200E551A1 /* TotersMessaging.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D06E7FD279F38D200E551A1 /* TotersMessaging.framework */; };
 		0D06E818279F394100E551A1 /* MessagingTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D06E817279F394100E551A1 /* MessagingTestCase.swift */; };
+		0DD07C5E27A0B221006D9A2A /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD07C5D27A0B221006D9A2A /* Message.swift */; };
+		0DD07C6027A0B244006D9A2A /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD07C5F27A0B244006D9A2A /* Contact.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -25,6 +27,8 @@
 		0D06E7FD279F38D200E551A1 /* TotersMessaging.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TotersMessaging.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D06E805279F38D200E551A1 /* TotersMessagingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TotersMessagingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D06E817279F394100E551A1 /* MessagingTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagingTestCase.swift; sourceTree = "<group>"; };
+		0DD07C5D27A0B221006D9A2A /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		0DD07C5F27A0B244006D9A2A /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +71,7 @@
 		0D06E7FF279F38D200E551A1 /* TotersMessaging */ = {
 			isa = PBXGroup;
 			children = (
+				0DD07C6127A0B28E006D9A2A /* Models */,
 			);
 			path = TotersMessaging;
 			sourceTree = "<group>";
@@ -77,6 +82,15 @@
 				0D06E817279F394100E551A1 /* MessagingTestCase.swift */,
 			);
 			path = TotersMessagingTests;
+			sourceTree = "<group>";
+		};
+		0DD07C6127A0B28E006D9A2A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0DD07C5D27A0B221006D9A2A /* Message.swift */,
+				0DD07C5F27A0B244006D9A2A /* Contact.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -140,6 +154,7 @@
 				TargetAttributes = {
 					0D06E7FC279F38D200E551A1 = {
 						CreatedOnToolsVersion = 13.2.1;
+						LastSwiftMigration = 1320;
 					};
 					0D06E804279F38D200E551A1 = {
 						CreatedOnToolsVersion = 13.2.1;
@@ -188,6 +203,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0DD07C6027A0B244006D9A2A /* Contact.swift in Sources */,
+				0DD07C5E27A0B221006D9A2A /* Message.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -335,6 +352,7 @@
 		0D06E810279F38D200E551A1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -354,6 +372,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -362,6 +381,7 @@
 		0D06E811279F38D200E551A1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -389,6 +409,7 @@
 		0D06E813279F38D200E551A1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
@@ -412,6 +433,7 @@
 		0D06E814279F38D200E551A1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
