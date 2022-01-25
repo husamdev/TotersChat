@@ -40,12 +40,14 @@ class CacheMessageUseCaseTests: XCTestCase {
         XCTAssertEqual(store.insertMessageCallCount, 0)
     }
     
-    func test_save_requestsCacheInsertion() {
+    func test_save_saveTwiceRequestsInsertionTwice() {
         let (store, sut) = makeSUT()
         
         sut.save(anyMessage())
-        
         XCTAssertEqual(store.insertMessageCallCount, 1)
+        
+        sut.save(anyMessage())
+        XCTAssertEqual(store.insertMessageCallCount, 2)
     }
     
     // MARK: - Helpers
