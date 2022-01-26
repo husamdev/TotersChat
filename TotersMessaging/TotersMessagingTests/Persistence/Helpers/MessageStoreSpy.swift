@@ -10,6 +10,8 @@ import TotersMessaging
 
 class MessageStoreSpy: MessageStore {
     var insertionCompletions = [MessageStore.InsertionCompletion]()
+    var retrieveCompletions = [MessageStore.InsertionCompletion]()
+    
     var requests = [Request]()
     
     enum Request: Equatable {
@@ -30,8 +32,13 @@ class MessageStoreSpy: MessageStore {
         insertionCompletions[index](nil)
     }
     
-    func retrieve() {
+    func retrieve(completion: @escaping MessageStore.RetrieveCompletion) {
         requests.append(.retrieve)
+        retrieveCompletions.append(completion)
+    }
+    
+    func completeRetrieve(with error: Error, at index: Int = 0) {
+        retrieveCompletions[index](error)
     }
 }
 

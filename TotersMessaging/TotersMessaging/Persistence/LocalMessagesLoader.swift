@@ -25,7 +25,10 @@ public class LocalMessagesLoader {
         }
     }
     
-    public func load() {
-        store.retrieve() 
+    public func load(_ completion: @escaping (Error?) -> Void) {
+        store.retrieve { [weak self] error in
+            guard self != nil else { return }
+            completion(error)
+        }
     }
 }

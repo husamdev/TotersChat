@@ -9,8 +9,9 @@ import Foundation
 
 public protocol MessageStore {
     typealias InsertionCompletion = (Error?) -> Void
+    typealias RetrieveCompletion = (Error?) -> Void
     
     func insert(_ message: Message, completion: @escaping InsertionCompletion)
     
-    func retrieve()
+    func retrieve(completion: @escaping RetrieveCompletion)
 }
