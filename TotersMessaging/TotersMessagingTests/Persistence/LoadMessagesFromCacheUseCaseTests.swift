@@ -41,6 +41,15 @@ class LoadMessagesFromCacheUseCaseTests: XCTestCase {
         })
     }
     
+    func test_load_deliversMessagesOnNonEmptyCache() {
+        let (store, sut) = makeSUT()
+        let cachedMessages = [anyMessage(), anyMessage()]
+        
+        expect(sut, toCompleteWith: .success(cachedMessages), when: {
+            store.completeRetrieval(with: cachedMessages)
+        })
+    }
+    
     // MARK: - Helpers
     private func expect(_ sut: LocalMessagesLoader, toCompleteWith expectedResult: LocalMessagesLoader.LoadResult, when action: () -> Void, file: StaticString = #file, line: UInt = #line) {
         let exp = expectation(description: "Wait for completion")

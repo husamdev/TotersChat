@@ -44,6 +44,10 @@ class MessageStoreSpy: MessageStore {
     func completeRetrievalWithEmptyCache(at index: Int = 0) {
         retrieveCompletions[index](.success([]))
     }
+    
+    func completeRetrieval(with messages: [Message], at index: Int = 0) {
+        retrieveCompletions[index](.success(messages))
+    }
 }
 
 extension Message: Equatable {
