@@ -29,7 +29,15 @@ class LoadMessagesFromCacheUseCaseTests: XCTestCase {
         let retrievalError = anyNSError()
         
         expect(sut, toCompleteWith: .failure(retrievalError), when: {
-            store.completeRetrieve(with: retrievalError)
+            store.completeRetrieval(with: retrievalError)
+        })
+    }
+    
+    func test_load_deliversNoMessagesOnEmptyCache() {
+        let (store, sut) = makeSUT()
+        
+        expect(sut, toCompleteWith: .success([]), when: {
+            store.completeRetrievalWithEmptyCache()
         })
     }
     

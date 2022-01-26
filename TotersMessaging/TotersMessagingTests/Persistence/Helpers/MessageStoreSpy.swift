@@ -10,7 +10,7 @@ import TotersMessaging
 
 class MessageStoreSpy: MessageStore {
     var insertionCompletions = [MessageStore.InsertionCompletion]()
-    var retrieveCompletions = [MessageStore.InsertionCompletion]()
+    var retrieveCompletions = [MessageStore.RetrieveCompletion]()
     
     var requests = [Request]()
     
@@ -37,8 +37,12 @@ class MessageStoreSpy: MessageStore {
         retrieveCompletions.append(completion)
     }
     
-    func completeRetrieve(with error: Error, at index: Int = 0) {
-        retrieveCompletions[index](error)
+    func completeRetrieval(with error: Error, at index: Int = 0) {
+        retrieveCompletions[index](.failure(error))
+    }
+    
+    func completeRetrievalWithEmptyCache(at index: Int = 0) {
+        retrieveCompletions[index](.success([]))
     }
 }
 
