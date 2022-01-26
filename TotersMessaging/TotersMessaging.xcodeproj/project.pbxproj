@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0D06E806279F38D200E551A1 /* TotersMessaging.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D06E7FD279F38D200E551A1 /* TotersMessaging.framework */; };
 		0D06E818279F394100E551A1 /* MessagingTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D06E817279F394100E551A1 /* MessagingTestCase.swift */; };
+		0D6F6A7E27A1E7D400DD01DA /* LoadMessagesFromCacheUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D6F6A7D27A1E7D400DD01DA /* LoadMessagesFromCacheUseCaseTests.swift */; };
 		0DD07C5E27A0B221006D9A2A /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD07C5D27A0B221006D9A2A /* Message.swift */; };
 		0DD07C6027A0B244006D9A2A /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD07C5F27A0B244006D9A2A /* Contact.swift */; };
 		0DD07C6527A0B35E006D9A2A /* CacheMessageUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD07C6427A0B35E006D9A2A /* CacheMessageUseCaseTests.swift */; };
@@ -33,6 +34,7 @@
 		0D06E7FD279F38D200E551A1 /* TotersMessaging.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TotersMessaging.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D06E805279F38D200E551A1 /* TotersMessagingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TotersMessagingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D06E817279F394100E551A1 /* MessagingTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagingTestCase.swift; sourceTree = "<group>"; };
+		0D6F6A7D27A1E7D400DD01DA /* LoadMessagesFromCacheUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadMessagesFromCacheUseCaseTests.swift; sourceTree = "<group>"; };
 		0DD07C5D27A0B221006D9A2A /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		0DD07C5F27A0B244006D9A2A /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
 		0DD07C6427A0B35E006D9A2A /* CacheMessageUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheMessageUseCaseTests.swift; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 			isa = PBXGroup;
 			children = (
 				0DD07C6427A0B35E006D9A2A /* CacheMessageUseCaseTests.swift */,
+				0D6F6A7D27A1E7D400DD01DA /* LoadMessagesFromCacheUseCaseTests.swift */,
 			);
 			path = Persistence;
 			sourceTree = "<group>";
@@ -258,6 +261,7 @@
 			files = (
 				0DD07C6D27A0BDD3006D9A2A /* XCTestCase+Helpers.swift in Sources */,
 				0DD07C6F27A0BE29006D9A2A /* XCTestCase+Messaging.swift in Sources */,
+				0D6F6A7E27A1E7D400DD01DA /* LoadMessagesFromCacheUseCaseTests.swift in Sources */,
 				0DD07C6527A0B35E006D9A2A /* CacheMessageUseCaseTests.swift in Sources */,
 				0DD07C7127A0BEBA006D9A2A /* XCTestCase+MemoryTracking.swift in Sources */,
 				0D06E818279F394100E551A1 /* MessagingTestCase.swift in Sources */,
