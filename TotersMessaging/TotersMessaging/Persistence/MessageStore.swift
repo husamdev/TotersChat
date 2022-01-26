@@ -11,4 +11,6 @@ public protocol MessageStore {
     typealias InsertionCompletion = (Error?) -> Void
     
     func insert(_ message: Message, completion: @escaping InsertionCompletion)
+    
+    func retrieve()
 }

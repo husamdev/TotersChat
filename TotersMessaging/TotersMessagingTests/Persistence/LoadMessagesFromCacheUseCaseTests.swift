@@ -16,6 +16,14 @@ class LoadMessagesFromCacheUseCaseTests: XCTestCase {
         XCTAssertEqual(store.requests, [])
     }
     
+    func test_load_requestsCacheRetrieval() {
+        let (store, sut) = makeSUT()
+        
+        sut.load()
+        
+        XCTAssertEqual(store.requests, [.retrieve])
+    }
+    
     // MARK: - Helpers
     private func makeSUT(file: StaticString = #file, line: UInt = #line) -> (store: MessageStoreSpy, sut: LocalMessagesLoader) {
         let store = MessageStoreSpy()
@@ -26,6 +34,4 @@ class LoadMessagesFromCacheUseCaseTests: XCTestCase {
         
         return (store, loader)
     }
-
-    
 }

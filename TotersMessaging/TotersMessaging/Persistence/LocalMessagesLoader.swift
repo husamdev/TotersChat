@@ -24,4 +24,8 @@ public class LocalMessagesLoader {
             completion(insertionError)
         }
     }
+    
+    public func load() {
+        store.retrieve() 
+    }
 }

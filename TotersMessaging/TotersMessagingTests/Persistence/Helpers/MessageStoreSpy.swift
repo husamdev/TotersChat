@@ -29,6 +29,10 @@ class MessageStoreSpy: MessageStore {
     func completeInsertionSuccessfully(at index: Int = 0) {
         insertionCompletions[index](nil)
     }
+    
+    func retrieve() {
+        requests.append(.retrieve)
+    }
 }
 
 extension Message: Equatable {
