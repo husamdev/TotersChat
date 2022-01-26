@@ -17,12 +17,12 @@ class CacheMessageUseCaseTests: XCTestCase {
         XCTAssertEqual(store.requests, [])
         
         let firstMessage = anyMessage()
-        sut.save(firstMessage) { _ in }
-        XCTAssertEqual(store.requests, [.insert(firstMessage)])
+        sut.save(firstMessage.model) { _ in }
+        XCTAssertEqual(store.requests, [.insert(firstMessage.local)])
         
         let secondMessage = anyMessage()
-        sut.save(secondMessage) { _ in }
-        XCTAssertEqual(store.requests, [.insert(firstMessage), .insert(secondMessage)])
+        sut.save(secondMessage.model) { _ in }
+        XCTAssertEqual(store.requests, [.insert(firstMessage.local), .insert(secondMessage.local)])
     }
     
     func test_save_failsOnInsertionError() {
@@ -47,7 +47,7 @@ class CacheMessageUseCaseTests: XCTestCase {
         var sut: LocalMessagesLoader? = LocalMessagesLoader(store: store)
         
         var receivedMessages = [LocalMessagesLoader.SaveResult]()
-        sut?.save(anyMessage()) { receivedMessages.append($0) }
+        sut?.save(anyMessage().model) { receivedMessages.append($0) }
         
         sut = nil
         store.completeInsertion(with: anyNSError())
@@ -70,7 +70,7 @@ class CacheMessageUseCaseTests: XCTestCase {
         let exp = expectation(description: "Wait for completion")
         
         var recievedError: Error?
-        sut.save(anyMessage()) {
+        sut.save(anyMessage().model) {
             recievedError = $0
             exp.fulfill()
         }

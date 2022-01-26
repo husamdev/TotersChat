@@ -15,11 +15,11 @@ class MessageStoreSpy: MessageStore {
     var requests = [Request]()
     
     enum Request: Equatable {
-        case insert(Message)
+        case insert(LocalMessage)
         case retrieve
     }
     
-    func insert(_ message: Message, completion: @escaping MessageStore.InsertionCompletion) {
+    func insert(_ message: LocalMessage, completion: @escaping MessageStore.InsertionCompletion) {
         requests.append(.insert(message))
         insertionCompletions.append(completion)
     }
@@ -45,7 +45,7 @@ class MessageStoreSpy: MessageStore {
         retrieveCompletions[index](.success([]))
     }
     
-    func completeRetrieval(with messages: [Message], at index: Int = 0) {
+    func completeRetrieval(with messages: [LocalMessage], at index: Int = 0) {
         retrieveCompletions[index](.success(messages))
     }
 }

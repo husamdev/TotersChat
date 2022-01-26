@@ -43,10 +43,10 @@ class LoadMessagesFromCacheUseCaseTests: XCTestCase {
     
     func test_load_deliversMessagesOnNonEmptyCache() {
         let (store, sut) = makeSUT()
-        let cachedMessages = [anyMessage(), anyMessage()]
+        let cachedMessages = anyMessages()
         
-        expect(sut, toCompleteWith: .success(cachedMessages), when: {
-            store.completeRetrieval(with: cachedMessages)
+        expect(sut, toCompleteWith: .success(cachedMessages.models), when: {
+            store.completeRetrieval(with: cachedMessages.local)
         })
     }
     
@@ -80,5 +80,13 @@ class LoadMessagesFromCacheUseCaseTests: XCTestCase {
         trackForMemoryLeaks(loader, file: file, line: line)
         
         return (store, loader)
+    }
+    
+    private func anyMessages() -> (models: [Message], local: [LocalMessage]) {
+        let message1 = anyMessage()
+        let message2 = anyMessage()
+        
+        return ([message1.model, message2.model],
+                [message1.local, message2.local])
     }
 }

@@ -19,7 +19,7 @@ public class LocalMessagesLoader {
     }
     
     public func save(_ message: Message, completion: @escaping (SaveResult) -> Void) {
-        store.insert(message) { [weak self] insertionError in
+        store.insert(message.toLocal()) { [weak self] insertionError in
             guard self != nil else { return }
             
             completion(insertionError)
@@ -30,7 +30,30 @@ public class LocalMessagesLoader {
         store.retrieve { [weak self] result in
             guard self != nil else { return }
             
-            completion(result)
+            switch result {
+            case let .success(localMessages):
+                completion(.success(localMessages.toModels()))
+            case let .failure(error):
+                completion(.failure(error))
+            }
         }
+    }
+}
+
+public extension Message {
+    func toLocal() -> LocalMessage {
+        LocalMessage(id: id, message: message, date: date, sender: sender.toLocal(), receiver: receiver.toLocal())
+    }
+}
+
+public extension Array where Element == LocalMessage {
+    func toModels() -> [Message] {
+        map { $0.toModel() }
+    }
+}
+
+public extension Contact {
+    func toLocal() -> LocalContact {
+        LocalContact(id: id, firstName: firstName, lastName: lastName)
     }
 }
