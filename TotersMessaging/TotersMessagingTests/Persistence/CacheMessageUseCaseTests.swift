@@ -14,13 +14,15 @@ class CacheMessageUseCaseTests: XCTestCase {
     func test_save_requestsCacheInsertion() {
         let (store, sut) = makeSUT()
         
-        XCTAssertEqual(store.insertMessageCallCount, 0)
+        XCTAssertEqual(store.requests, [])
         
-        sut.save(anyMessage()) { _ in }
-        XCTAssertEqual(store.insertMessageCallCount, 1)
+        let firstMessage = anyMessage()
+        sut.save(firstMessage) { _ in }
+        XCTAssertEqual(store.requests, [.insert(firstMessage)])
         
-        sut.save(anyMessage()) { _ in }
-        XCTAssertEqual(store.insertMessageCallCount, 2)
+        let secondMessage = anyMessage()
+        sut.save(secondMessage) { _ in }
+        XCTAssertEqual(store.requests, [.insert(firstMessage), .insert(secondMessage)])
     }
     
     func test_save_failsOnInsertionError() {
@@ -78,23 +80,5 @@ class CacheMessageUseCaseTests: XCTestCase {
         wait(for: [exp], timeout: 1.0)
         
         XCTAssertEqual(expectedError, recievedError as NSError?, file: file, line: line)
-    }
-    
-    class MessageStoreSpy: MessageStore {
-        var insertMessageCallCount = 0
-        var insertionCompletions = [MessageStore.InsertionCompletion]()
-        
-        func insert(_ message: Message, completion: @escaping MessageStore.InsertionCompletion) {
-            insertMessageCallCount += 1
-            insertionCompletions.append(completion)
-        }
-        
-        func completeInsertion(with error: Error, at index: Int = 0) {
-            insertionCompletions[index](error)
-        }
-        
-        func completeInsertionSuccessfully(at index: Int = 0) {
-            insertionCompletions[index](nil)
-        }
     }
 }
