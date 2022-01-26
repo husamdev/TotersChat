@@ -10,6 +10,7 @@ import Foundation
 public class LocalMessagesLoader {
     
     public typealias SaveResult = Error?
+    public typealias LoadResult = Result<[Message], Error>
     
     private let store: MessageStore
     
@@ -25,10 +26,10 @@ public class LocalMessagesLoader {
         }
     }
     
-    public func load(_ completion: @escaping (Error?) -> Void) {
+    public func load(completion: @escaping (LoadResult) -> Void) {
         store.retrieve { [weak self] error in
             guard self != nil else { return }
-            completion(error)
+            completion(.failure(error))
         }
     }
 }

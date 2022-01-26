@@ -26,24 +26,35 @@ class LoadMessagesFromCacheUseCaseTests: XCTestCase {
     
     func test_load_failsOnRetrievalError() {
         let (store, sut) = makeSUT()
-        
         let retrievalError = anyNSError()
-        let exp = expectation(description: "Wait for completion")
         
-        var recievedError: Error?
-        sut.load { error in
-            recievedError = error
-            exp.fulfill()
-        }
-        
-        store.completeRetrieve(with: retrievalError)
-        
-        wait(for: [exp], timeout: 1.0)
-        
-        XCTAssertEqual(recievedError as NSError?, retrievalError)
+        expect(sut, toCompleteWith: .failure(retrievalError), when: {
+            store.completeRetrieve(with: retrievalError)
+        })
     }
     
     // MARK: - Helpers
+    private func expect(_ sut: LocalMessagesLoader, toCompleteWith expectedResult: LocalMessagesLoader.LoadResult, when action: () -> Void, file: StaticString = #file, line: UInt = #line) {
+        let exp = expectation(description: "Wait for completion")
+        
+        sut.load { recievedResult in
+            switch(expectedResult, recievedResult) {
+            case let (.success(expectedMessages), .success(recievedMessages)):
+                XCTAssertEqual(expectedMessages, recievedMessages, file: file, line: line)
+            case let (.failure(expectedError), .failure(recievedError)):
+                XCTAssertEqual(expectedError as NSError, recievedError as NSError, file: file, line: line)
+            default:
+                XCTFail("Expected \(expectedResult) got \(recievedResult) instead", file: file, line: line)
+            }
+            
+            exp.fulfill()
+        }
+        
+        action()
+        
+        wait(for: [exp], timeout: 1.0)
+    }
+    
     private func makeSUT(file: StaticString = #file, line: UInt = #line) -> (store: MessageStoreSpy, sut: LocalMessagesLoader) {
         let store = MessageStoreSpy()
         let loader = LocalMessagesLoader(store: store)
