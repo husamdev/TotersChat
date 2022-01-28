@@ -50,6 +50,19 @@ class LoadMessagesFromCacheUseCaseTests: XCTestCase {
         })
     }
     
+    func test_load_doesNotDeliverResultAfterSUTHasBeenDeallocated() {
+        let store = MessageStoreSpy()
+        var sut: LocalMessagesLoader? = LocalMessagesLoader(store: store)
+        
+        var recievedResult = [LocalMessagesLoader.LoadResult]()
+        sut?.load { recievedResult.append($0) }
+        
+        sut = nil
+        store.completeRetrieval(with: anyNSError())
+        
+        XCTAssertTrue(recievedResult.isEmpty)
+    }
+    
     // MARK: - Helpers
     private func expect(_ sut: LocalMessagesLoader, toCompleteWith expectedResult: LocalMessagesLoader.LoadResult, when action: () -> Void, file: StaticString = #file, line: UInt = #line) {
         let exp = expectation(description: "Wait for completion")
