@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:/Users/husam/Desktop/Husam/TotersChat/MessagesCacheUseCases.md">
+   </FileRef>
+   <FileRef
       location = "group:TotersMessaging/TotersMessaging.xcodeproj">
    </FileRef>
    <FileRef
