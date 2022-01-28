@@ -15,7 +15,7 @@
 
 ### Primary Course
 1. Execute load messages command.
-2. System fetches messages data from cache.
+2. System retrieves local messages data from cache.
 3. System creates messages from cached data
 4. System delivers messages.
 
