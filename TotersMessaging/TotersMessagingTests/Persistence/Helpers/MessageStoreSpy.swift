@@ -32,7 +32,7 @@ class MessageStoreSpy: MessageStore {
         insertionCompletions[index](nil)
     }
     
-    func retrieve(completion: @escaping MessageStore.RetrieveCompletion) {
+    func retrieve(contact: LocalContact, completion: @escaping MessageStore.RetrieveCompletion) {
         requests.append(.retrieve)
         retrieveCompletions.append(completion)
     }

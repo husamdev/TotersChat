@@ -19,7 +19,7 @@ class LoadMessagesFromCacheUseCaseTests: XCTestCase {
     func test_load_requestsCacheRetrieval() {
         let (store, sut) = makeSUT()
         
-        sut.load { _ in }
+        sut.loadMessages(with: anyContact()) { _ in }
         
         XCTAssertEqual(store.requests, [.retrieve])
     }
@@ -55,7 +55,7 @@ class LoadMessagesFromCacheUseCaseTests: XCTestCase {
         var sut: LocalMessagesLoader? = LocalMessagesLoader(store: store)
         
         var recievedResult = [LocalMessagesLoader.LoadResult]()
-        sut?.load { recievedResult.append($0) }
+        sut?.loadMessages(with: anyContact()) { recievedResult.append($0) }
         
         sut = nil
         store.completeRetrieval(with: anyNSError())
@@ -67,7 +67,7 @@ class LoadMessagesFromCacheUseCaseTests: XCTestCase {
     private func expect(_ sut: LocalMessagesLoader, toCompleteWith expectedResult: LocalMessagesLoader.LoadResult, when action: () -> Void, file: StaticString = #file, line: UInt = #line) {
         let exp = expectation(description: "Wait for completion")
         
-        sut.load { recievedResult in
+        sut.loadMessages(with: anyContact()) { recievedResult in
             switch(expectedResult, recievedResult) {
             case let (.success(expectedMessages), .success(recievedMessages)):
                 XCTAssertEqual(expectedMessages, recievedMessages, file: file, line: line)

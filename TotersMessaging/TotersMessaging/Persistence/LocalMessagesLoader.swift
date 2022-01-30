@@ -26,8 +26,8 @@ public class LocalMessagesLoader {
         }
     }
     
-    public func load(completion: @escaping (LoadResult) -> Void) {
-        store.retrieve { [weak self] result in
+    public func loadMessages(with contact: Contact, completion: @escaping (LoadResult) -> Void) {
+        store.retrieve(contact: contact.toLocal()) { [weak self] result in
             guard self != nil else { return }
             
             switch result {

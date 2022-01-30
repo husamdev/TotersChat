@@ -13,5 +13,5 @@ public protocol MessageStore {
     
     func insert(_ message: LocalMessage, completion: @escaping InsertionCompletion)
     
-    func retrieve(completion: @escaping RetrieveCompletion)
+    func retrieve(contact: LocalContact, completion: @escaping RetrieveCompletion)
 }
