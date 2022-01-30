@@ -45,7 +45,7 @@ class LoadMessagesFromCacheUseCaseTests: XCTestCase {
         let (store, sut) = makeSUT()
         let cachedMessages = anyMessages()
         
-        expect(sut, toCompleteWith: .success(cachedMessages.models), withContact: cachedMessages.contact, when: {
+        expect(sut, toCompleteWith: .success(cachedMessages.models), when: {
             store.completeRetrieval(with: cachedMessages.local)
         })
     }
@@ -64,22 +64,13 @@ class LoadMessagesFromCacheUseCaseTests: XCTestCase {
     }
     
     // MARK: - Helpers
-    private func expect(_ sut: LocalMessagesLoader, toCompleteWith expectedResult: LocalMessagesLoader.LoadResult, withContact: Contact = anyContact(), when action: () -> Void, file: StaticString = #file, line: UInt = #line) {
-        func messageLoaded(_ message: Message, areWith contact: Contact) -> Bool {
-            contact.toLocal() == message.receiver.toLocal() ||
-            contact.toLocal() == message.sender.toLocal()
-        }
-        
+    private func expect(_ sut: LocalMessagesLoader, toCompleteWith expectedResult: LocalMessagesLoader.LoadResult, when action: () -> Void, file: StaticString = #file, line: UInt = #line) {
         let exp = expectation(description: "Wait for completion")
         
-        sut.loadMessages(with: withContact) { recievedResult in
+        sut.loadMessages(with: anyContact()) { recievedResult in
             switch(expectedResult, recievedResult) {
             case let (.success(expectedMessages), .success(recievedMessages)):
                 XCTAssertEqual(expectedMessages, recievedMessages, file: file, line: line)
-                
-                recievedMessages.forEach { message in
-                    XCTAssertTrue(messageLoaded(message, areWith: withContact))
-                }
                 
             case let (.failure(expectedError), .failure(recievedError)):
                 XCTAssertEqual(expectedError as NSError, recievedError as NSError, file: file, line: line)
@@ -105,13 +96,12 @@ class LoadMessagesFromCacheUseCaseTests: XCTestCase {
         return (store, loader)
     }
     
-    private func anyMessages() -> (contact: Contact, models: [Message], local: [LocalMessage]) {
+    private func anyMessages() -> (models: [Message], local: [LocalMessage]) {
         let contact1 = anyContact()
         let message1 = anyMessage(to: contact1)
         let message2 = anyMessage(from: contact1)
         
-        return (contact: contact1,
-                models: [message1.model, message2.model],
+        return (models: [message1.model, message2.model],
                 local: [message1.local, message2.local])
     }
 }
