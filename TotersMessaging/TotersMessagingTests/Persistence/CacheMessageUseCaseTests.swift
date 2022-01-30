@@ -81,4 +81,15 @@ class CacheMessageUseCaseTests: XCTestCase {
         
         XCTAssertEqual(expectedError, recievedError as NSError?, file: file, line: line)
     }
+    
+    func anyMessage() -> (model: Message, local: LocalMessage) {
+        let message = Message(
+            id: UUID(),
+            message: "any message",
+            date: Date(),
+            sender: anyContact(),
+            receiver: anyContact())
+        
+        return (message, message.toLocal())
+    }
 }

@@ -14,10 +14,10 @@
 ## Load Messages From Cache Use Case
 
 ### Primary Course
-1. Execute load messages command.
-2. System retrieves local messages data from cache.
-3. System creates messages from cached data
-4. System delivers messages.
+1. Execute load messages with contact command.
+2. System retrieves local messages made with contact from cache.
+3. System creates messages from cached data.
+4. System delivers messages with contact.
 
 ### Empty cache course:
 1. System delivers no messages.
