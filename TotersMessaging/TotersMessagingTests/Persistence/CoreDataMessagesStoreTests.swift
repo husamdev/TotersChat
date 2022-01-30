@@ -15,7 +15,7 @@ class CoreDataMessagesStore {
 }
 
 class CoreDataMessagesStoreTests: XCTestCase {
-
+    
     func test_retrieve_deliversEmptyOnEmptyCache() {
         let sut = CoreDataMessagesStore()
         
@@ -33,5 +33,28 @@ class CoreDataMessagesStoreTests: XCTestCase {
         
         wait(for: [exp], timeout: 1.0)
     }
-
+    
+    func test_retrieve_hasNoSideEffectsOnEmptyCache() {
+        let sut = CoreDataMessagesStore()
+        let contact = anyContact().toLocal()
+        
+        let exp = expectation(description: "Wait for completion")
+        sut.retrieve(contact: contact) { firstResult in
+            sut.retrieve(contact: contact) { secondResult in
+                switch (firstResult, secondResult) {
+                case let (.success(firstMessages), .success(secondMessages)):
+                    XCTAssertTrue(firstMessages.isEmpty)
+                    XCTAssertTrue(secondMessages.isEmpty)
+                    
+                default:
+                    XCTFail("Expected retrieving empty data twice got first result: \(firstResult) and second result: \(secondResult) instead")
+                }
+            }
+            
+            exp.fulfill()
+        }
+        
+        wait(for: [exp], timeout: 1.0)
+    }
+    
 }

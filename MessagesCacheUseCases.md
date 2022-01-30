@@ -31,7 +31,8 @@
 ## Messages Store Use Cases
 
 Retrieve
-    - Empy Cache
+    - Empy Cache returns sucess with empty messages
+    - Empty Cache twice has no side-effects 
     - Non empty cache returns data
     - Non empty cache returns same data (no side-effects)
     - Non empty cache returns data for desired user
