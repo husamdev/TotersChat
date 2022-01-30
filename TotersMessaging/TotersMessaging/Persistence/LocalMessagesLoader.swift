@@ -39,21 +39,3 @@ public class LocalMessagesLoader {
         }
     }
 }
-
-public extension Message {
-    func toLocal() -> LocalMessage {
-        LocalMessage(id: id, message: message, date: date, sender: sender.toLocal(), receiver: receiver.toLocal())
-    }
-}
-
-public extension Array where Element == LocalMessage {
-    func toModels() -> [Message] {
-        map { $0.toModel() }
-    }
-}
-
-public extension Contact {
-    func toLocal() -> LocalContact {
-        LocalContact(id: id, firstName: firstName, lastName: lastName)
-    }
-}
