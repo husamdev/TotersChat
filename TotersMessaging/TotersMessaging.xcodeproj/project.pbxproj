@@ -15,6 +15,7 @@
 		0D6F6A8127A1EB2600DD01DA /* MessageStoreSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D6F6A8027A1EB2600DD01DA /* MessageStoreSpy.swift */; };
 		0D6F6A8327A1F6F900DD01DA /* LocalMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D6F6A8227A1F6F900DD01DA /* LocalMessage.swift */; };
 		0D6F6A8527A1F72600DD01DA /* LocalContact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D6F6A8427A1F72600DD01DA /* LocalContact.swift */; };
+		0D88D2F727A8A89D00D65801 /* CodableMessagesStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D88D2F627A8A89D00D65801 /* CodableMessagesStore.swift */; };
 		0DAB2BC827A7206A00F8E5DF /* CodableMessagesStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAB2BC727A7206A00F8E5DF /* CodableMessagesStoreTests.swift */; };
 		0DD07C5E27A0B221006D9A2A /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD07C5D27A0B221006D9A2A /* Message.swift */; };
 		0DD07C6027A0B244006D9A2A /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD07C5F27A0B244006D9A2A /* Contact.swift */; };
@@ -46,6 +47,7 @@
 		0D6F6A8027A1EB2600DD01DA /* MessageStoreSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageStoreSpy.swift; sourceTree = "<group>"; };
 		0D6F6A8227A1F6F900DD01DA /* LocalMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalMessage.swift; sourceTree = "<group>"; };
 		0D6F6A8427A1F72600DD01DA /* LocalContact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalContact.swift; sourceTree = "<group>"; };
+		0D88D2F627A8A89D00D65801 /* CodableMessagesStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableMessagesStore.swift; sourceTree = "<group>"; };
 		0DAB2BC727A7206A00F8E5DF /* CodableMessagesStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableMessagesStoreTests.swift; sourceTree = "<group>"; };
 		0DD07C5D27A0B221006D9A2A /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		0DD07C5F27A0B244006D9A2A /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 				0DD07C6927A0BD0E006D9A2A /* MessageStore.swift */,
 				0D6F6A8227A1F6F900DD01DA /* LocalMessage.swift */,
 				0D6F6A8427A1F72600DD01DA /* LocalContact.swift */,
+				0D88D2F627A8A89D00D65801 /* CodableMessagesStore.swift */,
 			);
 			path = Persistence;
 			sourceTree = "<group>";
@@ -290,6 +293,7 @@
 				0DD07C6827A0BC9F006D9A2A /* LocalMessagesLoader.swift in Sources */,
 				0DD07C6A27A0BD0E006D9A2A /* MessageStore.swift in Sources */,
 				0D6F6A8327A1F6F900DD01DA /* LocalMessage.swift in Sources */,
+				0D88D2F727A8A89D00D65801 /* CodableMessagesStore.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
