@@ -209,12 +209,7 @@ class CodableMessagesStoreTests: XCTestCase {
     }
     
     private func removeTestArtifacts() {
-        do {
-            try FileManager.default.removeItem(at: makeTestStoreURL())
-            print("Test store file is deleted")
-        } catch {
-            print(error)
-        }
+        try? FileManager.default.removeItem(at: makeTestStoreURL())
     }
     
     private func setupEmptyStoreState() {
