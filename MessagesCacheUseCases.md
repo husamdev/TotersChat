@@ -31,16 +31,16 @@
 ## Messages Store Use Cases
 
 Retrieve
-    - Empy Cache returns sucess with empty messages
-    - Empty Cache twice has no side-effects 
-    - Non empty cache returns data
-    - Non empty cache returns same data (no side-effects)
-    - Non empty cache returns data for desired user
+    ✅ Empy Cache returns sucess with empty messages
+    ✅ Empty Cache twice has no side-effects 
+    ✅ Non empty cache returns data
+    ✅ Non empty cache returns same data (no side-effects)
+    ✅ Non empty cache returns data for desired user
     - Error (if applicable, e.g. invalid data)
 
 Insert
-    - To empty cache stores data
-    - To non empty cache does not override previous data
+    ✅ To empty cache stores data
+    ✅ To non empty cache does not override previous data
     - Error (if applicable, eg. no write permission)
     
 - Side effects must run serially to avoid race-conditions
