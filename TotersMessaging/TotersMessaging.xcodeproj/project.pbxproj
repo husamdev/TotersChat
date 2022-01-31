@@ -15,7 +15,7 @@
 		0D6F6A8127A1EB2600DD01DA /* MessageStoreSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D6F6A8027A1EB2600DD01DA /* MessageStoreSpy.swift */; };
 		0D6F6A8327A1F6F900DD01DA /* LocalMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D6F6A8227A1F6F900DD01DA /* LocalMessage.swift */; };
 		0D6F6A8527A1F72600DD01DA /* LocalContact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D6F6A8427A1F72600DD01DA /* LocalContact.swift */; };
-		0DAB2BC827A7206A00F8E5DF /* CoreDataMessagesStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAB2BC727A7206A00F8E5DF /* CoreDataMessagesStoreTests.swift */; };
+		0DAB2BC827A7206A00F8E5DF /* CodableMessagesStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAB2BC727A7206A00F8E5DF /* CodableMessagesStoreTests.swift */; };
 		0DD07C5E27A0B221006D9A2A /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD07C5D27A0B221006D9A2A /* Message.swift */; };
 		0DD07C6027A0B244006D9A2A /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD07C5F27A0B244006D9A2A /* Contact.swift */; };
 		0DD07C6527A0B35E006D9A2A /* CacheMessageUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD07C6427A0B35E006D9A2A /* CacheMessageUseCaseTests.swift */; };
@@ -46,7 +46,7 @@
 		0D6F6A8027A1EB2600DD01DA /* MessageStoreSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageStoreSpy.swift; sourceTree = "<group>"; };
 		0D6F6A8227A1F6F900DD01DA /* LocalMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalMessage.swift; sourceTree = "<group>"; };
 		0D6F6A8427A1F72600DD01DA /* LocalContact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalContact.swift; sourceTree = "<group>"; };
-		0DAB2BC727A7206A00F8E5DF /* CoreDataMessagesStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataMessagesStoreTests.swift; sourceTree = "<group>"; };
+		0DAB2BC727A7206A00F8E5DF /* CodableMessagesStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableMessagesStoreTests.swift; sourceTree = "<group>"; };
 		0DD07C5D27A0B221006D9A2A /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		0DD07C5F27A0B244006D9A2A /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
 		0DD07C6427A0B35E006D9A2A /* CacheMessageUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheMessageUseCaseTests.swift; sourceTree = "<group>"; };
@@ -145,7 +145,7 @@
 				0D6F6A7F27A1EB0100DD01DA /* Helpers */,
 				0DD07C6427A0B35E006D9A2A /* CacheMessageUseCaseTests.swift */,
 				0D6F6A7D27A1E7D400DD01DA /* LoadMessagesFromCacheUseCaseTests.swift */,
-				0DAB2BC727A7206A00F8E5DF /* CoreDataMessagesStoreTests.swift */,
+				0DAB2BC727A7206A00F8E5DF /* CodableMessagesStoreTests.swift */,
 			);
 			path = Persistence;
 			sourceTree = "<group>";
@@ -301,7 +301,7 @@
 				0DD07C6F27A0BE29006D9A2A /* XCTestCase+Messaging.swift in Sources */,
 				0D6F6A7E27A1E7D400DD01DA /* LoadMessagesFromCacheUseCaseTests.swift in Sources */,
 				0DD07C6527A0B35E006D9A2A /* CacheMessageUseCaseTests.swift in Sources */,
-				0DAB2BC827A7206A00F8E5DF /* CoreDataMessagesStoreTests.swift in Sources */,
+				0DAB2BC827A7206A00F8E5DF /* CodableMessagesStoreTests.swift in Sources */,
 				0DD07C7127A0BEBA006D9A2A /* XCTestCase+MemoryTracking.swift in Sources */,
 				0D6F6A8127A1EB2600DD01DA /* MessageStoreSpy.swift in Sources */,
 				0D06E818279F394100E551A1 /* MessagingTestCase.swift in Sources */,

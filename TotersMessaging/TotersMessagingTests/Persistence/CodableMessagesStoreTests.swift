@@ -1,5 +1,5 @@
 //
-//  CoreDataMessagesStoreTests.swift
+//  CodableMessagesStoreTests.swift
 //  TotersMessagingTests
 //
 //  Created by Husam Dayya on 30/01/2022.
@@ -8,16 +8,16 @@
 import XCTest
 import TotersMessaging
 
-class CoreDataMessagesStore {
+class CodableMessagesStore {
     func retrieve(contact: LocalContact, completion: @escaping MessageStore.RetrieveCompletion) {
         completion(.success([]))
     }
 }
 
-class CoreDataMessagesStoreTests: XCTestCase {
+class CodableMessagesStoreTests: XCTestCase {
     
     func test_retrieve_deliversEmptyOnEmptyCache() {
-        let sut = CoreDataMessagesStore()
+        let sut = CodableMessagesStore()
         
         let exp = expectation(description: "Wait for completion")
         sut.retrieve(contact: anyContact().toLocal()) { result in
@@ -35,7 +35,7 @@ class CoreDataMessagesStoreTests: XCTestCase {
     }
     
     func test_retrieve_hasNoSideEffectsOnEmptyCache() {
-        let sut = CoreDataMessagesStore()
+        let sut = CodableMessagesStore()
         let contact = anyContact().toLocal()
         
         let exp = expectation(description: "Wait for completion")
