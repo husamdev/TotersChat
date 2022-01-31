@@ -36,7 +36,7 @@ Retrieve
     ✅ Non empty cache returns data
     ✅ Non empty cache returns same data (no side-effects)
     ✅ Non empty cache returns data for desired user
-    - Error (if applicable, e.g. invalid data)
+    ✅ Error (if applicable, e.g. invalid data)
 
 Insert
     ✅ To empty cache stores data

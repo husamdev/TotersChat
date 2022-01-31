@@ -195,6 +195,16 @@ class CodableMessagesStoreTests: XCTestCase {
         expect(sut, toRetrieveTwice: .failure(anyNSError()), whenContacting: anyContact())
     }
     
+    func test_insert_deliversErrorOnInsertionError() {
+        let invalidStoreURL = URL(string: "invalid:///store-url")!
+        let sut = makeSUT(storeURL: invalidStoreURL)
+        
+        let message = anyMessage(to: anyContact())
+        let insertionError = insert(sut, message.local)
+        
+        XCTAssertNotNil(insertionError, "Expected cache insertion failure got success instead.")
+    }
+    
     // MARK: - Helpers
     private func expect(_ sut: CodableMessagesStore, toCompleteWith expectedResult: Result<[LocalMessage], Error>, whenContacting contact: Contact, file: StaticString = #file, line: UInt = #line) {
         let exp = expectation(description: "Wait for completion")
@@ -222,15 +232,18 @@ class CodableMessagesStoreTests: XCTestCase {
         expect(sut, toCompleteWith: expectedResult, whenContacting: contact)
     }
     
-    private func insert(_ sut: CodableMessagesStore, _ message: LocalMessage, file: StaticString = #file, line: UInt = #line) {
+    @discardableResult
+    private func insert(_ sut: CodableMessagesStore, _ message: LocalMessage, file: StaticString = #file, line: UInt = #line) -> Error? {
         let exp = expectation(description: "Wait for completion")
+        
+        var capturedError: Error?
         sut.insert(message) { insertionError in
-            XCTAssertNil(insertionError, "Expected message to be inserted successfully.", file: file, line: line)
-            
+            capturedError = insertionError
             exp.fulfill()
         }
-        
         wait(for: [exp], timeout: 1.0)
+        
+        return capturedError
     }
     
     private func makeSUT(storeURL: URL? = nil, file: StaticString = #file, line: UInt = #line) -> CodableMessagesStore {
