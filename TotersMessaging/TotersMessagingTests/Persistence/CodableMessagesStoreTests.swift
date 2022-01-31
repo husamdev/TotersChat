@@ -132,8 +132,7 @@ class CodableMessagesStoreTests: XCTestCase {
         let sut = makeSUT()
         let contact = anyContact()
         
-        expect(sut, toCompleteWith: .success([]), whenContacting: contact)
-        expect(sut, toCompleteWith: .success([]), whenContacting: contact)
+        expect(sut, toRetrieveTwice: .success([]), whenContacting: contact)
     }
     
     func test_retrieve_deliversFoundValuesOnNonEmptyCache() {
@@ -196,6 +195,11 @@ class CodableMessagesStoreTests: XCTestCase {
         }
         
         wait(for: [exp], timeout: 1.0)
+    }
+    
+    private func expect(_ sut: CodableMessagesStore, toRetrieveTwice expectedResult: Result<[LocalMessage], Error>, whenContacting contact: Contact) {
+        expect(sut, toCompleteWith: expectedResult, whenContacting: contact)
+        expect(sut, toCompleteWith: expectedResult, whenContacting: contact)
     }
     
     private func insert(_ sut: CodableMessagesStore, _ message: LocalMessage, file: StaticString = #file, line: UInt = #line) {
