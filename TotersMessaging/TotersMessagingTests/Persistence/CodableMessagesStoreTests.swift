@@ -76,7 +76,8 @@ class CodableMessagesStore {
     
     func insert(_ message: LocalMessage, completion: @escaping MessageStore.InsertionCompletion) {
         do {
-            let root = Root(localMessages: [message])
+            let cachedLocalMessages = try cachedLocalMessages()
+            let root = Root(localMessages: cachedLocalMessages + [message])
             let json = try JSONEncoder().encode(root)
             try json.write(to: storeURL)
             
@@ -98,13 +99,13 @@ class CodableMessagesStore {
 
 class CodableMessagesStoreTests: XCTestCase {
     
-    override class func setUp() {
-        setupEmptyStoreState()
-        
+    override func setUp() {
         super.setUp()
+        
+        setupEmptyStoreState()
     }
     
-    override class func tearDown() {
+    override func tearDown() {
         super.tearDown()
         
         undoStoreSideEffects()
@@ -155,47 +156,83 @@ class CodableMessagesStoreTests: XCTestCase {
         let sut = makeSUT()
         let contact = anyContact()
         let message = anyMessage(from: contact)
-        
+
         let exp = expectation(description: "Wait for completion")
         sut.insert(message.local) { insertionError in
-            
+
             XCTAssertNil(insertionError, "Expected message to be inserted successfully.")
-            
+
             sut.retrieve(contact: contact.toLocal()) { result in
                 switch (result) {
                 case let .success(retrievedMessages):
                     XCTAssertEqual(retrievedMessages, [message.local])
-                    
+
                 default:
                     XCTFail("Expected retrieving \(message) got \(result) instead")
                 }
             }
-            
+
             exp.fulfill()
         }
-        
+
+        wait(for: [exp], timeout: 1.0)
+    }
+    
+    func test_retrieveAfterInsertingTwiceToEmptyCache_deliversInstertedValues() {
+        let sut = makeSUT()
+        let contact = anyContact()
+        let message1 = anyMessage(from: contact)
+        let message2 = anyMessage(from: contact)
+
+        let exp = expectation(description: "Wait for completion")
+        sut.insert(message1.local) { insertionError in
+
+            XCTAssertNil(insertionError, "Expected message to be inserted successfully.")
+
+            sut.insert(message2.local) { secondInsertionError in
+                XCTAssertNil(insertionError, "Expected message to be inserted successfully.")
+
+                sut.retrieve(contact: contact.toLocal()) { result in
+                    switch (result) {
+                    case let .success(retrievedMessages):
+                        XCTAssertEqual(retrievedMessages, [message1.local, message2.local])
+
+                    default:
+                        XCTFail("Expected retrieving \(message1) and \(message2) got \(result) instead")
+                    }
+                }
+            }
+
+            exp.fulfill()
+        }
+
         wait(for: [exp], timeout: 1.0)
     }
     
     private func makeSUT(file: StaticString = #file, line: UInt = #line) -> CodableMessagesStore {
-        let sut = CodableMessagesStore(storeURL: Self.makeTestStoreURL())
+        let sut = CodableMessagesStore(storeURL: makeTestStoreURL())
         trackForMemoryLeaks(sut, file: file, line: line)
         return sut
     }
     
-    private static func makeTestStoreURL() -> URL {
+    private func makeTestStoreURL() -> URL {
         FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first!.appendingPathComponent("\(type(of: self)).store")
     }
     
-    private static func removeTestArtifacts() {
-        try? FileManager.default.removeItem(at: makeTestStoreURL())
+    private func removeTestArtifacts() {
+        do {
+            try FileManager.default.removeItem(at: makeTestStoreURL())
+            print("Test store file is deleted")
+        } catch {
+            print(error)
+        }
     }
     
-    private static func setupEmptyStoreState() {
+    private func setupEmptyStoreState() {
         removeTestArtifacts()
     }
     
-    private static func undoStoreSideEffects() {
+    private func undoStoreSideEffects() {
         removeTestArtifacts()
     }
 }
