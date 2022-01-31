@@ -138,17 +138,6 @@ class CodableMessagesStoreTests: XCTestCase {
     
     func test_retrieve_deliversFoundValuesOnNonEmptyCache() {
         let sut = makeSUT()
-        
-        let contact = anyContact()
-        let message = anyMessage(from: contact)
-        
-        insert(sut, message.local)
-        
-        expect(sut, toCompleteWith: .success([message.local]), whenContacting: contact)
-    }
-    
-    func test_retrieveAfterInsertingTwiceToEmptyCache_deliversInstertedValues() {
-        let sut = makeSUT()
         let contact = anyContact()
         
         let message1 = anyMessage(from: contact)
