@@ -168,9 +168,10 @@ class CodableMessagesStoreTests: XCTestCase {
     }
     
     func test_retrieve_deliversFailureOnRetrieveError() {
-        let sut = makeSUT()
+        let storeURL = makeTestStoreURL()
+        let sut = makeSUT(storeURL: storeURL)
         
-        try! "invalid data".write(to: makeTestStoreURL(), atomically: false, encoding: .utf8)
+        try! "invalid data".write(to: storeURL, atomically: false, encoding: .utf8)
         
         expect(sut, toCompleteWith: .failure(anyNSError()), whenContacting: anyContact())
     }
@@ -208,8 +209,8 @@ class CodableMessagesStoreTests: XCTestCase {
         wait(for: [exp], timeout: 1.0)
     }
     
-    private func makeSUT(file: StaticString = #file, line: UInt = #line) -> CodableMessagesStore {
-        let sut = CodableMessagesStore(storeURL: makeTestStoreURL())
+    private func makeSUT(storeURL: URL? = nil, file: StaticString = #file, line: UInt = #line) -> CodableMessagesStore {
+        let sut = CodableMessagesStore(storeURL: storeURL ?? makeTestStoreURL())
         trackForMemoryLeaks(sut, file: file, line: line)
         return sut
     }
