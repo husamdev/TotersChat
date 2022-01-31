@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct LocalMessage: Equatable, Codable {
+public struct LocalMessage: Equatable {
     public let id: UUID
     public let message: String
     public let date: Date

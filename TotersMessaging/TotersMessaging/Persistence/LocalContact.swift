@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct LocalContact: Equatable, Codable {
+public struct LocalContact: Equatable {
     public let id: UUID
     public let firstName: String
     public let lastName: String

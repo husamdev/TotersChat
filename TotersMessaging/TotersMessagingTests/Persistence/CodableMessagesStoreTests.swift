@@ -11,7 +11,51 @@ import TotersMessaging
 class CodableMessagesStore {
     
     private struct Root: Codable {
-        let messages: [LocalMessage]
+        private let messages: [CodableMessage]
+        
+        var localMessages: [LocalMessage] {
+            messages.map { $0.localMessage }
+        }
+        
+        init(localMessages: [LocalMessage]) {
+            self.messages = localMessages.map { CodableMessage(localMessage: $0) }
+        }
+    }
+    
+    private struct CodableMessage: Codable {
+        private let id: UUID
+        private let message: String
+        private let date: Date
+        private let sender: CodableContact
+        private let receiver: CodableContact
+        
+        var localMessage: LocalMessage {
+            LocalMessage(id: id, message: message, date: date, sender: sender.localContact, receiver: receiver.localContact)
+        }
+        
+        init(localMessage: LocalMessage) {
+            self.id = localMessage.id
+            self.message = localMessage.message
+            self.date = localMessage.date
+            self.sender = CodableContact(localContact: localMessage.sender)
+            self.receiver = CodableContact(localContact: localMessage.receiver)
+        }
+    }
+    
+    private struct CodableContact: Codable {
+        private let id: UUID
+        private let firstName: String
+        private let lastName: String
+        
+        var localContact: LocalContact {
+            LocalContact(id: id, firstName: firstName, lastName: lastName)
+        }
+        
+        init(localContact: LocalContact) {
+            self.id = localContact.id
+            self.firstName = localContact.firstName
+            self.lastName = localContact.lastName
+        }
     }
     
     private let storeURL: URL
@@ -28,7 +72,7 @@ class CodableMessagesStore {
         do {
             let root = try JSONDecoder().decode(Root.self, from: data)
             
-            completion(.success(root.messages))
+            completion(.success(root.localMessages))
         } catch {
             completion(.failure(error))
         }
@@ -36,7 +80,8 @@ class CodableMessagesStore {
     
     func insert(_ message: LocalMessage, completion: @escaping MessageStore.InsertionCompletion) {
         do {
-            let json = try JSONEncoder().encode(Root(messages: [message]))
+            let root = Root(localMessages: [message])
+            let json = try JSONEncoder().encode(root)
             try json.write(to: storeURL)
             
             completion(nil)
