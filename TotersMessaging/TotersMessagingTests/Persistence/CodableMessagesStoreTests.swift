@@ -149,20 +149,22 @@ class CodableMessagesStoreTests: XCTestCase {
         expect(sut, toCompleteWith: .success([message1.local, message2.local]), whenContacting: contact)
     }
     
-    func test_retrieveAfterInserting_deliversMessagesForSelectedContact() {
+    func test_retrieve_deliversMessagesForSelectedContact() {
         let sut = makeSUT()
         
-        let contact1 = anyContact()
-        let message1 = anyMessage(from: contact1)
+        let firstContact = anyContact()
+        let firstMessage = anyMessage(from: firstContact)
         
-        let contact2 = anyContact()
-        let message2 = anyMessage(from: contact2)
+        let secondContact = anyContact()
+        let secondMessage = anyMessage(from: secondContact)
+        let thirdMessage = anyMessage(to: secondContact)
 
-        insert(sut, message1.local)
-        insert(sut, message2.local)
+        insert(sut, firstMessage.local)
+        insert(sut, secondMessage.local)
+        insert(sut, thirdMessage.local)
         
-        expect(sut, toCompleteWith: .success([message1.local]), whenContacting: contact1)
-        expect(sut, toCompleteWith: .success([message2.local]), whenContacting: contact2)
+        expect(sut, toCompleteWith: .success([firstMessage.local]), whenContacting: firstContact)
+        expect(sut, toCompleteWith: .success([secondMessage.local, thirdMessage.local]), whenContacting: secondContact)
     }
     
     // MARK: - Helpers
