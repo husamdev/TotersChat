@@ -175,6 +175,15 @@ class CodableMessagesStoreTests: XCTestCase {
         expect(sut, toCompleteWith: .failure(anyNSError()), whenContacting: anyContact())
     }
     
+    func test_retrieve_hasNoSideEffectsOnFailure() {
+        let storeURL = makeTestStoreURL()
+        let sut = makeSUT(storeURL: storeURL)
+        
+        try! "invalid data".write(to: storeURL, atomically: false, encoding: .utf8)
+        
+        expect(sut, toRetrieveTwice: .failure(anyNSError()), whenContacting: anyContact())
+    }
+    
     // MARK: - Helpers
     private func expect(_ sut: CodableMessagesStore, toCompleteWith expectedResult: Result<[LocalMessage], Error>, whenContacting contact: Contact, file: StaticString = #file, line: UInt = #line) {
         let exp = expectation(description: "Wait for completion")
