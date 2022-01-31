@@ -136,7 +136,7 @@ class CodableMessagesStoreTests: XCTestCase {
         expect(sut, toCompleteWith: .success([]), whenContacting: contact)
     }
     
-    func test_retrieveAfterInsertingToEmptyCache_deliversInstertedValues() {
+    func test_retrieve_deliversFoundValuesOnNonEmptyCache() {
         let sut = makeSUT()
         
         let contact = anyContact()
