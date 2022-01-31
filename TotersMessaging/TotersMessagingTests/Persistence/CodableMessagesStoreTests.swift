@@ -48,10 +48,16 @@ class CodableMessagesStore {
 
 class CodableMessagesStoreTests: XCTestCase {
     
+    override class func setUp() {
+        removeTestArtifacts()
+        
+        super.setUp()
+    }
+    
     override class func tearDown() {
         super.tearDown()
         
-        try? FileManager.default.removeItem(at: testStoreURL())
+        removeTestArtifacts()
     }
     
     func test_retrieve_deliversEmptyOnEmptyCache() {
@@ -127,5 +133,9 @@ class CodableMessagesStoreTests: XCTestCase {
     
     private static func testStoreURL() -> URL {
         FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.appendingPathComponent("messages.store")
+    }
+    
+    private static func removeTestArtifacts() -> ()? {
+        return try? FileManager.default.removeItem(at: testStoreURL())
     }
 }
