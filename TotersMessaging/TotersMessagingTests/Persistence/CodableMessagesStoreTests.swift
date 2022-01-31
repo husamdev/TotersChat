@@ -8,7 +8,7 @@
 import XCTest
 import TotersMessaging
 
-class CodableMessagesStore {
+class CodableMessagesStore: MessageStore {
     
     private struct Root: Codable {
         private let messages: [CodableMessage]
@@ -206,7 +206,7 @@ class CodableMessagesStoreTests: XCTestCase {
     }
     
     // MARK: - Helpers
-    private func expect(_ sut: CodableMessagesStore, toCompleteWith expectedResult: Result<[LocalMessage], Error>, whenContacting contact: Contact, file: StaticString = #file, line: UInt = #line) {
+    private func expect(_ sut: MessageStore, toCompleteWith expectedResult: Result<[LocalMessage], Error>, whenContacting contact: Contact, file: StaticString = #file, line: UInt = #line) {
         let exp = expectation(description: "Wait for completion")
         
         sut.retrieve(contact: contact.toLocal()) { recievedResult in
@@ -227,13 +227,13 @@ class CodableMessagesStoreTests: XCTestCase {
         wait(for: [exp], timeout: 1.0)
     }
     
-    private func expect(_ sut: CodableMessagesStore, toRetrieveTwice expectedResult: Result<[LocalMessage], Error>, whenContacting contact: Contact) {
+    private func expect(_ sut: MessageStore, toRetrieveTwice expectedResult: Result<[LocalMessage], Error>, whenContacting contact: Contact) {
         expect(sut, toCompleteWith: expectedResult, whenContacting: contact)
         expect(sut, toCompleteWith: expectedResult, whenContacting: contact)
     }
     
     @discardableResult
-    private func insert(_ sut: CodableMessagesStore, _ message: LocalMessage, file: StaticString = #file, line: UInt = #line) -> Error? {
+    private func insert(_ sut: MessageStore, _ message: LocalMessage, file: StaticString = #file, line: UInt = #line) -> Error? {
         let exp = expectation(description: "Wait for completion")
         
         var capturedError: Error?
@@ -246,7 +246,7 @@ class CodableMessagesStoreTests: XCTestCase {
         return capturedError
     }
     
-    private func makeSUT(storeURL: URL? = nil, file: StaticString = #file, line: UInt = #line) -> CodableMessagesStore {
+    private func makeSUT(storeURL: URL? = nil, file: StaticString = #file, line: UInt = #line) -> MessageStore {
         let sut = CodableMessagesStore(storeURL: storeURL ?? makeTestStoreURL())
         trackForMemoryLeaks(sut, file: file, line: line)
         return sut
