@@ -123,43 +123,17 @@ class CodableMessagesStoreTests: XCTestCase {
     
     func test_retrieve_deliversEmptyOnEmptyCache() {
         let sut = makeSUT()
+        let contact = anyContact()
         
-        let exp = expectation(description: "Wait for completion")
-        sut.retrieve(contact: anyContact().toLocal()) { result in
-            switch result {
-            case .success(let messages):
-                XCTAssertTrue(messages.isEmpty)
-            default:
-                XCTFail("Expected empty cache got \(result) instead")
-            }
-            
-            exp.fulfill()
-        }
-        
-        wait(for: [exp], timeout: 1.0)
+        expect(sut, toCompleteWith: .success([]), whenContacting: contact)
     }
     
     func test_retrieve_hasNoSideEffectsOnEmptyCache() {
         let sut = makeSUT()
-        let contact = anyContact().toLocal()
+        let contact = anyContact()
         
-        let exp = expectation(description: "Wait for completion")
-        sut.retrieve(contact: contact) { firstResult in
-            sut.retrieve(contact: contact) { secondResult in
-                switch (firstResult, secondResult) {
-                case let (.success(firstMessages), .success(secondMessages)):
-                    XCTAssertTrue(firstMessages.isEmpty)
-                    XCTAssertTrue(secondMessages.isEmpty)
-                    
-                default:
-                    XCTFail("Expected retrieving empty data twice got first result: \(firstResult) and second result: \(secondResult) instead")
-                }
-            }
-            
-            exp.fulfill()
-        }
-        
-        wait(for: [exp], timeout: 1.0)
+        expect(sut, toCompleteWith: .success([]), whenContacting: contact)
+        expect(sut, toCompleteWith: .success([]), whenContacting: contact)
     }
     
     func test_retrieveAfterInsertingToEmptyCache_deliversInstertedValues() {
@@ -172,20 +146,12 @@ class CodableMessagesStoreTests: XCTestCase {
 
             XCTAssertNil(insertionError, "Expected message to be inserted successfully.")
 
-            sut.retrieve(contact: contact.toLocal()) { result in
-                switch (result) {
-                case let .success(retrievedMessages):
-                    XCTAssertEqual(retrievedMessages, [message.local])
-
-                default:
-                    XCTFail("Expected retrieving \(message) got \(result) instead")
-                }
-            }
-
             exp.fulfill()
         }
 
         wait(for: [exp], timeout: 1.0)
+        
+        expect(sut, toCompleteWith: .success([message.local]), whenContacting: contact)
     }
     
     func test_retrieveAfterInsertingTwiceToEmptyCache_deliversInstertedValues() {
@@ -201,22 +167,14 @@ class CodableMessagesStoreTests: XCTestCase {
 
             sut.insert(message2.local) { secondInsertionError in
                 XCTAssertNil(insertionError, "Expected message to be inserted successfully.")
-
-                sut.retrieve(contact: contact.toLocal()) { result in
-                    switch (result) {
-                    case let .success(retrievedMessages):
-                        XCTAssertEqual(retrievedMessages, [message1.local, message2.local])
-
-                    default:
-                        XCTFail("Expected retrieving \(message1) and \(message2) got \(result) instead")
-                    }
-                }
             }
 
             exp.fulfill()
         }
 
         wait(for: [exp], timeout: 1.0)
+        
+        expect(sut, toCompleteWith: .success([message1.local, message2.local]), whenContacting: contact)
     }
     
     func test_retrieveAfterInserting_deliversMessagesForSelectedContact() {
@@ -234,21 +192,34 @@ class CodableMessagesStoreTests: XCTestCase {
 
             sut.insert(message2.local) { secondInsertionError in
                 XCTAssertNil(insertionError, "Expected message to be inserted successfully.")
-
-                sut.retrieve(contact: contact1.toLocal()) { result in
-                    switch (result) {
-                    case let .success(retrievedMessages):
-                        XCTAssertEqual(retrievedMessages, [message1.local])
-
-                    default:
-                        XCTFail("Expected retrieving \(message1) and \(message2) got \(result) instead")
-                    }
-                }
             }
 
             exp.fulfill()
         }
 
+        wait(for: [exp], timeout: 1.0)
+        
+        expect(sut, toCompleteWith: .success([message1.local]), whenContacting: contact1)
+        expect(sut, toCompleteWith: .success([message2.local]), whenContacting: contact2)
+    }
+    
+    // MARK: - Helpers
+    private func expect(_ sut: CodableMessagesStore, toCompleteWith expectedResult: Result<[LocalMessage], Error>, whenContacting contact: Contact) {
+        let exp = expectation(description: "Wait for completion")
+        
+        sut.retrieve(contact: contact.toLocal()) { recievedResult in
+            switch (recievedResult, expectedResult) {
+            case let (.success(recievedMessages), .success(expectedMessages)):
+                
+                XCTAssertEqual(recievedMessages, expectedMessages)
+                
+            default:
+                XCTFail("Expected \(expectedResult) got \(recievedResult) instead")
+            }
+            
+            exp.fulfill()
+        }
+        
         wait(for: [exp], timeout: 1.0)
     }
     
