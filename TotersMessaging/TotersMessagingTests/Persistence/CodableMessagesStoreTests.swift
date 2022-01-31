@@ -173,16 +173,16 @@ class CodableMessagesStoreTests: XCTestCase {
     }
     
     private func makeSUT(file: StaticString = #file, line: UInt = #line) -> CodableMessagesStore {
-        let sut = CodableMessagesStore(storeURL: Self.testStoreURL())
+        let sut = CodableMessagesStore(storeURL: Self.makeTestStoreURL())
         trackForMemoryLeaks(sut, file: file, line: line)
         return sut
     }
     
-    private static func testStoreURL() -> URL {
-        FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.appendingPathComponent("messages.store")
+    private static func makeTestStoreURL() -> URL {
+        FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first!.appendingPathComponent("\(type(of: self)).store")
     }
     
     private static func removeTestArtifacts() {
-        try? FileManager.default.removeItem(at: testStoreURL())
+        try? FileManager.default.removeItem(at: makeTestStoreURL())
     }
 }
