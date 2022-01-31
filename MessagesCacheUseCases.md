@@ -41,7 +41,7 @@ Retrieve
 Insert
     ✅ To empty cache stores data
     ✅ To non empty cache does not override previous data
-    - Error (if applicable, eg. no write permission)
+    ✅ Error (if applicable, eg. no write permission)
     
 - Side effects must run serially to avoid race-conditions
 
