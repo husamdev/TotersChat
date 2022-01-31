@@ -9,15 +9,53 @@ import XCTest
 import TotersMessaging
 
 class CodableMessagesStore {
+    
+    private struct Root: Codable {
+        let messages: [LocalMessage]
+    }
+    
+    private let storeURL: URL
+    
+    init(storeURL: URL) {
+        self.storeURL = storeURL
+    }
+    
     func retrieve(contact: LocalContact, completion: @escaping MessageStore.RetrieveCompletion) {
-        completion(.success([]))
+        guard let data = try? Data(contentsOf: storeURL) else {
+            return completion(.success([]))
+        }
+        
+        do {
+            let root = try JSONDecoder().decode(Root.self, from: data)
+            
+            completion(.success(root.messages))
+        } catch {
+            completion(.failure(error))
+        }
+    }
+    
+    func insert(_ message: LocalMessage, completion: @escaping MessageStore.InsertionCompletion) {
+        do {
+            let json = try JSONEncoder().encode(Root(messages: [message]))
+            try json.write(to: storeURL)
+            
+            completion(nil)
+        } catch {
+            completion(error)
+        }
     }
 }
 
 class CodableMessagesStoreTests: XCTestCase {
     
+    override class func tearDown() {
+        super.tearDown()
+        
+        try? FileManager.default.removeItem(at: testStoreURL())
+    }
+    
     func test_retrieve_deliversEmptyOnEmptyCache() {
-        let sut = CodableMessagesStore()
+        let sut = makeSUT()
         
         let exp = expectation(description: "Wait for completion")
         sut.retrieve(contact: anyContact().toLocal()) { result in
@@ -35,7 +73,7 @@ class CodableMessagesStoreTests: XCTestCase {
     }
     
     func test_retrieve_hasNoSideEffectsOnEmptyCache() {
-        let sut = CodableMessagesStore()
+        let sut = makeSUT()
         let contact = anyContact().toLocal()
         
         let exp = expectation(description: "Wait for completion")
@@ -57,4 +95,37 @@ class CodableMessagesStoreTests: XCTestCase {
         wait(for: [exp], timeout: 1.0)
     }
     
+    func test_retrieveAfterInsertingToEmptyCache_deliversInstertedValues() {
+        let sut = makeSUT()
+        let contact = anyContact()
+        let message = anyMessage(from: contact)
+        
+        let exp = expectation(description: "Wait for completion")
+        sut.insert(message.local) { insertionError in
+            
+            XCTAssertNil(insertionError, "Expected message to be inserted successfully.")
+            
+            sut.retrieve(contact: contact.toLocal()) { result in
+                switch (result) {
+                case let .success(retrievedMessages):
+                    XCTAssertEqual(retrievedMessages, [message.local])
+                    
+                default:
+                    XCTFail("Expected retrieving \(message) got \(result) instead")
+                }
+            }
+            
+            exp.fulfill()
+        }
+        
+        wait(for: [exp], timeout: 1.0)
+    }
+    
+    private func makeSUT() -> CodableMessagesStore {
+        CodableMessagesStore(storeURL: Self.testStoreURL())
+    }
+    
+    private static func testStoreURL() -> URL {
+        FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.appendingPathComponent("messages.store")
+    }
 }
