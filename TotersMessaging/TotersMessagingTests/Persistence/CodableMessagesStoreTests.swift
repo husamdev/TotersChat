@@ -167,18 +167,28 @@ class CodableMessagesStoreTests: XCTestCase {
         expect(sut, toCompleteWith: .success([secondMessage.local, thirdMessage.local]), whenContacting: secondContact)
     }
     
+    func test_retrieve_deliversFailureOnRetrieveError() {
+        let sut = makeSUT()
+        
+        try! "invalid data".write(to: makeTestStoreURL(), atomically: false, encoding: .utf8)
+        
+        expect(sut, toCompleteWith: .failure(anyNSError()), whenContacting: anyContact())
+    }
+    
     // MARK: - Helpers
-    private func expect(_ sut: CodableMessagesStore, toCompleteWith expectedResult: Result<[LocalMessage], Error>, whenContacting contact: Contact) {
+    private func expect(_ sut: CodableMessagesStore, toCompleteWith expectedResult: Result<[LocalMessage], Error>, whenContacting contact: Contact, file: StaticString = #file, line: UInt = #line) {
         let exp = expectation(description: "Wait for completion")
         
         sut.retrieve(contact: contact.toLocal()) { recievedResult in
             switch (recievedResult, expectedResult) {
             case let (.success(recievedMessages), .success(expectedMessages)):
+                XCTAssertEqual(recievedMessages, expectedMessages, file: file, line: line)
                 
-                XCTAssertEqual(recievedMessages, expectedMessages)
+            case (.failure, .failure):
+                break
                 
             default:
-                XCTFail("Expected \(expectedResult) got \(recievedResult) instead")
+                XCTFail("Expected \(expectedResult) got \(recievedResult) instead", file: file, line: line)
             }
             
             exp.fulfill()
@@ -187,10 +197,10 @@ class CodableMessagesStoreTests: XCTestCase {
         wait(for: [exp], timeout: 1.0)
     }
     
-    private func insert(_ sut: CodableMessagesStore, _ message: LocalMessage) {
+    private func insert(_ sut: CodableMessagesStore, _ message: LocalMessage, file: StaticString = #file, line: UInt = #line) {
         let exp = expectation(description: "Wait for completion")
         sut.insert(message) { insertionError in
-            XCTAssertNil(insertionError, "Expected message to be inserted successfully.")
+            XCTAssertNil(insertionError, "Expected message to be inserted successfully.", file: file, line: line)
             
             exp.fulfill()
         }
