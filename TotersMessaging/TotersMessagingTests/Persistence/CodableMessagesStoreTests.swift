@@ -138,18 +138,11 @@ class CodableMessagesStoreTests: XCTestCase {
     
     func test_retrieveAfterInsertingToEmptyCache_deliversInstertedValues() {
         let sut = makeSUT()
+        
         let contact = anyContact()
         let message = anyMessage(from: contact)
-
-        let exp = expectation(description: "Wait for completion")
-        sut.insert(message.local) { insertionError in
-
-            XCTAssertNil(insertionError, "Expected message to be inserted successfully.")
-
-            exp.fulfill()
-        }
-
-        wait(for: [exp], timeout: 1.0)
+        
+        insert(sut, message.local)
         
         expect(sut, toCompleteWith: .success([message.local]), whenContacting: contact)
     }
@@ -157,47 +150,27 @@ class CodableMessagesStoreTests: XCTestCase {
     func test_retrieveAfterInsertingTwiceToEmptyCache_deliversInstertedValues() {
         let sut = makeSUT()
         let contact = anyContact()
+        
         let message1 = anyMessage(from: contact)
         let message2 = anyMessage(from: contact)
-
-        let exp = expectation(description: "Wait for completion")
-        sut.insert(message1.local) { insertionError in
-
-            XCTAssertNil(insertionError, "Expected message to be inserted successfully.")
-
-            sut.insert(message2.local) { secondInsertionError in
-                XCTAssertNil(insertionError, "Expected message to be inserted successfully.")
-            }
-
-            exp.fulfill()
-        }
-
-        wait(for: [exp], timeout: 1.0)
+        
+        insert(sut, message1.local)
+        insert(sut, message2.local)
         
         expect(sut, toCompleteWith: .success([message1.local, message2.local]), whenContacting: contact)
     }
     
     func test_retrieveAfterInserting_deliversMessagesForSelectedContact() {
         let sut = makeSUT()
+        
         let contact1 = anyContact()
         let message1 = anyMessage(from: contact1)
         
         let contact2 = anyContact()
         let message2 = anyMessage(from: contact2)
 
-        let exp = expectation(description: "Wait for completion")
-        sut.insert(message1.local) { insertionError in
-
-            XCTAssertNil(insertionError, "Expected message to be inserted successfully.")
-
-            sut.insert(message2.local) { secondInsertionError in
-                XCTAssertNil(insertionError, "Expected message to be inserted successfully.")
-            }
-
-            exp.fulfill()
-        }
-
-        wait(for: [exp], timeout: 1.0)
+        insert(sut, message1.local)
+        insert(sut, message2.local)
         
         expect(sut, toCompleteWith: .success([message1.local]), whenContacting: contact1)
         expect(sut, toCompleteWith: .success([message2.local]), whenContacting: contact2)
@@ -216,6 +189,17 @@ class CodableMessagesStoreTests: XCTestCase {
             default:
                 XCTFail("Expected \(expectedResult) got \(recievedResult) instead")
             }
+            
+            exp.fulfill()
+        }
+        
+        wait(for: [exp], timeout: 1.0)
+    }
+    
+    private func insert(_ sut: CodableMessagesStore, _ message: LocalMessage) {
+        let exp = expectation(description: "Wait for completion")
+        sut.insert(message) { insertionError in
+            XCTAssertNil(insertionError, "Expected message to be inserted successfully.")
             
             exp.fulfill()
         }
