@@ -94,7 +94,7 @@ class CodableMessagesStore {
 class CodableMessagesStoreTests: XCTestCase {
     
     override class func setUp() {
-        removeTestArtifacts()
+        setupEmptyStoreState()
         
         super.setUp()
     }
@@ -102,7 +102,7 @@ class CodableMessagesStoreTests: XCTestCase {
     override class func tearDown() {
         super.tearDown()
         
-        removeTestArtifacts()
+        undoStoreSideEffects()
     }
     
     func test_retrieve_deliversEmptyOnEmptyCache() {
@@ -184,5 +184,13 @@ class CodableMessagesStoreTests: XCTestCase {
     
     private static func removeTestArtifacts() {
         try? FileManager.default.removeItem(at: makeTestStoreURL())
+    }
+    
+    private static func setupEmptyStoreState() {
+        removeTestArtifacts()
+    }
+    
+    private static func undoStoreSideEffects() {
+        removeTestArtifacts()
     }
 }
