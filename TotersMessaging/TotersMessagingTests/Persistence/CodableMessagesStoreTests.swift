@@ -66,9 +66,13 @@ class CodableMessagesStore {
     
     func retrieve(contact: LocalContact, completion: @escaping MessageStore.RetrieveCompletion) {
         do {
-            let localMessages = try cachedLocalMessages()
+            let allLocalMessages = try cachedLocalMessages()
             
-            completion(.success(localMessages))
+            let localMessagesWithContact = allLocalMessages.filter { message in
+                message.isWithContact(contact)
+            }
+            
+            completion(.success(localMessagesWithContact))
         } catch {
             completion(.failure(error))
         }
@@ -94,6 +98,12 @@ class CodableMessagesStore {
         
         let root = try JSONDecoder().decode(Root.self, from: data)
         return root.localMessages
+    }
+}
+
+extension LocalMessage {
+    func isWithContact(_ contact: LocalContact) -> Bool {
+        receiver == contact || sender == contact
     }
 }
 
@@ -196,6 +206,39 @@ class CodableMessagesStoreTests: XCTestCase {
                     switch (result) {
                     case let .success(retrievedMessages):
                         XCTAssertEqual(retrievedMessages, [message1.local, message2.local])
+
+                    default:
+                        XCTFail("Expected retrieving \(message1) and \(message2) got \(result) instead")
+                    }
+                }
+            }
+
+            exp.fulfill()
+        }
+
+        wait(for: [exp], timeout: 1.0)
+    }
+    
+    func test_retrieveAfterInserting_deliversMessagesForSelectedContact() {
+        let sut = makeSUT()
+        let contact1 = anyContact()
+        let message1 = anyMessage(from: contact1)
+        
+        let contact2 = anyContact()
+        let message2 = anyMessage(from: contact2)
+
+        let exp = expectation(description: "Wait for completion")
+        sut.insert(message1.local) { insertionError in
+
+            XCTAssertNil(insertionError, "Expected message to be inserted successfully.")
+
+            sut.insert(message2.local) { secondInsertionError in
+                XCTAssertNil(insertionError, "Expected message to be inserted successfully.")
+
+                sut.retrieve(contact: contact1.toLocal()) { result in
+                    switch (result) {
+                    case let .success(retrievedMessages):
+                        XCTAssertEqual(retrievedMessages, [message1.local])
 
                     default:
                         XCTFail("Expected retrieving \(message1) and \(message2) got \(result) instead")
