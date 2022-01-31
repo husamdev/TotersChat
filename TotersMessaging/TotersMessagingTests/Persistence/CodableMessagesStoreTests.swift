@@ -65,14 +65,10 @@ class CodableMessagesStore {
     }
     
     func retrieve(contact: LocalContact, completion: @escaping MessageStore.RetrieveCompletion) {
-        guard let data = try? Data(contentsOf: storeURL) else {
-            return completion(.success([]))
-        }
-        
         do {
-            let root = try JSONDecoder().decode(Root.self, from: data)
+            let localMessages = try cachedLocalMessages()
             
-            completion(.success(root.localMessages))
+            completion(.success(localMessages))
         } catch {
             completion(.failure(error))
         }
@@ -88,6 +84,15 @@ class CodableMessagesStore {
         } catch {
             completion(error)
         }
+    }
+    
+    private func cachedLocalMessages() throws -> [LocalMessage] {
+        guard let data = try? Data(contentsOf: storeURL) else {
+            return []
+        }
+        
+        let root = try JSONDecoder().decode(Root.self, from: data)
+        return root.localMessages
     }
 }
 
