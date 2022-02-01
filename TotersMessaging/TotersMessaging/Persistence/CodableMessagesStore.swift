@@ -56,6 +56,8 @@ public class CodableMessagesStore: MessageStore {
         }
     }
     
+    private struct MessageAlreadySavedToStore: Error {}
+    
     private let storeURL: URL
     
     public init(storeURL: URL) {
@@ -79,6 +81,11 @@ public class CodableMessagesStore: MessageStore {
     public func insert(_ message: LocalMessage, completion: @escaping MessageStore.InsertionCompletion) {
         do {
             let cachedLocalMessages = try cachedLocalMessages()
+            
+            guard !cachedLocalMessages.contains(message) else {
+                throw MessageAlreadySavedToStore()
+            }
+            
             let root = Root(localMessages: cachedLocalMessages + [message])
             let json = try JSONEncoder().encode(root)
             try json.write(to: storeURL)
