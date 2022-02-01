@@ -106,6 +106,17 @@ class CodableMessagesStoreTests: XCTestCase {
         XCTAssertNotNil(insertionError, "Expected cache insertion failure got success instead.")
     }
     
+    func test_insert_deliversOneMessageWhenInsertingSameMessageTwice() {
+        let sut = makeSUT()
+        let contact = anyContact()
+        let message = anyMessage(from: contact)
+        
+        insert(sut, message.local)
+        insert(sut, message.local)
+        
+        expect(sut, toCompleteWith: .success([message.local]), whenContacting: contact)
+    }
+    
     func test_insert_deliversErrorWhenInsertingSameMessageTwice() {
         let sut = makeSUT()
         let contact = anyContact()
@@ -116,8 +127,6 @@ class CodableMessagesStoreTests: XCTestCase {
         let secondInsertionError = insert(sut, message.local)
         
         XCTAssertNotNil(secondInsertionError)
-        
-        expect(sut, toCompleteWith: .success([message.local]), whenContacting: contact)
     }
     
     func test_storeSideEffects_runSerially() {
