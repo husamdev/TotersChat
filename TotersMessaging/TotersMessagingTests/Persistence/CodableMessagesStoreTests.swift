@@ -192,8 +192,10 @@ class CodableMessagesStoreTests: XCTestCase {
     }
     
     private func makeSUT(storeURL: URL? = nil, file: StaticString = #file, line: UInt = #line) -> MessageStore {
-        let sut = CodableMessagesStore(storeURL: storeURL ?? makeTestStoreURL())
+        let store = CodableMessagesStore(storeURL: storeURL ?? makeTestStoreURL())
+        let sut = BackgroundQueueMessagesStore(decoratee: store)
         trackForMemoryLeaks(sut, file: file, line: line)
+        trackForMemoryLeaks(store, file: file, line: line)
         return sut
     }
     
