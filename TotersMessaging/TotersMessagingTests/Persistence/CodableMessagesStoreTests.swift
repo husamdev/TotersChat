@@ -106,6 +106,36 @@ class CodableMessagesStoreTests: XCTestCase {
         XCTAssertNotNil(insertionError, "Expected cache insertion failure got success instead.")
     }
     
+    func test_storeSideEffects_runSerially() {
+        let sut = makeSUT()
+        
+        var completedOperationsOrder = [XCTestExpectation]()
+        
+        let op1 = expectation(description: "Operation 1")
+        let message1 = anyMessage(to: anyContact())
+        sut.insert(message1.local) { _ in
+            completedOperationsOrder.append(op1)
+            op1.fulfill()
+        }
+        
+        let op2 = expectation(description: "Operation 2")
+        sut.retrieve(contact: anyContact().toLocal()) { _ in
+            completedOperationsOrder.append(op2)
+            op2.fulfill()
+        }
+        
+        let op3 = expectation(description: "Operation 3")
+        let message3 = anyMessage(to: anyContact())
+        sut.insert(message3.local) { _ in
+            completedOperationsOrder.append(op3)
+            op3.fulfill()
+        }
+        
+        waitForExpectations(timeout: 5.0)
+        
+        XCTAssertEqual(completedOperationsOrder, [op1, op2, op3])
+    }
+    
     // MARK: - Helpers
     private func expect(_ sut: MessageStore, toCompleteWith expectedResult: Result<[LocalMessage], Error>, whenContacting contact: Contact, file: StaticString = #file, line: UInt = #line) {
         let exp = expectation(description: "Wait for completion")
