@@ -8,7 +8,7 @@
 import Foundation
 
 public class CodableMessagesStore: MessageStore {
-    private struct Root: Codable {
+    private struct Cache: Codable {
         private let messages: [CodableMessage]
         
         var localMessages: [LocalMessage] {
@@ -86,7 +86,7 @@ public class CodableMessagesStore: MessageStore {
                 throw MessageAlreadySavedToStore()
             }
             
-            let root = Root(localMessages: cachedLocalMessages + [message])
+            let root = Cache(localMessages: cachedLocalMessages + [message])
             let json = try JSONEncoder().encode(root)
             try json.write(to: storeURL)
             
@@ -103,7 +103,7 @@ extension CodableMessagesStore {
             return []
         }
         
-        let root = try JSONDecoder().decode(Root.self, from: data)
+        let root = try JSONDecoder().decode(Cache.self, from: data)
         return root.localMessages
     }
 }
