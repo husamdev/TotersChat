@@ -169,13 +169,12 @@
 		0DD07C6627A0BC8F006D9A2A /* Persistence */ = {
 			isa = PBXGroup;
 			children = (
+				0DDB455F27AE62B500053E83 /* Codable Message Store */,
 				0D3E5ABA27A6910700C54DDA /* Helpers */,
 				0DD07C6727A0BC9F006D9A2A /* LocalMessagesLoader.swift */,
 				0DD07C6927A0BD0E006D9A2A /* MessageStore.swift */,
 				0D6F6A8227A1F6F900DD01DA /* LocalMessage.swift */,
 				0D6F6A8427A1F72600DD01DA /* LocalContact.swift */,
-				0D88D2F627A8A89D00D65801 /* CodableMessagesStore.swift */,
-				0D69044827A9E25000E5A29C /* BackgroundQueueMessagesStore.swift */,
 			);
 			path = Persistence;
 			sourceTree = "<group>";
@@ -188,6 +187,15 @@
 				0DD07C7027A0BEBA006D9A2A /* XCTestCase+MemoryTracking.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		0DDB455F27AE62B500053E83 /* Codable Message Store */ = {
+			isa = PBXGroup;
+			children = (
+				0D88D2F627A8A89D00D65801 /* CodableMessagesStore.swift */,
+				0D69044827A9E25000E5A29C /* BackgroundQueueMessagesStore.swift */,
+			);
+			path = "Codable Message Store";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
