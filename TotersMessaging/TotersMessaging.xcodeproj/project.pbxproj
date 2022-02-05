@@ -166,9 +166,9 @@
 			children = (
 				0D6F6A7F27A1EB0100DD01DA /* Helpers */,
 				0DDB456F27AE72C200053E83 /* MessageStoreSpecs */,
+				0DDB457227AE73AC00053E83 /* Message Store */,
 				0DD07C6427A0B35E006D9A2A /* CacheMessageUseCaseTests.swift */,
 				0D6F6A7D27A1E7D400DD01DA /* LoadMessagesFromCacheUseCaseTests.swift */,
-				0DAB2BC727A7206A00F8E5DF /* CodableMessagesStoreTests.swift */,
 			);
 			path = Persistence;
 			sourceTree = "<group>";
@@ -251,6 +251,30 @@
 				0D80C24B27AC92DE00BF54FE /* XCTestCase+FailableInsertMessageStoreSpecs.swift */,
 			);
 			path = MessageStoreSpecs;
+			sourceTree = "<group>";
+		};
+		0DDB457227AE73AC00053E83 /* Message Store */ = {
+			isa = PBXGroup;
+			children = (
+				0DDB457327AE73BC00053E83 /* Codable */,
+				0DDB457427AE73C200053E83 /* CoreData */,
+			);
+			path = "Message Store";
+			sourceTree = "<group>";
+		};
+		0DDB457327AE73BC00053E83 /* Codable */ = {
+			isa = PBXGroup;
+			children = (
+				0DAB2BC727A7206A00F8E5DF /* CodableMessagesStoreTests.swift */,
+			);
+			path = Codable;
+			sourceTree = "<group>";
+		};
+		0DDB457427AE73C200053E83 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CoreData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
