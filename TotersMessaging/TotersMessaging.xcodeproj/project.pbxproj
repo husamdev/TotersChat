@@ -169,7 +169,7 @@
 		0DD07C6627A0BC8F006D9A2A /* Persistence */ = {
 			isa = PBXGroup;
 			children = (
-				0DDB455F27AE62B500053E83 /* Codable Message Store */,
+				0DDB456127AE634000053E83 /* Message Store */,
 				0D3E5ABA27A6910700C54DDA /* Helpers */,
 				0DD07C6727A0BC9F006D9A2A /* LocalMessagesLoader.swift */,
 				0DD07C6927A0BD0E006D9A2A /* MessageStore.swift */,
@@ -189,13 +189,29 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
-		0DDB455F27AE62B500053E83 /* Codable Message Store */ = {
+		0DDB455F27AE62B500053E83 /* Codable */ = {
 			isa = PBXGroup;
 			children = (
 				0D88D2F627A8A89D00D65801 /* CodableMessagesStore.swift */,
 				0D69044827A9E25000E5A29C /* BackgroundQueueMessagesStore.swift */,
 			);
-			path = "Codable Message Store";
+			path = Codable;
+			sourceTree = "<group>";
+		};
+		0DDB456027AE631F00053E83 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		0DDB456127AE634000053E83 /* Message Store */ = {
+			isa = PBXGroup;
+			children = (
+				0DDB455F27AE62B500053E83 /* Codable */,
+				0DDB456027AE631F00053E83 /* CoreData */,
+			);
+			path = "Message Store";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
