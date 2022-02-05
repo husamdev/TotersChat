@@ -30,6 +30,9 @@
 		0DD07C6D27A0BDD3006D9A2A /* XCTestCase+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD07C6C27A0BDD3006D9A2A /* XCTestCase+Helpers.swift */; };
 		0DD07C6F27A0BE29006D9A2A /* XCTestCase+Messaging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD07C6E27A0BE29006D9A2A /* XCTestCase+Messaging.swift */; };
 		0DD07C7127A0BEBA006D9A2A /* XCTestCase+MemoryTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD07C7027A0BEBA006D9A2A /* XCTestCase+MemoryTracking.swift */; };
+		0DDB456427AE63E200053E83 /* MessageModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0DDB456227AE63E200053E83 /* MessageModel.xcdatamodeld */; };
+		0DDB456727AE66C700053E83 /* MOMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DDB456627AE66C700053E83 /* MOMessage.swift */; };
+		0DDB456927AE678D00053E83 /* MOContact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DDB456827AE678D00053E83 /* MOContact.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +70,9 @@
 		0DD07C6C27A0BDD3006D9A2A /* XCTestCase+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+Helpers.swift"; sourceTree = "<group>"; };
 		0DD07C6E27A0BE29006D9A2A /* XCTestCase+Messaging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+Messaging.swift"; sourceTree = "<group>"; };
 		0DD07C7027A0BEBA006D9A2A /* XCTestCase+MemoryTracking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+MemoryTracking.swift"; sourceTree = "<group>"; };
+		0DDB456327AE63E200053E83 /* MessageModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MessageModel.xcdatamodel; sourceTree = "<group>"; };
+		0DDB456627AE66C700053E83 /* MOMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MOMessage.swift; sourceTree = "<group>"; };
+		0DDB456827AE678D00053E83 /* MOContact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MOContact.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -201,6 +207,8 @@
 		0DDB456027AE631F00053E83 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				0DDB456527AE66B700053E83 /* Models */,
+				0DDB456227AE63E200053E83 /* MessageModel.xcdatamodeld */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -212,6 +220,15 @@
 				0DDB456027AE631F00053E83 /* CoreData */,
 			);
 			path = "Message Store";
+			sourceTree = "<group>";
+		};
+		0DDB456527AE66B700053E83 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0DDB456627AE66C700053E83 /* MOMessage.swift */,
+				0DDB456827AE678D00053E83 /* MOContact.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -326,10 +343,13 @@
 			files = (
 				0D3E5ABC27A6912500C54DDA /* Message+Extensions.swift in Sources */,
 				0DD07C6027A0B244006D9A2A /* Contact.swift in Sources */,
+				0DDB456427AE63E200053E83 /* MessageModel.xcdatamodeld in Sources */,
 				0D3E5ABE27A6913F00C54DDA /* Contact+Extensions.swift in Sources */,
 				0DD07C5E27A0B221006D9A2A /* Message.swift in Sources */,
+				0DDB456927AE678D00053E83 /* MOContact.swift in Sources */,
 				0D6F6A8527A1F72600DD01DA /* LocalContact.swift in Sources */,
 				0DD07C6827A0BC9F006D9A2A /* LocalMessagesLoader.swift in Sources */,
+				0DDB456727AE66C700053E83 /* MOMessage.swift in Sources */,
 				0DD07C6A27A0BD0E006D9A2A /* MessageStore.swift in Sources */,
 				0D6F6A8327A1F6F900DD01DA /* LocalMessage.swift in Sources */,
 				0D88D2F727A8A89D00D65801 /* CodableMessagesStore.swift in Sources */,
@@ -624,6 +644,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		0DDB456227AE63E200053E83 /* MessageModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				0DDB456327AE63E200053E83 /* MessageModel.xcdatamodel */,
+			);
+			currentVersion = 0DDB456327AE63E200053E83 /* MessageModel.xcdatamodel */;
+			path = MessageModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 0D06E7F4279F38D200E551A1 /* Project object */;
 }
