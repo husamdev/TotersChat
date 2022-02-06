@@ -19,10 +19,37 @@ public class CoreDataMessageStore: MessageStore {
     }
     
     public func insert(_ message: LocalMessage, completion: @escaping InsertionCompletion) {
-        
+        perform { context in
+            do {
+                _ = MOMessage(context: context, localMessage: message)
+                try context.save()
+                
+                completion(nil)
+            } catch {
+                completion(error)
+            }
+        }
     }
     
     public func retrieve(contact: LocalContact, completion: @escaping RetrieveCompletion) {
-        completion(.success([]))
+        perform { context in
+            do {
+                let request = MOMessage.fetchRequest()
+                request.predicate = NSPredicate(format: "sender.id == %@ OR receiver.id == %@", argumentArray: [contact.id, contact.id])
+                
+                let localMessages = try context
+                    .fetch(request)
+                    .map(\.localMessage)
+                
+                completion(.success(localMessages))
+            } catch {
+                completion(.failure(error))
+            }
+        }
+    }
+    
+    private func perform(_ action: @escaping (NSManagedObjectContext) -> Void) {
+        let context = self.context
+        context.perform { action(context) }
     }
 }

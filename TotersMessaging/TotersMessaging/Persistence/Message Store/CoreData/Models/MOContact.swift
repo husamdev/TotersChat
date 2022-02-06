@@ -8,6 +8,7 @@
 import Foundation
 import CoreData
 
+@objc(MOContact)
 public class MOContact: NSManagedObject {
     @NSManaged public var id: UUID
     @NSManaged public var firstName: String
@@ -18,6 +19,21 @@ public class MOContact: NSManagedObject {
     
     @nonobjc
     public class func fetchRequest() -> NSFetchRequest<MOContact> {
-        NSFetchRequest<MOContact>(entityName: className())
+        NSFetchRequest<MOContact>(entityName: entity().name!)
+    }
+}
+
+extension MOContact {
+    convenience init(context: NSManagedObjectContext, localContact: LocalContact) {
+        self.init(context: context)
+        id = localContact.id
+        firstName = localContact.firstName
+        lastName = localContact.lastName
+    }
+}
+
+extension MOContact {
+    var localContact: LocalContact {
+        LocalContact(id: id, firstName: firstName, lastName: lastName)
     }
 }
