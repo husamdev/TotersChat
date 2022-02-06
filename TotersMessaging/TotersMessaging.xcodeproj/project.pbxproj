@@ -35,6 +35,8 @@
 		0DDB456927AE678D00053E83 /* MOContact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DDB456827AE678D00053E83 /* MOContact.swift */; };
 		0DDB456C27AE6FF500053E83 /* NSPersistentContainer+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DDB456B27AE6FF500053E83 /* NSPersistentContainer+Extensions.swift */; };
 		0DDB456E27AE701400053E83 /* NSManagedObjectModel+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DDB456D27AE701400053E83 /* NSManagedObjectModel+Extensions.swift */; };
+		0DDB457627AE741900053E83 /* CoreDataMessageStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DDB457527AE741900053E83 /* CoreDataMessageStoreTests.swift */; };
+		0DDB457927AE749200053E83 /* CoreDataMessageStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DDB457827AE749200053E83 /* CoreDataMessageStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +79,8 @@
 		0DDB456827AE678D00053E83 /* MOContact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MOContact.swift; sourceTree = "<group>"; };
 		0DDB456B27AE6FF500053E83 /* NSPersistentContainer+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSPersistentContainer+Extensions.swift"; sourceTree = "<group>"; };
 		0DDB456D27AE701400053E83 /* NSManagedObjectModel+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObjectModel+Extensions.swift"; sourceTree = "<group>"; };
+		0DDB457527AE741900053E83 /* CoreDataMessageStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataMessageStoreTests.swift; sourceTree = "<group>"; };
+		0DDB457827AE749200053E83 /* CoreDataMessageStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataMessageStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -211,6 +215,7 @@
 				0DDB456A27AE6FE600053E83 /* Extensions */,
 				0DDB456527AE66B700053E83 /* Models */,
 				0DDB456227AE63E200053E83 /* MessageModel.xcdatamodeld */,
+				0DDB457827AE749200053E83 /* CoreDataMessageStore.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -273,6 +278,7 @@
 		0DDB457427AE73C200053E83 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				0DDB457527AE741900053E83 /* CoreDataMessageStoreTests.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -397,6 +403,7 @@
 				0DD07C6827A0BC9F006D9A2A /* LocalMessagesLoader.swift in Sources */,
 				0DDB456727AE66C700053E83 /* MOMessage.swift in Sources */,
 				0DD07C6A27A0BD0E006D9A2A /* MessageStore.swift in Sources */,
+				0DDB457927AE749200053E83 /* CoreDataMessageStore.swift in Sources */,
 				0D6F6A8327A1F6F900DD01DA /* LocalMessage.swift in Sources */,
 				0DDB456E27AE701400053E83 /* NSManagedObjectModel+Extensions.swift in Sources */,
 				0D88D2F727A8A89D00D65801 /* CodableMessagesStore.swift in Sources */,
@@ -415,6 +422,7 @@
 				0D6F6A7E27A1E7D400DD01DA /* LoadMessagesFromCacheUseCaseTests.swift in Sources */,
 				0D69044D27A9E69B00E5A29C /* XCTestCase+MessageStoreSpecsHelpers.swift in Sources */,
 				0DD07C6527A0B35E006D9A2A /* CacheMessageUseCaseTests.swift in Sources */,
+				0DDB457627AE741900053E83 /* CoreDataMessageStoreTests.swift in Sources */,
 				0DAB2BC827A7206A00F8E5DF /* CodableMessagesStoreTests.swift in Sources */,
 				0DD07C7127A0BEBA006D9A2A /* XCTestCase+MemoryTracking.swift in Sources */,
 				0D80C24A27AC921300BF54FE /* XCTestCase+MessageStoreSpecs.swift in Sources */,
