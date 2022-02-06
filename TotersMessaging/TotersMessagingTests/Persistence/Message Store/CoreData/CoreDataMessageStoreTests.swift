@@ -34,7 +34,9 @@ class CoreDataMessageStoreTests: XCTestCase, MessageStoreSpecs {
     }
     
     func test_retrieve_deliversMessagesForSelectedContact() {
+        let sut = makeSUT()
         
+        assertRetrieveDeliversMessagesForSelectedContact(sut)
     }
     
     func test_storeSideEffects_runSerially() {
