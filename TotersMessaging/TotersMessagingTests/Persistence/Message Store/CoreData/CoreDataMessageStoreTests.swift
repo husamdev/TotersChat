@@ -40,7 +40,9 @@ class CoreDataMessageStoreTests: XCTestCase, MessageStoreSpecs {
     }
     
     func test_storeSideEffects_runSerially() {
+        let sut = makeSUT()
         
+        assertStoreSideEffectsRunSerially(sut)
     }
     
     // MARK: - Helpers
