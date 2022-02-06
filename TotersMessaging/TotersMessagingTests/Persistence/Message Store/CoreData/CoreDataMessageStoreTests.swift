@@ -16,7 +16,9 @@ class CoreDataMessageStoreTests: XCTestCase, MessageStoreSpecs {
     }
     
     func test_retrieve_hasNoSideEffectsOnEmptyCache() {
+        let sut = makeSUT()
         
+        assertRetrieveHasNoSideEffectsOnEmptyCache(sut)
     }
     
     func test_retrieve_deliversFoundValuesOnNonEmptyCache() {
