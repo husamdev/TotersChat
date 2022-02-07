@@ -24,16 +24,28 @@ public class MOContact: NSManagedObject {
 }
 
 extension MOContact {
-    convenience init(context: NSManagedObjectContext, localContact: LocalContact) {
-        self.init(context: context)
-        id = localContact.id
-        firstName = localContact.firstName
-        lastName = localContact.lastName
+    var localContact: LocalContact {
+        LocalContact(id: id, firstName: firstName, lastName: lastName)
     }
 }
 
 extension MOContact {
-    var localContact: LocalContact {
-        LocalContact(id: id, firstName: firstName, lastName: lastName)
+    static func contact(from localContact: LocalContact, in context: NSManagedObjectContext) throws -> MOContact {
+        let request = fetchRequest()
+        request.predicate = NSPredicate(format: "id == %@", argumentArray: [localContact.id])
+        request.fetchLimit = 1
+        
+        if let foundContact = try context.fetch(request).first {
+            return foundContact
+        }
+        
+        let newContact = MOContact(context: context)
+        newContact.id = localContact.id
+        newContact.firstName = localContact.firstName
+        newContact.lastName = localContact.lastName
+        
+        try context.save()
+        
+        return newContact
     }
 }

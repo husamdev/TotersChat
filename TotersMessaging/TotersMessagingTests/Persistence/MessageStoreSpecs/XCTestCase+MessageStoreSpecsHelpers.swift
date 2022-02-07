@@ -31,9 +31,9 @@ extension MessageStoreSpecs where Self: XCTestCase {
         wait(for: [exp], timeout: 1.0)
     }
     
-    func expect(_ sut: MessageStore, toRetrieveTwice expectedResult: Result<[LocalMessage], Error>, whenContacting contact: Contact) {
-        expect(sut, toCompleteWith: expectedResult, whenContacting: contact)
-        expect(sut, toCompleteWith: expectedResult, whenContacting: contact)
+    func expect(_ sut: MessageStore, toRetrieveTwice expectedResult: Result<[LocalMessage], Error>, whenContacting contact: Contact, file: StaticString = #file, line: UInt = #line) {
+        expect(sut, toCompleteWith: expectedResult, whenContacting: contact, file: file, line: line)
+        expect(sut, toCompleteWith: expectedResult, whenContacting: contact, file: file, line: line)
     }
     
     @discardableResult

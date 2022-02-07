@@ -8,7 +8,8 @@
 import XCTest
 import TotersMessaging
 
-class CoreDataMessageStoreTests: XCTestCase, MessageStoreSpecs {
+class CoreDataMessageStoreTests: XCTestCase, MessageStoreSpecs, FailableInsertMessageStoreSpecs {
+    
     func test_retrieve_deliversEmptyOnEmptyCache() {
         let sut = makeSUT()
         
@@ -43,6 +44,18 @@ class CoreDataMessageStoreTests: XCTestCase, MessageStoreSpecs {
         let sut = makeSUT()
         
         assertStoreSideEffectsRunSerially(sut)
+    }
+    
+    func test_insert_deliversErrorOnInsertionError() {}
+    
+    func test_insert_deliversOneMessageWhenInsertingSameMessageTwice() {
+        let sut = makeSUT()
+        
+        assertInsertDeliversOneMessageWhenInsertingSameMessageTwice(sut)
+    }
+    
+    func test_insert_deliversErrorWhenInsertingSameMessageTwice() {
+        
     }
     
     // MARK: - Helpers

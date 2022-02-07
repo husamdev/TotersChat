@@ -21,7 +21,7 @@ public class CoreDataMessageStore: MessageStore {
     public func insert(_ message: LocalMessage, completion: @escaping InsertionCompletion) {
         perform { context in
             do {
-                _ = MOMessage(context: context, localMessage: message)
+                _ = try MOMessage.message(from: message, in: context)
                 try context.save()
                 
                 completion(nil)
@@ -36,6 +36,7 @@ public class CoreDataMessageStore: MessageStore {
             do {
                 let request = MOMessage.fetchRequest()
                 request.predicate = NSPredicate(format: "sender.id == %@ OR receiver.id == %@", argumentArray: [contact.id, contact.id])
+                request.sortDescriptors = [NSSortDescriptor(key: "date", ascending: true)]
                 
                 let localMessages = try context
                     .fetch(request)
