@@ -55,7 +55,9 @@ class CoreDataMessageStoreTests: XCTestCase, MessageStoreSpecs, FailableInsertMe
     }
     
     func test_insert_deliversErrorWhenInsertingSameMessageTwice() {
+        let sut = makeSUT()
         
+        assertInsertDeliversErrorWhenInsertingSameMessageTwice(sut)
     }
     
     // MARK: - Helpers
