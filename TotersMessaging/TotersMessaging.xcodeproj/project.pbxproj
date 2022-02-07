@@ -180,7 +180,7 @@
 		0DD07C6627A0BC8F006D9A2A /* Persistence */ = {
 			isa = PBXGroup;
 			children = (
-				0DDB456127AE634000053E83 /* Message Store */,
+				0DDB456127AE634000053E83 /* Message Stores */,
 				0D3E5ABA27A6910700C54DDA /* Helpers */,
 				0DD07C6727A0BC9F006D9A2A /* LocalMessagesLoader.swift */,
 				0DD07C6927A0BD0E006D9A2A /* MessageStore.swift */,
@@ -220,13 +220,13 @@
 			path = CoreData;
 			sourceTree = "<group>";
 		};
-		0DDB456127AE634000053E83 /* Message Store */ = {
+		0DDB456127AE634000053E83 /* Message Stores */ = {
 			isa = PBXGroup;
 			children = (
 				0DDB455F27AE62B500053E83 /* Codable */,
 				0DDB456027AE631F00053E83 /* CoreData */,
 			);
-			path = "Message Store";
+			path = "Message Stores";
 			sourceTree = "<group>";
 		};
 		0DDB456527AE66B700053E83 /* Models */ = {
