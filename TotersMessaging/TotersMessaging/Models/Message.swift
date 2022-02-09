@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct Message {
+public struct Message: Equatable {
     public let id: UUID
     public let message: String
     public let date: Date

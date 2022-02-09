@@ -11,6 +11,8 @@
 		0D06E818279F394100E551A1 /* MessagingTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D06E817279F394100E551A1 /* MessagingTestCase.swift */; };
 		0D18479227B4336D00ED3A03 /* TotersMessagingIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D18479127B4336D00ED3A03 /* TotersMessagingIntegrationTests.swift */; };
 		0D18479327B4336D00ED3A03 /* TotersMessaging.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D06E7FD279F38D200E551A1 /* TotersMessaging.framework */; };
+		0D18479927B435A300ED3A03 /* XCTestCase+MemoryTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD07C7027A0BEBA006D9A2A /* XCTestCase+MemoryTracking.swift */; };
+		0D18479A27B4361000ED3A03 /* XCTestCase+Messaging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD07C6E27A0BE29006D9A2A /* XCTestCase+Messaging.swift */; };
 		0D3E5ABC27A6912500C54DDA /* Message+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3E5ABB27A6912500C54DDA /* Message+Extensions.swift */; };
 		0D3E5ABE27A6913F00C54DDA /* Contact+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3E5ABD27A6913F00C54DDA /* Contact+Extensions.swift */; };
 		0D69044927A9E25000E5A29C /* BackgroundQueueMessagesStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D69044827A9E25000E5A29C /* BackgroundQueueMessagesStore.swift */; };
@@ -502,6 +504,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D18479A27B4361000ED3A03 /* XCTestCase+Messaging.swift in Sources */,
+				0D18479927B435A300ED3A03 /* XCTestCase+MemoryTracking.swift in Sources */,
 				0D18479227B4336D00ED3A03 /* TotersMessagingIntegrationTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

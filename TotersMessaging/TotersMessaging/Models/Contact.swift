@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct Contact {
+public struct Contact: Equatable {
     public let id: UUID
     public let firstName: String
     public let lastName: String
