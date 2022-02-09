@@ -14,13 +14,23 @@ class TotersMessagingIntegrationTests: XCTestCase {
     func test_load_deliversEmptyCacheOnEmptyCache() {
         let sut = makeSUT()
         
+        expect(sut, with: anyContact(), toCompleteWith: .success([]))
+    }
+    
+    // MARK: - Helpers
+    private func expect(_ sut: LocalMessagesLoader, with contact: Contact, toCompleteWith expectedResult: LocalMessagesLoader.LoadResult, file: StaticString = #file, line: UInt = #line) {
         let exp = expectation(description: "Wait for completion")
-        sut.loadMessages(with: anyContact()) { result in
-            switch result {
-            case let .success(messages):
-                XCTAssertEqual(messages, [], "Expected empty cache")
-            case let .failure(error):
-                XCTFail("Expected empty cache got \(error) instead.")
+        
+        sut.loadMessages(with: contact) { receivedResult in
+            switch (receivedResult, expectedResult) {
+            case let (.success(receivedMessages), .success(expectedMessages)):
+                XCTAssertEqual(receivedMessages, expectedMessages, file: file, line: line)
+                
+            case let (.failure(receivedError), .failure(expectedError)):
+                XCTAssertEqual(receivedError as NSError, expectedError as NSError, file: file, line: line)
+                
+            default:
+                XCTFail("Expected \(expectedResult) got \(receivedResult) instead.")
             }
             
             exp.fulfill()
@@ -29,7 +39,6 @@ class TotersMessagingIntegrationTests: XCTestCase {
         wait(for: [exp], timeout: 1.0)
     }
     
-    // MARK: - Helpers
     private func makeSUT(file: StaticString = #file, line: UInt = #line) -> LocalMessagesLoader {
         let storeBundle = Bundle(for: CoreDataMessageStore.self)
         let messageStore = try! CoreDataMessageStore(storeURL: testSpecificStoreURL(), bundle: storeBundle)
