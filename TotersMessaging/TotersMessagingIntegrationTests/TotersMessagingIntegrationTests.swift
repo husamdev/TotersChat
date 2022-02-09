@@ -17,6 +17,24 @@ class TotersMessagingIntegrationTests: XCTestCase {
         expect(sut, with: anyContact(), toCompleteWith: .success([]))
     }
     
+    func test_load_deliversItemsSavedOnASeparateInstance() {
+        let sutToPerformSave = makeSUT()
+        let sutToPerformLoad = makeSUT()
+        
+        let contact = anyContact()
+        let message = anyMessage(to: contact)
+        
+        let exp = expectation(description: "Wait for completion")
+        sutToPerformSave.save(message.model) { insertionError in
+            XCTAssertNil(insertionError, "Expected to save message successfully")
+            exp.fulfill()
+        }
+        
+        wait(for: [exp], timeout: 1.0)
+        
+        expect(sutToPerformLoad, with: contact, toCompleteWith: .success([message.model]))
+    }
+    
     // MARK: - Helpers
     private func expect(_ sut: LocalMessagesLoader, with contact: Contact, toCompleteWith expectedResult: LocalMessagesLoader.LoadResult, file: StaticString = #file, line: UInt = #line) {
         let exp = expectation(description: "Wait for completion")
