@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		0D06E806279F38D200E551A1 /* TotersMessaging.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D06E7FD279F38D200E551A1 /* TotersMessaging.framework */; };
 		0D06E818279F394100E551A1 /* MessagingTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D06E817279F394100E551A1 /* MessagingTestCase.swift */; };
+		0D18479227B4336D00ED3A03 /* TotersMessagingIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D18479127B4336D00ED3A03 /* TotersMessagingIntegrationTests.swift */; };
+		0D18479327B4336D00ED3A03 /* TotersMessaging.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D06E7FD279F38D200E551A1 /* TotersMessaging.framework */; };
 		0D3E5ABC27A6912500C54DDA /* Message+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3E5ABB27A6912500C54DDA /* Message+Extensions.swift */; };
 		0D3E5ABE27A6913F00C54DDA /* Contact+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3E5ABD27A6913F00C54DDA /* Contact+Extensions.swift */; };
 		0D69044927A9E25000E5A29C /* BackgroundQueueMessagesStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D69044827A9E25000E5A29C /* BackgroundQueueMessagesStore.swift */; };
@@ -37,11 +39,17 @@
 		0DDB456E27AE701400053E83 /* NSManagedObjectModel+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DDB456D27AE701400053E83 /* NSManagedObjectModel+Extensions.swift */; };
 		0DDB457627AE741900053E83 /* CoreDataMessageStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DDB457527AE741900053E83 /* CoreDataMessageStoreTests.swift */; };
 		0DDB457927AE749200053E83 /* CoreDataMessageStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DDB457827AE749200053E83 /* CoreDataMessageStore.swift */; };
-		0DDBA52D27B1A48D009CEC0E /* TotersMessagingIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DDBA52C27B1A48D009CEC0E /* TotersMessagingIntegrationTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		0D06E807279F38D200E551A1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0D06E7F4279F38D200E551A1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0D06E7FC279F38D200E551A1;
+			remoteInfo = TotersMessaging;
+		};
+		0D18479427B4336D00ED3A03 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0D06E7F4279F38D200E551A1 /* Project object */;
 			proxyType = 1;
@@ -54,6 +62,8 @@
 		0D06E7FD279F38D200E551A1 /* TotersMessaging.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TotersMessaging.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D06E805279F38D200E551A1 /* TotersMessagingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TotersMessagingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D06E817279F394100E551A1 /* MessagingTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagingTestCase.swift; sourceTree = "<group>"; };
+		0D18478F27B4336D00ED3A03 /* TotersMessagingIntegrationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TotersMessagingIntegrationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0D18479127B4336D00ED3A03 /* TotersMessagingIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotersMessagingIntegrationTests.swift; sourceTree = "<group>"; };
 		0D3E5ABB27A6912500C54DDA /* Message+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Message+Extensions.swift"; sourceTree = "<group>"; };
 		0D3E5ABD27A6913F00C54DDA /* Contact+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Contact+Extensions.swift"; sourceTree = "<group>"; };
 		0D69044827A9E25000E5A29C /* BackgroundQueueMessagesStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundQueueMessagesStore.swift; sourceTree = "<group>"; };
@@ -82,8 +92,6 @@
 		0DDB456D27AE701400053E83 /* NSManagedObjectModel+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObjectModel+Extensions.swift"; sourceTree = "<group>"; };
 		0DDB457527AE741900053E83 /* CoreDataMessageStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataMessageStoreTests.swift; sourceTree = "<group>"; };
 		0DDB457827AE749200053E83 /* CoreDataMessageStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataMessageStore.swift; sourceTree = "<group>"; };
-		0DDBA52A27B1A48D009CEC0E /* TotersMessagingIntegrationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TotersMessagingIntegrationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		0DDBA52C27B1A48D009CEC0E /* TotersMessagingIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotersMessagingIntegrationTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,10 +110,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		0DDBA52727B1A48D009CEC0E /* Frameworks */ = {
+		0D18478C27B4336D00ED3A03 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D18479327B4336D00ED3A03 /* TotersMessaging.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -117,8 +126,9 @@
 			children = (
 				0D06E7FF279F38D200E551A1 /* TotersMessaging */,
 				0D06E809279F38D200E551A1 /* TotersMessagingTests */,
-				0DDBA52B27B1A48D009CEC0E /* TotersMessagingIntegrationTests */,
+				0D18479027B4336D00ED3A03 /* TotersMessagingIntegrationTests */,
 				0D06E7FE279F38D200E551A1 /* Products */,
+				0D53A62427B431FF00C00A14 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -127,7 +137,7 @@
 			children = (
 				0D06E7FD279F38D200E551A1 /* TotersMessaging.framework */,
 				0D06E805279F38D200E551A1 /* TotersMessagingTests.xctest */,
-				0DDBA52A27B1A48D009CEC0E /* TotersMessagingIntegrationTests.xctest */,
+				0D18478F27B4336D00ED3A03 /* TotersMessagingIntegrationTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -151,6 +161,14 @@
 			path = TotersMessagingTests;
 			sourceTree = "<group>";
 		};
+		0D18479027B4336D00ED3A03 /* TotersMessagingIntegrationTests */ = {
+			isa = PBXGroup;
+			children = (
+				0D18479127B4336D00ED3A03 /* TotersMessagingIntegrationTests.swift */,
+			);
+			path = TotersMessagingIntegrationTests;
+			sourceTree = "<group>";
+		};
 		0D3E5ABA27A6910700C54DDA /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -158,6 +176,13 @@
 				0D3E5ABD27A6913F00C54DDA /* Contact+Extensions.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		0D53A62427B431FF00C00A14 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		0D6F6A7F27A1EB0100DD01DA /* Helpers */ = {
@@ -295,14 +320,6 @@
 			path = CoreData;
 			sourceTree = "<group>";
 		};
-		0DDBA52B27B1A48D009CEC0E /* TotersMessagingIntegrationTests */ = {
-			isa = PBXGroup;
-			children = (
-				0DDBA52C27B1A48D009CEC0E /* TotersMessagingIntegrationTests.swift */,
-			);
-			path = TotersMessagingIntegrationTests;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -352,21 +369,22 @@
 			productReference = 0D06E805279F38D200E551A1 /* TotersMessagingTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		0DDBA52927B1A48D009CEC0E /* TotersMessagingIntegrationTests */ = {
+		0D18478E27B4336D00ED3A03 /* TotersMessagingIntegrationTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 0DDBA53027B1A48D009CEC0E /* Build configuration list for PBXNativeTarget "TotersMessagingIntegrationTests" */;
+			buildConfigurationList = 0D18479627B4336D00ED3A03 /* Build configuration list for PBXNativeTarget "TotersMessagingIntegrationTests" */;
 			buildPhases = (
-				0DDBA52627B1A48D009CEC0E /* Sources */,
-				0DDBA52727B1A48D009CEC0E /* Frameworks */,
-				0DDBA52827B1A48D009CEC0E /* Resources */,
+				0D18478B27B4336D00ED3A03 /* Sources */,
+				0D18478C27B4336D00ED3A03 /* Frameworks */,
+				0D18478D27B4336D00ED3A03 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				0D18479527B4336D00ED3A03 /* PBXTargetDependency */,
 			);
 			name = TotersMessagingIntegrationTests;
 			productName = TotersMessagingIntegrationTests;
-			productReference = 0DDBA52A27B1A48D009CEC0E /* TotersMessagingIntegrationTests.xctest */;
+			productReference = 0D18478F27B4336D00ED3A03 /* TotersMessagingIntegrationTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -387,7 +405,7 @@
 						CreatedOnToolsVersion = 13.2.1;
 						LastSwiftMigration = 1320;
 					};
-					0DDBA52927B1A48D009CEC0E = {
+					0D18478E27B4336D00ED3A03 = {
 						CreatedOnToolsVersion = 13.2.1;
 					};
 				};
@@ -407,7 +425,7 @@
 			targets = (
 				0D06E7FC279F38D200E551A1 /* TotersMessaging */,
 				0D06E804279F38D200E551A1 /* TotersMessagingTests */,
-				0DDBA52927B1A48D009CEC0E /* TotersMessagingIntegrationTests */,
+				0D18478E27B4336D00ED3A03 /* TotersMessagingIntegrationTests */,
 			);
 		};
 /* End PBXProject section */
@@ -427,7 +445,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		0DDBA52827B1A48D009CEC0E /* Resources */ = {
+		0D18478D27B4336D00ED3A03 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -480,11 +498,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		0DDBA52627B1A48D009CEC0E /* Sources */ = {
+		0D18478B27B4336D00ED3A03 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0DDBA52D27B1A48D009CEC0E /* TotersMessagingIntegrationTests.swift in Sources */,
+				0D18479227B4336D00ED3A03 /* TotersMessagingIntegrationTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -495,6 +513,11 @@
 			isa = PBXTargetDependency;
 			target = 0D06E7FC279F38D200E551A1 /* TotersMessaging */;
 			targetProxy = 0D06E807279F38D200E551A1 /* PBXContainerItemProxy */;
+		};
+		0D18479527B4336D00ED3A03 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0D06E7FC279F38D200E551A1 /* TotersMessaging */;
+			targetProxy = 0D18479427B4336D00ED3A03 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -725,35 +748,41 @@
 			};
 			name = Release;
 		};
-		0DDBA52E27B1A48D009CEC0E /* Debug */ = {
+		0D18479727B4336D00ED3A03 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 12.1;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.toters.TotersMessagingIntegrationTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		0DDBA52F27B1A48D009CEC0E /* Release */ = {
+		0D18479827B4336D00ED3A03 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 12.1;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.toters.TotersMessagingIntegrationTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -787,11 +816,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		0DDBA53027B1A48D009CEC0E /* Build configuration list for PBXNativeTarget "TotersMessagingIntegrationTests" */ = {
+		0D18479627B4336D00ED3A03 /* Build configuration list for PBXNativeTarget "TotersMessagingIntegrationTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				0DDBA52E27B1A48D009CEC0E /* Debug */,
-				0DDBA52F27B1A48D009CEC0E /* Release */,
+				0D18479727B4336D00ED3A03 /* Debug */,
+				0D18479827B4336D00ED3A03 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -28,7 +28,7 @@
             testExecutionOrdering = "random">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "0DDBA52927B1A48D009CEC0E"
+               BlueprintIdentifier = "0D18478E27B4336D00ED3A03"
                BuildableName = "TotersMessagingIntegrationTests.xctest"
                BlueprintName = "TotersMessagingIntegrationTests"
                ReferencedContainer = "container:TotersMessaging.xcodeproj">
