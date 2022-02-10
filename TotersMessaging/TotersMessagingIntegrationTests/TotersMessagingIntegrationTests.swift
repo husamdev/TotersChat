@@ -29,6 +29,21 @@ class TotersMessagingIntegrationTests: XCTestCase {
         expect(sutToPerformLoad, with: contact, toCompleteWith: .success([message.model]))
     }
     
+    func test_save_doesNotOverrideItemsOnSeparateInstance() {
+        let sutToPerformSave = makeSUT()
+        let sutToPerformLastSave = makeSUT()
+        let sutToPerformLoad = makeSUT()
+        
+        let contact = anyContact()
+        let message1 = anyMessage(to: contact)
+        let message2 = anyMessage(to: contact)
+        
+        save(sutToPerformSave, message: message1.model)
+        save(sutToPerformLastSave, message: message2.model)
+        
+        expect(sutToPerformLoad, with: contact, toCompleteWith: .success([message1.model, message2.model]))
+    }
+    
     // MARK: - Helpers
     private func expect(_ sut: LocalMessagesLoader, with contact: Contact, toCompleteWith expectedResult: LocalMessagesLoader.LoadResult, file: StaticString = #file, line: UInt = #line) {
         let exp = expectation(description: "Wait for completion")
