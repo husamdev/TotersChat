@@ -11,6 +11,9 @@
       location = "group:TotersChat.xcodeproj">
    </FileRef>
    <FileRef
+      location = "group:TotersChatUI/TotersChatUI.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:Pods/Pods.xcodeproj">
    </FileRef>
 </Workspace>

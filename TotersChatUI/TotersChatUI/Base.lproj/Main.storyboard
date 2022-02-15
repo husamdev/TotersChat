@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Chat View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ChatViewController" customModule="TotersChatUI" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="QwM-8N-Eeg">
+                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
+                                <subviews>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="dcm-BH-wrb">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="852"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <prototypes>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TextChatCell" rowHeight="140" id="yel-24-QnB" customClass="TextChatCell" customModule="TotersChatUI" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="44.5" width="414" height="140"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="yel-24-QnB" id="ZhP-f6-FY5">
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="140"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ipm-3C-Ay6" customClass="PaddingLabel" customModule="TotersChatUI" customModuleProvider="target">
+                                                            <rect key="frame" x="8" y="4" width="227.5" height="132"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="paddingLeft">
+                                                                    <real key="value" value="4"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="paddingRight">
+                                                                    <real key="value" value="4"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="paddingTop">
+                                                                    <real key="value" value="4"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="paddingBottom">
+                                                                    <real key="value" value="4"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
+                                                        </label>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="Ipm-3C-Ay6" firstAttribute="top" secondItem="ZhP-f6-FY5" secondAttribute="top" constant="4" id="CB3-Ip-2eH"/>
+                                                        <constraint firstAttribute="trailing" secondItem="Ipm-3C-Ay6" secondAttribute="trailing" constant="8" id="NTS-c5-8kE"/>
+                                                        <constraint firstItem="Ipm-3C-Ay6" firstAttribute="width" relation="lessThanOrEqual" secondItem="ZhP-f6-FY5" secondAttribute="width" multiplier="0.55" id="i4I-Up-V9f"/>
+                                                        <constraint firstItem="Ipm-3C-Ay6" firstAttribute="leading" secondItem="ZhP-f6-FY5" secondAttribute="leading" constant="8" id="q3R-dZ-Qvy"/>
+                                                        <constraint firstAttribute="bottom" secondItem="Ipm-3C-Ay6" secondAttribute="bottom" constant="4" id="qbA-Y7-4Yp"/>
+                                                    </constraints>
+                                                </tableViewCellContentView>
+                                                <connections>
+                                                    <outlet property="labelText" destination="Ipm-3C-Ay6" id="k1I-XR-en8"/>
+                                                    <outlet property="textLeadingConstraint" destination="q3R-dZ-Qvy" id="2n5-DQ-PwC"/>
+                                                    <outlet property="textTrailingConstraint" destination="NTS-c5-8kE" id="vGr-FY-3Kb"/>
+                                                </connections>
+                                            </tableViewCell>
+                                        </prototypes>
+                                    </tableView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="QwM-8N-Eeg" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="8gz-hH-2eh"/>
+                            <constraint firstItem="QwM-8N-Eeg" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="XNg-mm-Gzc"/>
+                            <constraint firstItem="QwM-8N-Eeg" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="dRN-V3-bsX"/>
+                            <constraint firstAttribute="bottom" secondItem="QwM-8N-Eeg" secondAttribute="bottom" id="p76-6i-lGb"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="dcm-BH-wrb" id="CXU-qs-Xeo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="18.840579710144929" y="83.705357142857139"/>
+        </scene>
+    </scenes>
+    <designables>
+        <designable name="Ipm-3C-Ay6">
+            <size key="intrinsicContentSize" width="49.5" height="28.5"/>
+        </designable>
+    </designables>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
