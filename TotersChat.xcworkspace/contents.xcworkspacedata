@@ -8,6 +8,6 @@
       location = "group:TotersMessaging/TotersMessaging.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:TotersChatUI/TotersChatUI.xcodeproj">
+      location = "group:TotersChatiOS/TotersChatiOS.xcodeproj">
    </FileRef>
 </Workspace>
