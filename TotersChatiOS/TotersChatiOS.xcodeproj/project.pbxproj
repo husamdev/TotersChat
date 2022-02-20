@@ -8,10 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		0DD0C6F227C2DA290039275E /* TotersChatiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DD0C6E927C2DA290039275E /* TotersChatiOS.framework */; };
-		0DD0C70527C2DA5A0039275E /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD0C70127C2DA5A0039275E /* PaddingLabel.swift */; };
-		0DD0C70627C2DA5A0039275E /* TextChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD0C70227C2DA5A0039275E /* TextChatViewModel.swift */; };
-		0DD0C70727C2DA5A0039275E /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD0C70327C2DA5A0039275E /* ChatViewController.swift */; };
-		0DD0C70827C2DA5A0039275E /* TextChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD0C70427C2DA5A0039275E /* TextChatCell.swift */; };
+		0DD0C71627C2DEBB0039275E /* TextChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD0C71227C2DEBB0039275E /* TextChatCell.swift */; };
+		0DD0C71727C2DEBB0039275E /* TextChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD0C71327C2DEBB0039275E /* TextChatViewModel.swift */; };
+		0DD0C71827C2DEBB0039275E /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD0C71427C2DEBB0039275E /* ChatViewController.swift */; };
+		0DD0C71927C2DEBB0039275E /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD0C71527C2DEBB0039275E /* PaddingLabel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,10 +27,10 @@
 /* Begin PBXFileReference section */
 		0DD0C6E927C2DA290039275E /* TotersChatiOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TotersChatiOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0DD0C6F127C2DA290039275E /* TotersChatiOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TotersChatiOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		0DD0C70127C2DA5A0039275E /* PaddingLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PaddingLabel.swift; path = ../../TotersChatUI/TotersChatUI/PaddingLabel.swift; sourceTree = "<group>"; };
-		0DD0C70227C2DA5A0039275E /* TextChatViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TextChatViewModel.swift; path = ../../TotersChatUI/TotersChatUI/TextChatViewModel.swift; sourceTree = "<group>"; };
-		0DD0C70327C2DA5A0039275E /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChatViewController.swift; path = ../../TotersChatUI/TotersChatUI/ChatViewController.swift; sourceTree = "<group>"; };
-		0DD0C70427C2DA5A0039275E /* TextChatCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TextChatCell.swift; path = ../../TotersChatUI/TotersChatUI/TextChatCell.swift; sourceTree = "<group>"; };
+		0DD0C71227C2DEBB0039275E /* TextChatCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextChatCell.swift; sourceTree = "<group>"; };
+		0DD0C71327C2DEBB0039275E /* TextChatViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextChatViewModel.swift; sourceTree = "<group>"; };
+		0DD0C71427C2DEBB0039275E /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		0DD0C71527C2DEBB0039275E /* PaddingLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,10 +73,10 @@
 		0DD0C6EB27C2DA290039275E /* TotersChatiOS */ = {
 			isa = PBXGroup;
 			children = (
-				0DD0C70327C2DA5A0039275E /* ChatViewController.swift */,
-				0DD0C70127C2DA5A0039275E /* PaddingLabel.swift */,
-				0DD0C70427C2DA5A0039275E /* TextChatCell.swift */,
-				0DD0C70227C2DA5A0039275E /* TextChatViewModel.swift */,
+				0DD0C71427C2DEBB0039275E /* ChatViewController.swift */,
+				0DD0C71527C2DEBB0039275E /* PaddingLabel.swift */,
+				0DD0C71227C2DEBB0039275E /* TextChatCell.swift */,
+				0DD0C71327C2DEBB0039275E /* TextChatViewModel.swift */,
 			);
 			path = TotersChatiOS;
 			sourceTree = "<group>";
@@ -197,10 +197,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0DD0C70527C2DA5A0039275E /* PaddingLabel.swift in Sources */,
-				0DD0C70727C2DA5A0039275E /* ChatViewController.swift in Sources */,
-				0DD0C70827C2DA5A0039275E /* TextChatCell.swift in Sources */,
-				0DD0C70627C2DA5A0039275E /* TextChatViewModel.swift in Sources */,
+				0DD0C71727C2DEBB0039275E /* TextChatViewModel.swift in Sources */,
+				0DD0C71827C2DEBB0039275E /* ChatViewController.swift in Sources */,
+				0DD0C71927C2DEBB0039275E /* PaddingLabel.swift in Sources */,
+				0DD0C71627C2DEBB0039275E /* TextChatCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
